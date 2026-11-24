@@ -1,19 +1,16 @@
 ---
-title: Window.external
+title: "Window: external property"
+short-title: external
 slug: Web/API/Window/external
 page-type: web-api-instance-property
-tags:
-  - API
-  - property
-  - Window
-  - external
-  - Deprecated
+status:
+  - deprecated
 browser-compat: api.Window.external
 ---
 
-{{APIRef}} {{deprecated_header}}
+{{APIRef("HTML DOM")}}
 
-The `external` property of the {{domxref("Window")}} API returns an instance of the `External` interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec.
+The **`external`** read-only property of the {{domxref("Window")}} interface returns an instance of the `External` interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec.
 
 ## Instance methods
 
@@ -27,13 +24,10 @@ The `External` object has the following methods:
     </tr>
     <tr>
       <td>
-        <code>AddSearchProvider(<em>descriptionURL)</em></code>
+        <code>AddSearchProvider(descriptionURL)</code>
       </td>
       <td>
-        Dummy function; does nothing. See
-        <a href="/en-US/docs/Web/OpenSearch#autodiscovery_of_search_plugins"
-          >Autodiscovery of search plugins</a
-        >.
+        Dummy function; does nothing. Used to <a href="/en-US/docs/Web/XML/Guides/OpenSearch">register search descriptions</a>.
       </td>
     </tr>
     <tr>

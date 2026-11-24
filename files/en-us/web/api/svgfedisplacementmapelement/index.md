@@ -2,12 +2,6 @@
 title: SVGFEDisplacementMapElement
 slug: Web/API/SVGFEDisplacementMapElement
 page-type: web-api-interface
-tags:
-  - API
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGFEDisplacementMapElement
 ---
 
@@ -17,46 +11,18 @@ The **`SVGFEDisplacementMapElement`** interface corresponds to the {{SVGElement(
 
 {{InheritanceDiagram}}
 
-## Constants
+## Static properties
 
-<table class="no-markdown">
-  <tbody>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td><code>SVG_CHANNEL_UNKNOWN</code></td>
-      <td>0</td>
-      <td>
-        The type is not one of predefined types. It is invalid to attempt to
-        define a new value of this type or to attempt to switch an existing
-        value to this type.
-      </td>
-    </tr>
-    <tr>
-      <td><code>SVG_CHANNEL_R</code></td>
-      <td>1</td>
-      <td>Corresponds to the <code>R</code> value.</td>
-    </tr>
-    <tr>
-      <td><code>SVG_CHANNEL_G</code></td>
-      <td>2</td>
-      <td>Corresponds to the <code>G</code> value.</td>
-    </tr>
-    <tr>
-      <td><code>SVG_CHANNEL_B</code></td>
-      <td>3</td>
-      <td>Corresponds to the <code>B</code> value.</td>
-    </tr>
-    <tr>
-      <td><code>SVG_CHANNEL_A</code></td>
-      <td>4</td>
-      <td>Corresponds to the <code>A</code> value.</td>
-    </tr>
-  </tbody>
-</table>
+- `SVG_CHANNEL_UNKNOWN` (0)
+  - : The type is not one of predefined types. It is invalid to attempt to define a new value of this type or to attempt to switch an existing value to this type.
+- `SVG_CHANNEL_R` (1)
+  - : Corresponds to the value `R`.
+- `SVG_CHANNEL_G` (2)
+  - : Corresponds to the value `G`.
+- `SVG_CHANNEL_B` (3)
+  - : Corresponds to the value `B`.
+- `SVG_CHANNEL_A` (4)
+  - : Corresponds to the value `A`.
 
 ## Instance properties
 
@@ -77,11 +43,11 @@ _This interface also inherits properties from its parent interface, {{domxref("S
 - {{domxref("SVGFEDisplacementMapElement.x")}} {{ReadOnlyInline}}
   - : An {{domxref("SVGAnimatedLength")}} corresponding to the {{SVGAttr("x")}} attribute of the given element.
 - {{domxref("SVGFEDisplacementMapElement.xChannelSelector")}} {{ReadOnlyInline}}
-  - : An {{domxref("SVGAnimatedEnumeration")}} corresponding to the {{SVGAttr("xChannelSelect")}} attribute of the given element. It takes one of the `SVG_CHANNEL_*` constants defined on this interface.
+  - : An {{domxref("SVGAnimatedEnumeration")}} corresponding to the {{SVGAttr("xChannelSelector")}} attribute of the given element. It takes one of the `SVG_CHANNEL_*` constants defined on this interface.
 - {{domxref("SVGFEDisplacementMapElement.y")}} {{ReadOnlyInline}}
   - : An {{domxref("SVGAnimatedLength")}} corresponding to the {{SVGAttr("y")}} attribute of the given element.
 - {{domxref("SVGFEDisplacementMapElement.yChannelSelector")}} {{ReadOnlyInline}}
-  - : An {{domxref("SVGAnimatedEnumeration")}} corresponding to the {{SVGAttr("yChannelSelect")}} attribute of the given element. It takes one of the `SVG_CHANNEL_*` constants defined on this interface.
+  - : An {{domxref("SVGAnimatedEnumeration")}} corresponding to the {{SVGAttr("yChannelSelector")}} attribute of the given element. It takes one of the `SVG_CHANNEL_*` constants defined on this interface.
 
 ## Instance methods
 

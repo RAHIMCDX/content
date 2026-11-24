@@ -1,16 +1,12 @@
 ---
-title: PerformanceResourceTiming.renderBlockingStatus
+title: "PerformanceResourceTiming: renderBlockingStatus property"
+short-title: renderBlockingStatus
 slug: Web/API/PerformanceResourceTiming/renderBlockingStatus
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - Web Performance
 browser-compat: api.PerformanceResourceTiming.renderBlockingStatus
 ---
 
-{{APIRef("Resource Timing API")}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}
 
 The **`renderBlockingStatus`** read-only property returns the render-blocking status of the resource.
 
@@ -18,16 +14,6 @@ It is useful to determine resources that:
 
 - weren't render-blocking and therefore could be delayed, or
 - were render-blocking and therefore could be preloaded.
-
-## Description
-
-Render-blocking resources are static files, such as fonts, CSS, and JavaScript that block or delay the browser from rendering page content to the screen. The browser determines these blocking resources automatically and doesn't render any pixel to the screen before all stylesheets and synchronous scripts are loaded and evaluated. This prevents Flash of Unstyled Contents ("FOUC").
-
-In addition to the automatic render-blocking mechanism, `blocking="render"` can be provided as an attribute and value to {{HTMLElement("script")}}, {{HTMLElement("style")}} or {{HTMLElement("link")}} elements to specify explicit render-blocking. For example:
-
-```html
-<link blocking="render" href="critical-font.woff2" as="font" />
-```
 
 ## Value
 
@@ -38,13 +24,23 @@ The `renderBlockingStatus` property can have the following values:
 - `"non-blocking"`
   - : The resource does not block rendering.
 
+## Description
+
+Render-blocking resources are static files, such as fonts, CSS, and JavaScript that block or delay the browser from rendering page content to the screen. The browser determines these blocking resources automatically and doesn't render any pixel to the screen before all stylesheets and synchronous scripts are loaded and evaluated. This prevents Flash of Unstyled Contents ("FOUC").
+
+In addition to the automatic render-blocking mechanism, `blocking="render"` can be provided as an attribute and value to {{HTMLElement("script")}}, {{HTMLElement("style")}} or {{HTMLElement("link")}} elements to specify explicit render-blocking. For example:
+
+```html
+<script blocking="render" src="important.js" defer></script>
+```
+
 ## Examples
 
 ### Logging resources that block rendering
 
 The `renderBlockingStatus` property can be used to see resources that block rendering.
 
-Example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline:
+Example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline. Use the `buffered` option to access entries from before the observer creation.
 
 ```js
 const observer = new PerformanceObserver((list) => {

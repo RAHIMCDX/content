@@ -1,24 +1,29 @@
 ---
 title: Intl.PluralRules.prototype.select()
+short-title: select()
 slug: Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select
-tags:
-  - Internationalization
-  - Intl
-  - JavaScript
-  - Localization
-  - Method
-  - PluralRules
-  - Prototype
-  - Reference
+page-type: javascript-instance-method
 browser-compat: javascript.builtins.Intl.PluralRules.select
+sidebar: jsref
 ---
 
-{{JSRef}}
+The **`select()`** method of {{jsxref("Intl.PluralRules")}} instances returns a string indicating which plural rule to use for locale-aware formatting of a number.
 
-The **`Intl.PluralRules.prototype.select()`** method returns a
-string indicating which plural rule to use for locale-aware formatting.
+{{InteractiveExample("JavaScript Demo: Intl.PluralRules.prototype.select()")}}
 
-{{EmbedInteractiveExample("pages/js/intl-pluralrules-prototype-select.html")}}
+```js interactive-example
+console.log(new Intl.PluralRules("ar-EG").select(0));
+// Expected output: "zero"
+
+console.log(new Intl.PluralRules("ar-EG").select(5));
+// Expected output: "few"
+
+console.log(new Intl.PluralRules("ar-EG").select(55));
+// Expected output: "many"
+
+console.log(new Intl.PluralRules("en").select(0));
+// Expected output: "other"
+```
 
 ## Syntax
 
@@ -29,31 +34,40 @@ select(number)
 ### Parameters
 
 - `number`
-  - : The number to get a plural rule for.
+  - : A {{jsxref("Number")}}, {{jsxref("BigInt")}}, or string to get a plural rule for. Strings are parsed in the same way as in [number conversion](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#number_coercion), except that `select()` uses the exact value that the string represents, avoiding loss of precision during implicit conversion to a number.
 
 ### Return value
 
-A string representing the pluralization category of the `number`, can be one
-of `zero`, `one`, `two`, `few`,
-`many` or `other`.
+A string representing the pluralization category of the `number`.
+This can be one of `zero`, `one`, `two`, `few`, `many`, or `other`.
 
 ## Description
 
-This function selects a pluralization category according to the locale and formatting
-options of a {{jsxref("Intl.PluralRules")}} object.
+This function selects a pluralization category according to the locale and formatting options of an {{jsxref("Intl.PluralRules")}} object.
+These options are set in the [`Intl.PluralRules()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules) constructor.
 
 ## Examples
 
 ### Using select()
 
+First, create an `Intl.PluralRules` object, passing the appropriate `locales` and `options` parameters.
+Here we create a plural rules object for Arabic in the Egyptian dialect.
+Because the `type` is not specified the rules object will provide formatting for cardinal numbers (the default).
+
 ```js
 const pr = new Intl.PluralRules("ar-EG");
+```
 
+Then call `select()` on the rules object, specifying the number for which the plural form is required.
+Note that Arabic has 6 forms for cardinal numbers, as shown.
+
+```js
 pr.select(0); // 'zero'
 pr.select(1); // 'one'
 pr.select(2); // 'two'
 pr.select(6); // 'few'
 pr.select(18); // 'many'
+pr.select(100); // 'other'
 ```
 
 ## Specifications

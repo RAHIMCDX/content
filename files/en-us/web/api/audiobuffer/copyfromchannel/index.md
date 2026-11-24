@@ -1,21 +1,8 @@
 ---
-title: AudioBuffer.copyFromChannel()
+title: "AudioBuffer: copyFromChannel() method"
+short-title: copyFromChannel()
 slug: Web/API/AudioBuffer/copyFromChannel
 page-type: web-api-instance-method
-tags:
-  - API
-  - Audio
-  - AudioBuffer
-  - Copying
-  - Frames
-  - Method
-  - Reference
-  - Samples
-  - Web Audio
-  - Web Audio API
-  - copy
-  - copyFromChannel
-  - sound
 browser-compat: api.AudioBuffer.copyFromChannel
 ---
 
@@ -51,16 +38,8 @@ None ({{jsxref("undefined")}}).
 
 ### Exceptions
 
-- `indexSizeError`
-
-  - : One of the input parameters has a value that is outside the accepted range:
-
-    - The value of `channelNumber` specifies a channel number
-      which doesn't exist (that is, it's greater than or equal to the value of
-      {{domxref("AudioBuffer.numberOfChannels", "numberOfChannels")}} on the channel).
-    - The value of `startInChannel` is outside the current range
-      of samples that already exist in the source buffer; that is, it's greater than its
-      current {{domxref("AudioBuffer.length", "length")}}.
+- `IndexSizeError` {{domxref("DOMException")}}
+  - : The value of `channelNumber` specifies a channel number which doesn't exist (that is, it's greater than or equal to the value of {{domxref("AudioBuffer.numberOfChannels", "numberOfChannels")}} on the buffer).
 
 ## Examples
 

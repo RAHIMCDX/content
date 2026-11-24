@@ -1,21 +1,14 @@
 ---
-title: StyleSheet.parentStyleSheet
+title: "StyleSheet: parentStyleSheet property"
+short-title: parentStyleSheet
 slug: Web/API/StyleSheet/parentStyleSheet
 page-type: web-api-instance-property
-tags:
-  - API
-  - CSSOM
-  - NeedsSpecTable
-  - Property
-  - Reference
 browser-compat: api.StyleSheet.parentStyleSheet
 ---
 
 {{APIRef("CSSOM")}}
 
-The **`parentStyleSheet`** property of the
-{{domxref("StyleSheet")}} interface returns the style sheet, if any, that is including
-the given style sheet.
+The **`parentStyleSheet`** read-only property of the {{domxref("StyleSheet")}} interface returns the style sheet, if any, that is including the given style sheet.
 
 ## Value
 

@@ -2,33 +2,30 @@
 title: CSSPerspective
 slug: Web/API/CSSPerspective
 page-type: web-api-interface
-tags:
-  - API
-  - CSS Typed Object Model API
-  - CSSPerspective
-  - CSSTransformComponent
-  - CSSTransformValue
-  - Experimental
-  - Houdini
-  - Interface
 browser-compat: api.CSSPerspective
 ---
 
-{{SeeCompatTable}}{{APIRef("CSS Typed Object Model API")}}
+{{APIRef("CSS Typed Object Model API")}} {{AvailableInWorkers}}
 
-The **`CSSPerspective`** interface of the {{domxref('CSS_Object_Model#css_typed_object_model','','',' ')}} represents the [perspective()](/en-US/docs/Web/CSS/transform-function/perspective) value of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent {{domxref('CSSTransformValue')}}.
+The **`CSSPerspective`** interface of the [CSS Typed Object Model API](/en-US/docs/Web/API/CSS_Object_Model) represents the {{cssxref("transform-function/perspective", "perspective()")}} value of the individual {{CSSXRef('transform')}} property in CSS.
 
 {{InheritanceDiagram}}
 
 ## Constructor
 
-- {{domxref("CSSPerspective.CSSPerspective", "CSSPerspective()")}} {{Experimental_Inline}}
+- {{domxref("CSSPerspective.CSSPerspective", "CSSPerspective()")}}
   - : Creates a new `CSSPerspective` object.
 
 ## Instance properties
 
-- {{domxref('CSSPerspective.length','length')}} {{Experimental_Inline}}
+_Also inherits properties from its parent interface, {{DOMxRef("CSSTransformComponent")}}._
+
+- {{domxref('CSSPerspective.length','length')}}
   - : Returns or sets the distance from z=0.
+
+## Instance methods
+
+_Also inherits methods from its parent interface, {{DOMxRef("CSSTransformComponent")}}._
 
 ## Examples
 

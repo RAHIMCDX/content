@@ -1,34 +1,23 @@
 ---
-title: MediaTrackConstraints.volume
+title: "MediaTrackConstraints: volume property"
+short-title: volume
 slug: Web/API/MediaTrackConstraints/volume
 page-type: web-api-instance-property
-tags:
-  - API
-  - Audio
-  - Constraints
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackConstraints
-  - Property
-  - Reference
-  - Volume
-  - WebRTC
-  - getusermedia
-  - Deprecated
-  - Non-standard
-browser-compat: api.MediaTrackConstraints.volume
+status:
+  - deprecated
+  - non-standard
+browser-compat: api.MediaStreamTrack.applyConstraints.volume_constraint
 ---
 
-{{APIRef("Media Capture and Streams")}}{{Deprecated_Header}}{{Non-standard_Header}}
+{{APIRef("Media Capture and Streams")}}{{Non-standard_Header}}
 
 The {{domxref("MediaTrackConstraints")}} dictionary's
 **`volume`** property is a [`ConstrainDouble`](/en-US/docs/Web/API/MediaTrackConstraints#constraindouble)
 describing the requested or mandatory constraints placed upon the value of the
-{{domxref("MediaTrackSettings.volume", "volume")}} constrainable property.
+[`volume`](/en-US/docs/Web/API/MediaStreamTrack/getSettings#volume) constrainable property.
 
 If needed, you can determine whether or not this constraint is supported by checking
-the value of {{domxref("MediaTrackSupportedConstraints.volume")}} as returned by a call
+the value of [`volume`](/en-US/docs/Web/API/MediaDevices/getSupportedConstraints#volume) as returned by a call
 to {{domxref("MediaDevices.getSupportedConstraints()")}}. However, typically this is
 unnecessary since browsers will ignore any constraints they're unfamiliar with.
 
@@ -50,7 +39,7 @@ satisfied and will result in failure.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example: Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Browser compatibility
 
@@ -62,5 +51,4 @@ See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constrain
 - [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
 - {{domxref("MediaTrackConstraints")}}
 - {{domxref("MediaDevices.getSupportedConstraints()")}}
-- {{domxref("MediaTrackSupportedConstraints")}}
 - {{domxref("MediaStreamTrack")}}

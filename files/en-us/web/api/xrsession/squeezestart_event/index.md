@@ -1,45 +1,30 @@
 ---
-title: 'XRSession: squeezestart event'
+title: "XRSession: squeezestart event"
+short-title: squeezestart
 slug: Web/API/XRSession/squeezestart_event
 page-type: web-api-event
-tags:
-  - API
-  - AR
-  - Event
-  - Input Sources
-  - Inputs
-  - Mixed
-  - Primary Squeeze Actions
-  - Reality
-  - Reference
-  - Squeeze Actions
-  - VR
-  - Virtual
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - XRSession
-  - augmented
-  - controllers
-  - squeezestart
-  - Experimental
+status:
+  - experimental
 browser-compat: api.XRSession.squeezestart_event
 ---
 
-{{APIRef("WebXR Device API")}}{{SeeCompatTable}}
+{{APIRef("WebXR Device API")}}{{SeeCompatTable}}{{SecureContext_Header}}
 
-The [WebXR](/en-US/docs/Web/API/WebXR_Device_API) event **`squeezestart`** is sent to an {{domxref("XRSession")}} when the user begins a [primary squeeze action](/en-US/docs/Web/API/WebXR_Device_API/Inputs#primary_squeeze_actions) on one of its input sources.
+The [WebXR](/en-US/docs/Web/API/WebXR_Device_API) event **`squeezestart`** is sent to an {{domxref("XRSession")}} when the user begins a [primary squeeze action](/en-US/docs/Web/API/WebXR_Device_API/Inputs#primary_squeeze_action) on one of its input sources.
 
 Primary squeeze actions are actions which are meant to represent gripping or squeezing using your hands, and may be simulated using triggers on hand controllers.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('squeezestart', (event) => { })
+```js-nolint
+addEventListener("squeezestart", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onsqueezestart = (event) => { }
 ```
 
@@ -48,15 +33,6 @@ onsqueezestart = (event) => { }
 An {{domxref("XRInputSourceEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("XRInputSourceEvent")}}
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("XRInputSourceEvent.frame", "frame")}} {{ReadOnlyInline}}
-  - : An {{domxref("XRFrame")}} object providing the needed information about the event frame during which the event occurred. This frame may have been rendered in the past rather than being a current frame. Because this is an _event_ frame, not an _animation_ frame, you cannot call {{domxref("XRFrame.getViewerPose", "XRFrame.getViewerPose()")}} on it; instead, use {{domxref("XRFrame.getPose", "getPose()")}}.
-- {{domxref("XRInputSourceEvent.inputSource", "inputSource")}} {{ReadOnlyInline}}
-  - : An {{domxref("XRInputSource")}} object indicating which input source generated the input event.
 
 ## Description
 
@@ -104,7 +80,7 @@ function onSqueezeEvent(event) {
     return;
   }
 
-  switch(event.type) {
+  switch (event.type) {
     case "squeezestart":
       targetObj = myBeginTracking(targetRayPose.matrix);
       break;
@@ -118,7 +94,7 @@ function onSqueezeEvent(event) {
 }
 ```
 
-You can also set up a handler for these events by setting the {{domxref("XRSession")}} object's event handler properties to a function that handles the event:
+You can also set up a handler for these events by setting the {{domxref("XRSession")}} object's event handler properties to a function that handles the event (but note that this replaces other event listeners added using `onsqueezestart`, `onsqueeze`, and `onsqueezeend`, if any):
 
 ```js
 xrSession.onsqueezestart = onSqueezeEvent;

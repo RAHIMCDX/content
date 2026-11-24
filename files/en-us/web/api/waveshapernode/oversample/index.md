@@ -1,14 +1,8 @@
 ---
-title: WaveShaperNode.oversample
+title: "WaveShaperNode: oversample property"
+short-title: oversample
 slug: Web/API/WaveShaperNode/oversample
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - WaveShaperNode
-  - Web Audio API
-  - oversample
 browser-compat: api.WaveShaperNode.oversample
 ---
 
@@ -23,8 +17,8 @@ The possible `oversample` values are:
 | Value    | Effect                                                                 |
 | -------- | ---------------------------------------------------------------------- |
 | `'none'` | Do not perform any oversampling.                                       |
-| `'2x'`   | Double the amount of samples before applying the shaping curve.        |
-| `'4x'`   | Multiply by 4 the amount of samples before applying the shaping curve. |
+| `'2x'`   | Double the number of samples before applying the shaping curve.        |
+| `'4x'`   | Multiply by 4 the number of samples before applying the shaping curve. |
 
 ## Value
 
@@ -32,7 +26,7 @@ One of `'none'`, `'2x'`, or `'4x'`.
 
 ## Examples
 
-See [`BaseAudioContext.createWaveShaper()`](/en-US/docs/Web/API/BaseAudioContext/createWaveShaper#example) for example code.
+See [`BaseAudioContext.createWaveShaper()`](/en-US/docs/Web/API/BaseAudioContext/createWaveShaper#examples) for example code.
 
 ## Specifications
 

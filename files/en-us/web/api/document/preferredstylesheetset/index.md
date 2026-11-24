@@ -1,24 +1,17 @@
 ---
-title: Document.preferredStyleSheetSet
+title: "Document: preferredStyleSheetSet property"
+short-title: preferredStyleSheetSet
 slug: Web/API/Document/preferredStyleSheetSet
 page-type: web-api-instance-property
-tags:
-  - API
-  - CSSOM
-  - DOM
-  - Document
-  - Property
-  - Reference
-  - Stylesheets
-  - Deprecated
-  - Non-standard
+status:
+  - deprecated
+  - non-standard
 browser-compat: api.Document.preferredStyleSheetSet
 ---
 
-{{APIRef("DOM")}}{{deprecated_header}}{{Non-standard_header}}
+{{APIRef("DOM")}}{{Non-standard_header}}
 
-The **`preferredStyleSheetSet`** property returns the preferred style sheet set as set by the page
-author.
+The **`preferredStyleSheetSet`** read-only property of the {{domxref("Document")}} interface returns the preferred style sheet set as set by the page author.
 
 ## Value
 
@@ -31,7 +24,9 @@ If there isn't a preferred style sheet set defined by the author, the empty stri
 
 ```js
 if (document.preferredStyleSheetSet) {
-  console.log(`The preferred style sheet set is: ${document.preferredStyleSheetSet}`);
+  console.log(
+    `The preferred style sheet set is: ${document.preferredStyleSheetSet}`,
+  );
 } else {
   console.log("There is no preferred style sheet.");
 }

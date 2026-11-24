@@ -1,20 +1,20 @@
 ---
-title: First contentful paint
+title: First Contentful Paint (FCP)
 slug: Glossary/First_contentful_paint
-tags:
-  - Performance
-  - Reference
-  - Web Performance
+page-type: glossary-definition
+sidebar: glossarysidebar
 ---
 
-**First Contentful Paint** (FCP) is when the browser renders the first bit of content from the DOM, providing the first feedback to the user that the page is actually loading. The question "Is it happening?" is "yes" when the first contentful paint completes.
+**First Contentful Paint** (FCP) is a measure of when the browser renders its first DOM content, providing user feedback that the page is loading. Completing the first {{Glossary("Contentful paint")}} answers the question "Is anything happening?"
 
-_The First Contentful Paint_ time stamp is when the browser first rendered any text, image (including background images), video, canvas that had been drawn into, or non-empty SVG. This excludes any content of iframes, but includes text with pending webfonts. This is the first time users could start consuming page content.
+_The First Contentful Paint_ timestamp indicates when the browser first rendered any text, image (including background images), video, canvas that had been drawn into, or non-empty SVG. This excludes any iframe content, but includes text with pending webfonts. This is the first time users could start consuming page content.
 
 ## See also
 
-- [First paint](/en-US/docs/Glossary/First_paint)
-- [Paint Timing API](/en-US/docs/Web/API/Paint_Timing_API)
-- [Largest Contentful API](/en-US/docs/Web/API/Largest_Contentful_Paint_API)
-- [First meaningful paint](/en-US/docs/Glossary/first_meaningful_paint)
-- [First Contentful Paint](https://web.dev/fcp/) at web.dev
+- [`PerformancePaintTiming`](/en-US/docs/Web/API/PerformancePaintTiming)
+- Related glossary terms:
+  - {{Glossary("Contentful paint")}}
+  - {{Glossary("First Paint")}}
+  - {{Glossary("Largest Contentful Paint")}}
+  - {{Glossary("First Meaningful Paint")}}
+- [First Contentful Paint](https://web.dev/articles/fcp) on web.dev (2023)

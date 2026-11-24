@@ -1,23 +1,14 @@
 ---
-title: Gamepad.connected
+title: "Gamepad: connected property"
+short-title: connected
 slug: Web/API/Gamepad/connected
 page-type: web-api-instance-property
-tags:
-  - API
-  - Gamepad API
-  - Games
-  - NeedsBetterSpecLink
-  - NeedsMarkupWork
-  - Property
-  - Reference
 browser-compat: api.Gamepad.connected
 ---
 
 {{APIRef("Gamepad API")}}
 
-The **`Gamepad.connected`** property of the
-{{domxref("Gamepad") }} interface returns a boolean indicating whether the gamepad is
-still connected to the system.
+The **`connected`** read-only property of the {{domxref("Gamepad")}} interface returns a boolean indicating whether the gamepad is still connected to the system.
 
 If the gamepad is connected, the value is `true`; if not, it is
 `false`.

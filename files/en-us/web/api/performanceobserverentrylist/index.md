@@ -2,15 +2,10 @@
 title: PerformanceObserverEntryList
 slug: Web/API/PerformanceObserverEntryList
 page-type: web-api-interface
-tags:
-  - API
-  - Interface
-  - Reference
-  - Web Performance
 browser-compat: api.PerformanceObserverEntryList
 ---
 
-{{APIRef("Performance API")}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}
 
 The **`PerformanceObserverEntryList`** interface is a list of {{domxref("PerformanceEntry","performance events", '', 'true')}} that were explicitly observed via the {{domxref("PerformanceObserver.observe","observe()")}} method.
 
@@ -23,7 +18,7 @@ The **`PerformanceObserverEntryList`** interface is a list of {{domxref("Perform
 - {{domxref("PerformanceObserverEntryList.getEntriesByName","PerformanceObserverEntryList.getEntriesByName()")}}
   - : Returns a list of all explicitly observed {{domxref("PerformanceEntry")}} objects based on the given name and entry type.
 
-## Example
+## Examples
 
 ### Using PerformanceObserverEntryList
 
@@ -31,13 +26,13 @@ In the following example, `list` is the `PerformanceObserverEntryList` object. T
 
 ```js
 function perfObserver(list, observer) {
-  list.getEntries().forEach((entry) =>  {
+  list.getEntries().forEach((entry) => {
     if (entry.entryType === "mark") {
       console.log(`${entry.name}'s startTime: ${entry.startTime}`);
-    };
+    }
     if (entry.entryType === "measure") {
       console.log(`${entry.name}'s duration: ${entry.duration}`);
-    };
+    }
   });
 }
 const observer = new PerformanceObserver(perfObserver);

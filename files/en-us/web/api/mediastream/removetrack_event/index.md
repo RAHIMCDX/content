@@ -1,26 +1,29 @@
 ---
-title: 'MediaStream: removetrack event'
+title: "MediaStream: removetrack event"
+short-title: removetrack
 slug: Web/API/MediaStream/removetrack_event
 page-type: web-api-event
-tags:
-  - Event
 browser-compat: api.MediaStream.removetrack_event
 ---
 
 {{APIRef("Media Capture and Streams")}}
 
-The `removetrack` event is fired when a new [`MediaStreamTrack`](/en-US/docs/Web/API/MediaStreamTrack) object has been removed from a [`MediaStream`](/en-US/docs/Web/API/MediaStream).
+The **`removetrack`** event is fired when a new {{domxref("MediaStreamTrack")}} object has been removed from a {{domxref("MediaStream")}}.
 
 This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('removetrack', (event) => { });
+```js-nolint
+addEventListener("removetrack", (event) => { })
+```
 
-onremovetrack = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onremovetrack = (event) => { }
 ```
 
 ## Event type
@@ -29,29 +32,22 @@ A {{domxref("MediaStreamTrackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("MediaStreamTrackEvent")}}
 
-## Event properties
-
-_Also inherits properties from its parent interface, {{domxref("Event")}}._
-
-- `track` {{ReadOnlyInline}}
-  - : A {{domxref("MediaStreamTrack")}} object representing the track which was removed from the stream.
-
 ## Examples
 
 Using `addEventListener()`:
 
 ```js
-let stream = new MediaStream();
+const stream = new MediaStream();
 
-stream.addEventListener('removetrack', (event) => {
+stream.addEventListener("removetrack", (event) => {
   console.log(`${event.track.kind} track removed`);
 });
 ```
 
-Using the `onremovetrack` event handler property:
+Using the `onremovetrack` event handler property (but note that this replaces other event listeners added using `onremovetrack`, if any):
 
 ```js
-let stream = new MediaStream();
+const stream = new MediaStream();
 
 stream.onremovetrack = (event) => {
   console.log(`${event.track.kind} track removed`);

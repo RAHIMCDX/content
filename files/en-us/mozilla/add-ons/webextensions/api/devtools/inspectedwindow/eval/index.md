@@ -1,31 +1,24 @@
 ---
 title: devtools.inspectedWindow.eval()
 slug: Mozilla/Add-ons/WebExtensions/API/devtools/inspectedWindow/eval
-tags:
-  - API
-  - Add-ons
-  - Extensions
-  - Reference
-  - Method
-  - WebExtensions
-  - devtools.inspectedWindow
-  - eval
+page-type: webextension-api-function
 browser-compat: webextensions.api.devtools.inspectedWindow.eval
+sidebar: addonsidebar
 ---
-
-{{AddonSidebar()}}
 
 Executes JavaScript in the window that the devtools are attached to.
 
 This is somewhat like using {{WebExtAPIRef("tabs.executeScript()")}} to attach a content script, but with two main differences:
 
-First, the JavaScript can use a set of [special commands that browsers typically provide in their devtools console implementation](#helpers): for example, using "$0" to refer to the element currently selected in the Inspector.
+First, the JavaScript can use a set of [special commands that browsers typically provide in their devtools console implementation](#helpers): for example, using "$0" to refer to the element selected in the Inspector.
 
 Second, the JavaScript you execute can see any changes made to the page by scripts that the page loaded. This is in contrast to content scripts, which see the page [as it would exist if no page scripts were loaded](/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#dom_access). However, note that the isolation provided by content scripts is a deliberate security feature, intended to make it harder for malicious or uncooperative web pages to confuse or subvert WebExtensions APIs by redefining DOM functions and properties. This means you need to be very careful if you waive this protection by using `eval()`, and should use content scripts unless you need to use `eval()`.
 
 The script is evaluated by default in the main frame of the page. The script must evaluate to a value that can be represented as JSON (meaning that, for example, it may not evaluate to a function or an object that contains any functions). By default, the script does not see any content scripts attached to the page.
 
 You can't call `eval()` on privileged browser windows such as "about:addons".
+
+In Firefox 153 and later, calling `eval()` on a `file://` URL requires the extension to be granted file scheme access by the user. Without this permission, the promise rejects with an error. Use {{WebExtAPIRef("extension.isAllowedFileSchemeAccess()")}} to check whether the user has granted the extension this permission.
 
 You can optionally provide an `options` parameter, which includes options to evaluate the script in a different frame or in the context of attached content scripts. Note that Firefox does not yet support the `options` parameter.
 
@@ -38,7 +31,7 @@ The script gets access to a number of objects that help the injected script inte
 - `$0`
   - : Contains a reference to the element that's currently selected in the devtools Inspector.
 - `inspect()`
-  - : Given an object, if it is an DOM element in the page, selects it in the devtools Inspector, otherwise it creates an object preview in the webconsole.
+  - : Given an object, if it is a DOM element in the page, selects it in the devtools Inspector, otherwise it creates an object preview in the console.
 
 [See some examples.](#examples)
 
@@ -54,17 +47,19 @@ let evaluating = browser.devtools.inspectedWindow.eval(
 ### Parameters
 
 - `expression`
-  - : `string`. The JavaScript expression to evaluate. The string must evaluate to a object that can be represented as JSON, or an exception will be thrown. For example, `expression` must not evaluate to a function.
+  - : `string`. The JavaScript expression to evaluate. The string must evaluate to an object that can be represented as JSON, or an exception will be thrown. For example, `expression` must not evaluate to a function.
 - `options` {{optional_inline}}
 
-  - : `object`. Options for the function (Note that Firefox does not yet support this options), as follows:
+  - : `object`. Options for the function, as follows:
 
-    - `frameURL` {{optional_inline}}
-      - : `string`. The URL of the frame in which to evaluate the expression. If this is omitted, the expression is evaluated in the main frame of the window.
-    - `useContentScriptContext` {{optional_inline}}
-      - : `boolean`. If `true`, evaluate the expression in the context of any content scripts that this extension has attached to the page. If you set this option, then you must have actually attached some content scripts to the page, or a Devtools error will be thrown.
     - `contextSecurityOrigin` {{optional_inline}}
       - : `string`. Evaluate the expression in the context of a content script attached by a different extension, whose origin matches the value given here. This overrides `useContentScriptContext`.
+    - `frameURL` {{optional_inline}}
+      - : `string`. The URL of the frame in which to evaluate the expression. If this is omitted, the expression is evaluated in the main frame of the window.
+    - `scriptExecutionContext` {{optional_inline}}
+      - : `string`. Evaluate the expression in the context of a content script of an extension that matches the specified origin. If given, `scriptExecutionContext` overrides the `true` setting on `useContentScriptContext`.
+    - `useContentScriptContext` {{optional_inline}}
+      - : `boolean`. If `true`, evaluate the expression in the context of any content scripts that this extension has attached to the page. If you set this option, then you must have actually attached some content scripts to the page, or a Devtools error will be thrown.
 
 ### Return value
 
@@ -75,18 +70,12 @@ If no error occurred, element 0 will contain the result of evaluating the expres
 If an error occurred, element 0 will be `undefined`, and element 1 will contain an object giving details about the error. Two different sorts of errors are distinguished:
 
 - errors encountered evaluating the JavaScript (for example, syntax errors in the expression). In this case, element 1 will contain:
-
   - a boolean property `isException`, set to `true`
   - a string property `value`, giving more details.
 
 - other errors (for example, an expression that evaluates to an object that can't be represented as JSON). In this case, element 1 will contain:
-
   - a boolean property `isError`, set to `true`
   - a string property `code` containing an error code.
-
-## Browser compatibility
-
-{{Compat}}
 
 ## Examples
 
@@ -95,7 +84,7 @@ This tests whether jQuery is defined in the inspected window, and logs the resul
 ```js
 function handleError(error) {
   if (error.isError) {
-    console.log(`Devtools error: ${error.code}`);
+    console.log(`DevTools error: ${error.code}`);
   } else {
     console.log(`JavaScript error: ${error.value}`);
   }
@@ -110,11 +99,10 @@ function handleResult(result) {
   }
 }
 
-const checkjQuery = "typeof jQuery !== 'undefined'";
+const checkJQuery = "typeof jQuery !== 'undefined'";
 
 evalButton.addEventListener("click", () => {
-  browser.devtools.inspectedWindow.eval(checkjQuery)
-    .then(handleResult);
+  browser.devtools.inspectedWindow.eval(checkJQuery).then(handleResult);
 });
 ```
 
@@ -128,7 +116,7 @@ const evalString = "$0.style.backgroundColor = 'red'";
 
 function handleError(error) {
   if (error.isError) {
-    console.log(`Devtools error: ${error.code}`);
+    console.log(`DevTools error: ${error.code}`);
   } else {
     console.log(`JavaScript error: ${error.value}`);
   }
@@ -141,8 +129,7 @@ function handleResult(result) {
 }
 
 evalButton.addEventListener("click", () => {
-  browser.devtools.inspectedWindow.eval(evalString)
-    .then(handleResult);
+  browser.devtools.inspectedWindow.eval(evalString).then(handleResult);
 });
 ```
 
@@ -154,7 +141,7 @@ const inspectString = "inspect(document.querySelector('h1'))";
 
 function handleError(error) {
   if (error.isError) {
-    console.log(`Devtools error: ${error.code}`);
+    console.log(`DevTools error: ${error.code}`);
   } else {
     console.log(`JavaScript error: ${error.value}`);
   }
@@ -167,14 +154,18 @@ function handleResult(result) {
 }
 
 inspectButton.addEventListener("click", () => {
-  browser.devtools.inspectedWindow.eval(inspectString)
-    .then(handleResult);
+  browser.devtools.inspectedWindow.eval(inspectString).then(handleResult);
 });
 ```
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.devtools`](https://developer.chrome.com/docs/extensions/mv3/devtools/) API.
+## Browser compatibility
+
+{{Compat}}
+
+> [!NOTE]
+> This API is based on Chromium's [`chrome.devtools`](https://developer.chrome.com/docs/extensions/how-to/devtools/extend-devtools) API.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

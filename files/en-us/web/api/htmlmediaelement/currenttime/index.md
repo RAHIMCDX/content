@@ -1,21 +1,8 @@
 ---
-title: HTMLMediaElement.currentTime
+title: "HTMLMediaElement: currentTime property"
+short-title: currentTime
 slug: Web/API/HTMLMediaElement/currentTime
 page-type: web-api-instance-property
-tags:
-  - API
-  - Audio
-  - HTML DOM
-  - HTMLMediaElement
-  - Media
-  - Property
-  - Time
-  - Video
-  - Web
-  - currentTime
-  - offset
-  - seconds
-  - seek
 browser-compat: api.HTMLMediaElement.currentTime
 ---
 
@@ -48,19 +35,33 @@ a time before its timeline's earliest time.
 The length of the media in seconds can be determined using the
 {{domxref("HTMLMediaElement.duration", "duration")}} property.
 
+## Usage notes
+
+### Time precision
+
+The browser does not apply timer rounding to `currentTime`, including values supplied by script. Seeking can still adjust the resulting playback position to a position supported by the media.
+
+The value of `currentTime` is an approximation of the current playback position. The browser updates this value as playback progresses. The [HTML specification](https://html.spec.whatwg.org/multipage/media.html#official-playback-position) requires the reported playback position to remain stable while scripts are running.
+
+The update frequency depends on the browser and media playback pipeline. As a result, successive reads can return the same `currentTime` even when {{jsxref("Date.now()")}} has advanced. The number of decimal places in the value does not indicate how often it updates or how accurately it matches the audio or video being presented.
+
+For example, successive readings during playback might produce these values:
+
+```js
+video.currentTime;
+// Might be:
+// 23.404
+// 23.404
+// 23.452
+// …
+```
+
 ## Examples
 
 ```js
-const video = document.createElement('video');
+const video = document.createElement("video");
 console.log(video.currentTime);
 ```
-
-## Usage notes
-
-### Reduced time precision
-
-To offer protection against timing attacks and fingerprinting, browsers may round or
-otherwise adjust the value returned by `currentTime`.
 
 ## Specifications
 
@@ -72,6 +73,6 @@ otherwise adjust the value returned by `currentTime`.
 
 ## See also
 
-- The interface defining it, {{domxref("HTMLMediaElement")}}.
+- {{domxref("HTMLMediaElement")}}: Interface used to define the `HTMLMediaElement.currentTime` property
 - {{domxref("HTMLMediaElement.fastSeek()")}}: Another way to set the time
 - {{domxref("HTMLMediaElement.duration")}}: The duration of the media in seconds

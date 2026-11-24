@@ -1,18 +1,12 @@
 ---
-title: ReadableStreamDefaultReader.cancel()
+title: "ReadableStreamDefaultReader: cancel() method"
+short-title: cancel()
 slug: Web/API/ReadableStreamDefaultReader/cancel
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - ReadableStreamDefaultReader
-  - Reference
-  - Streams
-  - cancel
 browser-compat: api.ReadableStreamDefaultReader.cancel
 ---
 
-{{APIRef("Streams")}}
+{{APIRef("Streams")}}{{AvailableInWorkers}}
 
 The **`cancel()`** method of the
 {{domxref("ReadableStreamDefaultReader")}} interface returns a {{jsxref("Promise")}} that resolves when the stream is canceled. Calling this method signals a loss of interest in the stream by a consumer.
@@ -23,7 +17,8 @@ after cancel is called, and the stream is not readable any more. To read those c
 still and not completely get rid of the stream, you'd use
 {{domxref("ReadableStreamDefaultController.close()")}}.
 
-> **Note:** If the reader is active, the
+> [!NOTE]
+> If the reader is active, the
 > `cancel()` method behaves the same as that for the associated stream
 > ({{domxref("ReadableStream.cancel()")}}).
 
@@ -59,7 +54,7 @@ stream has finished being read, at which point we return out of the recursive fu
 and print the entire stream to another part of the UI.
 
 When the stream is done (`if (done)`), we run `reader.cancel()`
-to cancel the stream, signalling that we don't need to use it any more.
+to cancel the stream, signaling that we don't need to use it any more.
 
 ```js
 function fetchStream() {
@@ -82,7 +77,7 @@ function fetchStream() {
     // value for fetch streams is a Uint8Array
     charsReceived += value.length;
     const chunk = value;
-    let listItem = document.createElement('li');
+    let listItem = document.createElement("li");
     listItem.textContent = `Received ${charsReceived} characters so far. Current chunk = ${chunk}`;
     list2.appendChild(listItem);
 
@@ -101,3 +96,8 @@ function fetchStream() {
 ## Browser compatibility
 
 {{Compat}}
+
+## See also
+
+- {{domxref("ReadableStreamDefaultReader.ReadableStreamDefaultReader", "ReadableStreamDefaultReader()")}} constructor
+- [Using readable streams](/en-US/docs/Web/API/Streams_API/Using_readable_streams)

@@ -1,25 +1,12 @@
 ---
-title: WebGLRenderingContext.uniformMatrix[234]fv()
+title: "WebGLRenderingContext: uniformMatrix[234]fv() method"
+short-title: uniformMatrix[234]fv()
 slug: Web/API/WebGLRenderingContext/uniformMatrix
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - Uniform Variables
-  - Uniforms
-  - WebGL
-  - WebGL API
-  - WebGLRenderingContext
-  - matrices
-  - matrix
-  - uniformMatrix2fv
-  - uniformMatrix3fv
-  - uniformMatrix4fv
 browser-compat: api.WebGLRenderingContext.uniformMatrix2fv
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WebGLRenderingContext.uniformMatrix[234]fv()`** methods
 of the [WebGL API](/en-US/docs/Web/API/WebGL_API) specify matrix values for
@@ -41,9 +28,7 @@ uniformMatrix4fv(location, transpose, value)
 ### Parameters
 
 - `location`
-  - : A {{domxref("WebGLUniformLocation")}} object containing the location of the uniform
-    attribute to modify. The location is obtained using
-    {{domxref("WebGLRenderingContext.getUniformLocation", "getUniformLocation()")}}.
+  - : A {{domxref("WebGLUniformLocation")}} object containing the location of the uniform attribute to modify, or `null` to silently ignore the uniform update. The location is obtained using {{domxref("WebGLRenderingContext.getUniformLocation", "getUniformLocation()")}}.
 - `transpose`
   - : A {{domxref("WebGL_API/Types", "GLboolean")}} specifying whether to transpose the matrix. Must be
     `false`.
@@ -58,7 +43,7 @@ None ({{jsxref("undefined")}}).
 ## Examples
 
 ```js
-gl.uniformMatrix2fv(loc, false, [2,1, 2,2]);
+gl.uniformMatrix2fv(loc, false, [2, 1, 2, 2]);
 ```
 
 ## Specifications

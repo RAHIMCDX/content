@@ -2,66 +2,31 @@
 title: OffscreenCanvasRenderingContext2D
 slug: Web/API/OffscreenCanvasRenderingContext2D
 page-type: web-api-interface
-tags:
-  - API
-  - Canvas
-  - OffscreenCanvasRenderingContext2D
-  - Games
-  - Graphics
-  - Reference
 browser-compat: api.OffscreenCanvasRenderingContext2D
 ---
 
-{{APIRef}}
+{{APIRef("Canvas API")}}{{AvailableInWorkers}}
 
 The **`OffscreenCanvasRenderingContext2D`** interface is a {{domxref("CanvasRenderingContext2D")}} rendering context for drawing to the bitmap of an `OffscreenCanvas` object.
 It is similar to the `CanvasRenderingContext2D` object, with the following differences:
 
-- there is no support for user-interface features (`drawFocusIfNeeded`, and `scrollPathIntoView`)
+- there is no support for user-interface features (`drawFocusIfNeeded`)
 - its `canvas` attribute refers to an `OffscreenCanvas` object rather than a {{HtmlElement("canvas")}} element
-- it has a `commit()` method for pushing rendered images to the context's `OffscreenCanvas` object's placeholder {{HtmlElement("canvas")}} element
-
-## Example
-
-The following code snippet creates a {{domxref("Worker")}} object using the {{domxref("Worker.Worker", "Worker()")}} constructor.
-The `transferControlToOffscreen()` method is used to transfer the `OffscreenCanvas` object to the worker:
-
-```js
-const canvas = document.getElementById("canvas");
-const offscreen = canvas.transferControlToOffscreen();
-const worker = new Worker("worker.js");
-worker.postMessage({ canvas: offscreen }, [offscreen]);
-```
-
-In the worker thread, we can use the `OffscreenCanvasRenderingContext2D` to draw to the bitmap of the `OffscreenCanvas` object:
-
-```js
-onmessage = (event) => {
-  const canvas = event.data.canvas;
-  const offCtx = canvas.getContext("2d");
-  // draw to the offscreen canvas context
-  offCtx.fillStyle = "red";
-  offCtx.fillRect(0, 0, 100, 100);
-};
-```
-
-For a full example, see our [OffscreenCanvas worker example](https://github.com/mdn/dom-examples/tree/main/web-workers/offscreen-canvas-worker) ([run OffscreenCanvas worker](https://mdn.github.io/dom-examples/web-workers/offscreen-canvas-worker/)).
+- the bitmap for the placeholder {{HtmlElement("canvas")}} element belonging to the `OffscreenCanvas` object is updated during the rendering update of the `Window` or `Worker` that owns the `OffscreenCanvas`
 
 ## Additional methods
 
 The following method is new to the `OffscreenCanvasRenderingContext2D` interface and does not exist in the `CanvasRenderingContext2D` interface:
 
-- {{domxref("OffscreenCanvasRenderingContext2D.commit()", "commit()")}}
+- {{domxref("OffscreenCanvasRenderingContext2D.commit()", "commit()")}} {{deprecated_inline}} {{non-standard_inline}}
   - : Pushes the rendered image to the context's `OffscreenCanvas` object's placeholder {{HtmlElement("canvas")}} element.
 
 ## Unsupported features
 
-The following user interface methods are **not supported** by the `OffscreenCanvasRenderingContext2D` interface:
+The following user interface method is **not supported** by the `OffscreenCanvasRenderingContext2D` interface:
 
 - {{domxref("CanvasRenderingContext2D.drawFocusIfNeeded()")}}
   - : If a given element is focused, this method draws a focus ring around the current path.
-- {{domxref("CanvasRenderingContext2D.scrollPathIntoView()")}} {{Experimental_Inline}}
-  - : Scrolls the current path or a given path into the view.
 
 ## Inherited properties and methods
 
@@ -69,6 +34,8 @@ _The following properties and methods are inherited from {{domxref("CanvasRender
 
 ### Context
 
+- {{domxref("CanvasRenderingContext2D.getContextAttributes()")}} {{experimental_inline}}
+  - : Returns an object containing the actual context attributes. Context attributes can be requested with {{domxref("OffscreenCanvas.getContext()")}}.
 - {{domxref("CanvasRenderingContext2D.isContextLost()")}}
   - : Returns `true` if the rendering context was lost.
 
@@ -129,23 +96,25 @@ The following properties control how text is laid out.
   - : Letter spacing. Default: `0px`.
 - {{domxref("CanvasRenderingContext2D.fontKerning")}}
   - : Font kerning. Possible values: `auto` (default), `normal`, `none`.
-- {{domxref("CanvasRenderingContext2D.fontStretch")}} {{experimental_inline}}
+- {{domxref("CanvasRenderingContext2D.fontStretch")}}
   - : Font stretch. Possible values: `ultra-condensed`, `extra-condensed`, `condensed`, `semi-condensed`, `normal` (default), `semi-expanded`, `expanded`, `extra-expanded`, `ultra-expanded`.
-- {{domxref("CanvasRenderingContext2D.fontVariantCaps")}} {{experimental_inline}}
+- {{domxref("CanvasRenderingContext2D.fontVariantCaps")}}
   - : Font variant caps. Possible values: `normal` (default), `small-caps`, `all-small-caps`, `petite-caps`, `all-petite-caps`, `unicase`, `titling-caps`.
 - {{domxref("CanvasRenderingContext2D.textRendering")}} {{experimental_inline}}
   - : Text rendering. Possible values: `auto` (default), `optimizeSpeed`, `optimizeLegibility`, `geometricPrecision`.
-- {{domxref("CanvasRenderingContext2D.wordSpacing")}} {{experimental_inline}}
+- {{domxref("CanvasRenderingContext2D.wordSpacing")}}
   - : Word spacing. Default value: `0px`
+- {{domxref("CanvasRenderingContext2D.lang")}}
+  - : Gets or sets the language of the canvas drawing context.
 
 ### Fill and stroke styles
 
 Fill styling is used for colors and styles inside shapes and stroke styling is used for the lines around shapes.
 
 - {{domxref("CanvasRenderingContext2D.fillStyle")}}
-  - : Color or style to use inside shapes. Default `#000` (black).
+  - : Color or style to use inside shapes. Default to `black`.
 - {{domxref("CanvasRenderingContext2D.strokeStyle")}}
-  - : Color or style to use for the lines around shapes. Default `#000` (black).
+  - : Color or style to use for the lines around shapes. Default to `black`.
 
 ### Gradients and patterns
 
@@ -193,6 +162,8 @@ The following methods can be used to manipulate paths of objects.
   - : Adds an elliptical arc to the current path.
 - {{domxref("CanvasRenderingContext2D.rect()")}}
   - : Creates a path for a rectangle at position (x, y) with a size that is determined by _width_ and _height_.
+- {{domxref("CanvasRenderingContext2D.roundRect()")}}
+  - : Creates a path for a rectangle with rounded corners at position (x, y) with a size that is determined by _width_ and _height_ and radii determined by _radii_.
 
 ### Drawing paths
 
@@ -206,8 +177,6 @@ The following methods can be used to manipulate paths of objects.
   - : Reports whether or not the specified point is contained in the current path.
 - {{domxref("CanvasRenderingContext2D.isPointInStroke()")}}
   - : Reports whether or not the specified point is inside the area contained by the stroking of a path.
-- {{domxref("CanvasRenderingContext2D.roundRect()")}}
-  - : Addition to CanvasPath that allows users to render rectangles with rounded corners.
 
 ### Transformations
 
@@ -266,9 +235,9 @@ The `CanvasRenderingContext2D` rendering context contains a variety of drawing s
   - : Saves the current drawing style state using a stack so you can revert any change you make to it using `restore()`.
 - {{domxref("CanvasRenderingContext2D.restore()")}}
   - : Restores the drawing style state to the last element on the 'state stack' saved by `save()`.
-- {{domxref("CanvasRenderingContext2D.canvas")}}
-  - : A read-only reference to an `OffscreenCanvas` object.
-- {{domxref("CanvasRenderingContext2D.getContextAttributes()")}}
+- {{domxref("CanvasRenderingContext2D.canvas")}} {{ReadOnlyInline}}
+  - : A reference to an `OffscreenCanvas` object.
+- {{domxref("CanvasRenderingContext2D.getContextAttributes()")}} {{experimental_inline}}
   - : Returns an object containing the actual context attributes. Context attributes can be requested with {{domxref("HTMLCanvasElement.getContext()")}}.
 - {{domxref("CanvasRenderingContext2D.reset()")}}
   - : Resets the current drawing style state to the default values.
@@ -280,12 +249,36 @@ The `CanvasRenderingContext2D` rendering context contains a variety of drawing s
 
 ## Unsupported properties and methods
 
-The following methods are **not supported** in the `OffscreenCanvasRenderingContext2D` interface:
+The following method is **not supported** in the `OffscreenCanvasRenderingContext2D` interface:
 
 - {{domxref("CanvasRenderingContext2D.drawFocusIfNeeded()")}}
   - : If a given element is focused, this method draws a focus ring around the current path.
-- {{domxref("CanvasRenderingContext2D.scrollPathIntoView()")}} {{Experimental_Inline}}
-  - : Scrolls the current path or a given path into the view.
+
+## Example
+
+The following code snippet creates a {{domxref("Worker")}} object using the {{domxref("Worker.Worker", "Worker()")}} constructor.
+The `transferControlToOffscreen()` method is used to get an `OffscreenCanvas` object from the {{HtmlElement("canvas")}} element so it can be transferred to the worker:
+
+```js
+const canvas = document.getElementById("canvas");
+const offscreen = canvas.transferControlToOffscreen();
+const worker = new Worker("worker.js");
+worker.postMessage({ canvas: offscreen }, [offscreen]);
+```
+
+In the worker thread, we can use the `OffscreenCanvasRenderingContext2D` to draw to the bitmap of the `OffscreenCanvas` object:
+
+```js
+onmessage = (event) => {
+  const canvas = event.data.canvas;
+  const offCtx = canvas.getContext("2d");
+  // draw to the offscreen canvas context
+  offCtx.fillStyle = "red";
+  offCtx.fillRect(0, 0, 100, 100);
+};
+```
+
+For a full example, see our [OffscreenCanvas worker example](https://github.com/mdn/dom-examples/tree/main/web-workers/offscreen-canvas-worker) ([run OffscreenCanvas worker](https://mdn.github.io/dom-examples/web-workers/offscreen-canvas-worker/)).
 
 ## Specifications
 

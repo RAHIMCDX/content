@@ -1,29 +1,29 @@
 ---
-title: 'IdleDetector: change event'
+title: "IdleDetector: change event"
+short-title: change
 slug: Web/API/IdleDetector/change_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
-  - onchange
-  - IdleDetector
-  - Experimental
+status:
+  - experimental
 browser-compat: api.IdleDetector.change_event
 ---
 
-{{securecontext_header}}{{APIRef("Idle Detection API")}}{{SeeCompatTable}}
+{{securecontext_header}}{{APIRef("Idle Detection API")}}{{SeeCompatTable}}{{AvailableInWorkers("window_and_dedicated")}}
 
 The **`change`** event of the {{domxref("IdleDetector")}} interface fires when the value of `userState` or `screenState` has changed.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('change', (event) => { });
+```js-nolint
+addEventListener("change", (event) => { })
+```
 
-onchange = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onchange = (event) => { }
 ```
 
 ## Event type
@@ -35,11 +35,11 @@ A generic {{domxref("Event")}}.
 In the following example, the `change` callback prints the status of `userState` and `screenState` to the console.
 
 ```js
-    idleDetector.addEventListener('change', () => {
-      const userState = idleDetector.userState;
-      const screenState = idleDetector.screenState;
-      console.log(`Idle change: ${userState}, ${screenState}.`);
-    });
+idleDetector.addEventListener("change", () => {
+  const userState = idleDetector.userState;
+  const screenState = idleDetector.screenState;
+  console.log(`Idle change: ${userState}, ${screenState}.`);
+});
 ```
 
 ## Specifications

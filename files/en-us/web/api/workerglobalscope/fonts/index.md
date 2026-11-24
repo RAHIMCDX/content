@@ -1,21 +1,14 @@
 ---
-title: WorkerGlobalScope.fonts
+title: "WorkerGlobalScope: fonts property"
+short-title: fonts
 slug: Web/API/WorkerGlobalScope/fonts
 page-type: web-api-instance-property
-tags:
-  - API
-  - CSS Font Loading API
-  - FontFace
-  - FontFaceSet
-  - Fonts
-  - font
-  - Property
 browser-compat: api.WorkerGlobalScope.fonts
 ---
 
-{{APIRef("DOM")}}
+{{APIRef("CSS Font Loading API")}}{{AvailableInWorkers("worker")}}
 
-The **`fonts`** property of the {{domxref("WorkerGlobalScope")}} interface returns the {{domxref("FontFaceSet")}} interface of the worker.
+The **`fonts`** read-only property of the {{domxref("WorkerGlobalScope")}} interface returns the {{domxref("FontFaceSet")}} interface of the worker.
 
 This property is part of the [CSS Font Loading API](/en-US/docs/Web/API/CSS_Font_Loading_API).
 

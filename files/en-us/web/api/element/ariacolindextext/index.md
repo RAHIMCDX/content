@@ -2,20 +2,12 @@
 title: Element.ariaColIndexText
 slug: Web/API/Element/ariaColIndexText
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaColIndexText
-  - AriaAttributes
-  - AriaMixin
-  - Element
 browser-compat: api.Element.ariaColIndexText
 ---
 
-{{DefaultAPISidebar("DOM")}}
+{{APIRef("DOM")}}
 
-The **`ariaColIndexText`** property of the {{domxref("Element")}} interface reflects the value of the [`aria-colindextext`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colindextext) attribute, which defines a human readable text alternative of aria-colindex.
+The **`ariaColIndexText`** property of the {{domxref("Element")}} interface reflects the value of the [`aria-colindextext`](/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-colindextext) attribute, which defines a human-readable text alternative of aria-colindex.
 
 ## Value
 
@@ -77,9 +69,9 @@ In this example the `aria-colindex` attribute on the element with an ID of `role
 ```
 
 ```js
-let el = document.getElementById('role-heading');
+let el = document.getElementById("role-heading");
 console.log(el.ariaColIndexText); // "Aria Role"
-el.ariaColIndexText = "New column name"
+el.ariaColIndexText = "New column name";
 console.log(el.ariaColIndexText); // "New column name"
 ```
 
@@ -93,4 +85,4 @@ console.log(el.ariaColIndexText); // "New column name"
 
 ## See also
 
-- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Roles/table_role)
+- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/table_role)

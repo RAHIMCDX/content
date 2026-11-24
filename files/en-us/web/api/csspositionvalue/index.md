@@ -2,19 +2,13 @@
 title: CSSPositionValue
 slug: Web/API/CSSPositionValue
 page-type: web-api-interface
-tags:
-  - API
-  - CSS Typed Object Model API
-  - CSSPositionValue
-  - Houdini
-  - Interface
-  - Reference
-  - Deprecated
-  - Non-standard
+status:
+  - deprecated
+  - non-standard
 browser-compat: api.CSSPositionValue
 ---
 
-{{deprecated_header}}{{APIRef("CSS Typed Object Model API")}}{{Non-standard_header}}
+{{APIRef("CSS Typed Object Model API")}}{{Non-standard_header}}
 
 The **`CSSPositionValue`** interface of the [CSS Typed Object Model API](/en-US/docs/Web/API/CSS_Object_Model#css_typed_object_model) represents values for properties that take a position, for example {{cssxref('object-position')}}.
 
@@ -39,12 +33,12 @@ None.
 The following example positions a container `<div>` 5 pixels from the top and 10 pixels from the left of the page.
 
 ```js
-const replacedEl = document.getElementById('image');
+const replacedEl = document.getElementById("image");
 const position = new CSSPositionValue(CSS.px(35), CSS.px(40));
 
-replacedEl.attributeStyleMap.set('object-position', position);
+replacedEl.attributeStyleMap.set("object-position", position);
 console.log(position.x.value, position.y.value);
-console.log(replacedEl.computedStyleMap().get('object-position'));
+console.log(replacedEl.computedStyleMap().get("object-position"));
 ```
 
 We set the {{cssxref('object-position')}} property, then check the values returned.

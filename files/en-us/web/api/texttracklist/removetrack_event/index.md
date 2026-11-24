@@ -1,30 +1,26 @@
 ---
-title: 'TextTrackList: removeTrack event'
-slug: Web/API/TextTrackList/removeTrack_event
+title: "TextTrackList: removetrack event"
+short-title: removetrack
+slug: Web/API/TextTrackList/removetrack_event
 page-type: web-api-event
-tags:
-  - API
-  - Media Streams API
-  - MediaStreamTrackEvent
-  - Reference
-  - Removing Tracks
-  - events
-  - Event
-  - removeTrack
 browser-compat: api.TextTrackList.removetrack_event
 ---
 
-{{APIRef}}
+{{APIRef("HTML DOM")}}
 
 The **`removetrack`** event is fired when a track is removed from a [`TextTrackList`](/en-US/docs/Web/API/TextTrackList).
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('removetrack', (event) => { })
+```js-nolint
+addEventListener("removetrack", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onremovetrack = (event) => { }
 ```
 
@@ -34,29 +30,22 @@ A {{domxref("TrackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("TrackEvent")}}
 
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("TrackEvent.track", "track")}} {{ReadOnlyInline}}
-  - : The {{domxref("TextTrack")}} object to which the event refers.
-
 ## Examples
 
 Using `addEventListener()`:
 
 ```js
-const mediaElement = document.querySelector('video, audio');
+const mediaElement = document.querySelector("video, audio");
 
-mediaElement.textTracks.addEventListener('removetrack', (event) => {
+mediaElement.textTracks.addEventListener("removetrack", (event) => {
   console.log(`Text track: ${event.track.label} removed`);
 });
 ```
 
-Using the `onremovetrack` event handler property:
+Using the `onremovetrack` event handler property (but note that this replaces other event listeners added using `onremovetrack`, if any):
 
 ```js
-const mediaElement = document.querySelector('video, audio');
+const mediaElement = document.querySelector("video, audio");
 
 mediaElement.textTracks.onremovetrack = (event) => {
   console.log(`Text track: ${event.track.label} removed`);

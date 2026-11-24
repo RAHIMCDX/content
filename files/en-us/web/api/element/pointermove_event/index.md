@@ -1,28 +1,37 @@
 ---
-title: 'Element: pointermove event'
+title: "Element: pointermove event"
+short-title: pointermove
 slug: Web/API/Element/pointermove_event
-tags:
-  - Event
-  - HTML DOM
-  - Element
-  - PointerEvent
-  - Reference
-browser-compat: api.Element.pointermove_event
 page-type: web-api-event
+browser-compat: api.Element.pointermove_event
 ---
 
-{{APIRef}}
+{{APIRef("Pointer Events")}}
 
-The `pointermove` event is fired when a pointer changes coordinates, and the pointer has not been [canceled](/en-US/docs/Web/API/Element/pointercancel_event) by a browser [touch-action](/en-US/docs/Web/CSS/touch-action).
+The `pointermove` event is fired when a pointer changes coordinates, and the pointer has not been [canceled](/en-US/docs/Web/API/Element/pointercancel_event) by a browser [touch-action](/en-US/docs/Web/CSS/Reference/Properties/touch-action). The event is also fired when a pointer changes any of its other properties, provided the change doesn't produce some other pointer event. This includes any change to pressure, tangential pressure, tilt, twist, contact geometry (width and height), or [chorded buttons](https://w3c.github.io/pointerevents/#dfn-chorded-buttons).
+
+The `pointermove` event may have coalesced events if there is already another `pointermove` event with the same pointer ID that hasn't been dispatched in the event loop.
+If events are coalesced, the `target` of the dispatched event is the same as the last coalesced one.
+For information on coalesced events, see the {{domxref("PointerEvent.getCoalescedEvents()")}} documentation.
+
+This event is very similar to the {{domxref("Element/mousemove_event", "mousemove")}} event, but with more features. These events happen whether or not any pointer buttons are pressed. They can fire at a very high rate, depends on how fast the user moves the pointer, how fast the machine is, what other tasks and processes are happening, etc.
+
+The difference between {{domxref("Element/pointerrawupdate_event", "pointerrawupdate")}} and `pointermove` is in their firing frequency.
+A browser may delay `pointermove` events to improve performance, while `pointerrawupdate` events are dispatched as soon and as frequently as the browser can produce them.
+For most use cases, you should prefer `pointermove` to avoid performance issues.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('pointermove', (event) => {});
+```js-nolint
+addEventListener("pointermove", (event) => { })
+```
 
-onpointermove = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onpointermove = (event) => { }
 ```
 
 ## Event type
@@ -30,31 +39,6 @@ onpointermove = (event) => { };
 A {{domxref("PointerEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("PointerEvent")}}
-
-## Event properties
-
-_This interface inherits properties from {{domxref("MouseEvent")}} and {{domxref("Event")}}._
-
-- {{ domxref('PointerEvent.pointerId')}} {{ReadOnlyInline}}
-  - : A unique identifier for the pointer causing the event.
-- {{ domxref('PointerEvent.width')}} {{ReadOnlyInline}}
-  - : The width (magnitude on the X axis), in CSS pixels, of the contact geometry of the pointer.
-- {{ domxref('PointerEvent.height')}} {{ReadOnlyInline}}
-  - : The height (magnitude on the Y axis), in CSS pixels, of the contact geometry of the pointer.
-- {{ domxref('PointerEvent.pressure')}} {{ReadOnlyInline}}
-  - : The normalized pressure of the pointer input in the range `0` to `1`, where `0` and `1` represent the minimum and maximum pressure the hardware is capable of detecting, respectively.
-- {{ domxref('PointerEvent.tangentialPressure')}} {{ReadOnlyInline}}
-  - : The normalized tangential pressure of the pointer input (also known as barrel pressure or [cylinder stress](https://en.wikipedia.org/wiki/Cylinder_stress)) in the range `-1` to `1`, where `0` is the neutral position of the control.
-- {{ domxref('PointerEvent.tiltX')}} {{ReadOnlyInline}}
-  - : The plane angle (in degrees, in the range of `-90` to `90`) between the Y–Z plane and the plane containing both the pointer (e.g. pen stylus) axis and the Y axis.
-- {{ domxref('PointerEvent.tiltY')}} {{ReadOnlyInline}}
-  - : The plane angle (in degrees, in the range of `-90` to `90`) between the X–Z plane and the plane containing both the pointer (e.g. pen stylus) axis and the X axis.
-- {{ domxref('PointerEvent.twist')}} {{ReadOnlyInline}}
-  - : The clockwise rotation of the pointer (e.g. pen stylus) around its major axis in degrees, with a value in the range `0` to `359`.
-- {{ domxref('PointerEvent.pointerType')}} {{ReadOnlyInline}}
-  - : Indicates the device type that caused the event (mouse, pen, touch, etc.).
-- {{ domxref('PointerEvent.isPrimary')}} {{ReadOnlyInline}}
-  - : Indicates if the pointer represents the primary pointer of this pointer type.
 
 ## Usage notes
 
@@ -65,20 +49,20 @@ The event, which is of type {{domxref("PointerEvent")}}, provides all the inform
 To add a handler for `pointermove` events using {{domxref("EventTarget.addEventListener", "addEventListener()")}}:
 
 ```js
-const para = document.querySelector('p');
+const para = document.querySelector("p");
 
-para.addEventListener('pointermove', (event) => {
-  console.log('Pointer moved');
+para.addEventListener("pointermove", (event) => {
+  console.log("Pointer moved");
 });
 ```
 
-You can also use the `onpointermove` event handler property:
+You can also use the `onpointermove` event handler property (but note that this replaces other event listeners added using `onpointermove`, if any):
 
 ```js
-const para = document.querySelector('p');
+const para = document.querySelector("p");
 
 para.onpointermove = (event) => {
-  console.log('Pointer moved');
+  console.log("Pointer moved");
 };
 ```
 
@@ -93,15 +77,14 @@ para.onpointermove = (event) => {
 ## See also
 
 - Related events
-
-  - [`gotpointercapture`](/en-US/docs/Web/API/Element/gotpointercapture_event)
-  - [`lostpointercapture`](/en-US/docs/Web/API/Element/lostpointercapture_event)
-  - [`pointerover`](/en-US/docs/Web/API/Element/pointerover_event)
-  - [`pointerenter`](/en-US/docs/Web/API/Element/pointerenter_event)
-  - [`pointerdown`](/en-US/docs/Web/API/Element/pointerdown_event)
-  - [`pointerup`](/en-US/docs/Web/API/Element/pointerup_event)
-  - [`pointercancel`](/en-US/docs/Web/API/Element/pointercancel_event)
-  - [`pointerout`](/en-US/docs/Web/API/Element/pointerout_event)
-  - [`pointerleave`](/en-US/docs/Web/API/Element/pointerleave_event)
-
-Internet Explorer also used to support an event named `MSPointerHover`, which fired when a contact (normally a pen) moves over an element without touching the surface. This proprietary method is specific to Internet Explorer and, as of Internet Explorer 11, has been deprecated. Starting with IE11 the `pointermove` event will fire for all pen movement (regardless if its hovering or not).
+  - {{domxref('Element/gotpointercapture_event', 'gotpointercapture')}}
+  - {{domxref('Element/lostpointercapture_event', 'lostpointercapture')}}
+  - {{domxref('Element/pointerover_event', 'pointerover')}}
+  - {{domxref('Element/pointerenter_event', 'pointerenter')}}
+  - {{domxref('Element/pointerdown_event', 'pointerdown')}}
+  - {{domxref('Element/pointerup_event', 'pointerup')}}
+  - {{domxref('Element/pointercancel_event', 'pointercancel')}}
+  - {{domxref('Element/pointerout_event', 'pointerout')}}
+  - {{domxref('Element/pointerleave_event', 'pointerleave')}}
+  - {{domxref('Element/pointerrawupdate_event', 'pointerrawupdate')}}
+  - {{domxref("Element/mousemove_event", "mousemove")}}

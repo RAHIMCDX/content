@@ -1,24 +1,16 @@
 ---
 title: menus.onClicked
 slug: Mozilla/Add-ons/WebExtensions/API/menus/onClicked
-tags:
-  - API
-  - Add-ons
-  - Event
-  - Extensions
-  - Non-standard
-  - Reference
-  - WebExtensions
-  - contextMenus
-  - onClicked
+page-type: webextension-api-event
 browser-compat: webextensions.api.menus.onClicked
+sidebar: addonsidebar
 ---
-
-{{AddonSidebar()}}
 
 Fired when a menu item is clicked.
 
 For compatibility with other browsers, Firefox makes this event available via the `contextMenus` namespace as well as the `menus` namespace.
+
+If the extension has the [`activeTab` permission](/en-US/docs/Mozilla/Add-ons/WebExtensions/activeTab_permission), selecting a menu item is a user action that grants it temporary access to the tab where the click occurred.
 
 ## Syntax
 
@@ -30,7 +22,7 @@ browser.menus.onClicked.hasListener(listener)
 
 Events have three functions:
 
-- `addListener(callback)`
+- `addListener(listener)`
   - : Adds a listener to this event.
 - `removeListener(listener)`
   - : Stop listening to this event. The `listener` argument is the listener to remove.
@@ -41,18 +33,12 @@ Events have three functions:
 
 ### Parameters
 
-- `callback`
-
-  - : Function that will be called when this event occurs. The function will be passed the following arguments:
-
+- `listener`
+  - : The function called when this event occurs. The function is passed these arguments:
     - `info`
       - : {{WebExtAPIRef('menus.OnClickData')}}. Information about the item clicked and the context where the click happened.
     - `tab`
       - : {{WebExtAPIRef('tabs.Tab')}}. The details of the tab where the click took place. If the click did not take place in or on a tab, this parameter will be missing.
-
-## Browser compatibility
-
-{{Compat}}
 
 ## Examples
 
@@ -72,7 +58,12 @@ browser.menus.onClicked.addListener((info, tab) => {
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.contextMenus`](https://developer.chrome.com/docs/extensions/reference/contextMenus/#event-onClicked) API. This documentation is derived from [`context_menus.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/context_menus.json) in the Chromium code.
+## Browser compatibility
+
+{{Compat}}
+
+> [!NOTE]
+> This API is based on Chromium's [`chrome.contextMenus`](https://developer.chrome.com/docs/extensions/reference/api/contextMenus#event-onClicked) API. This documentation is derived from [`context_menus.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/context_menus.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

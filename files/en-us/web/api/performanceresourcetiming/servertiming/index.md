@@ -1,18 +1,12 @@
 ---
-title: PerformanceResourceTiming.serverTiming
+title: "PerformanceResourceTiming: serverTiming property"
+short-title: serverTiming
 slug: Web/API/PerformanceResourceTiming/serverTiming
 page-type: web-api-instance-property
-tags:
-  - API
-  - PerformanceResourceTiming
-  - Property
-  - Reference
-  - SecureContextOnly
-  - ServerTiming
 browser-compat: api.PerformanceResourceTiming.serverTiming
 ---
 
-{{APIRef("Performance API")}} {{securecontext_header}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}{{securecontext_header}}
 
 The **`serverTiming`** read-only property returns an array of {{domxref("PerformanceServerTiming")}} entries containing server timing metrics.
 
@@ -21,6 +15,8 @@ Server timing metrics require the server to send the {{HTTPHeader("Server-Timing
 ```http
 Server-Timing: cache;desc="Cache Read";dur=23.2
 ```
+
+The `serverTiming` entries can live on `navigation` and `resource` entries.
 
 ## Value
 
@@ -32,6 +28,8 @@ An array of {{domxref("PerformanceServerTiming")}} entries.
 
 You can use a {{domxref("PerformanceObserver")}} to watch for {{domxref("PerformanceServerTiming")}} entries. Each server entry's duration is logged to the console.
 
+Example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline. Use the `buffered` option to access entries from before the observer creation.
+
 ```js
 const observer = new PerformanceObserver((list) => {
   list.getEntries().forEach((entry) => {
@@ -41,15 +39,17 @@ const observer = new PerformanceObserver((list) => {
   });
 });
 
-observer.observe({ entryTypes: ["resource", "navigation"] });
+["navigation", "resource"].forEach((type) =>
+  observer.observe({ type, buffered: true }),
+);
 ```
 
-Alternatively, you can use {{domxref("Performance.getEntriesByType()")}} to get performance entries present in the browser's performance timeline at the time you call this method:
+Example using {{domxref("Performance.getEntriesByType()")}}, which only shows `resource` performance entries present in the browser's performance timeline at the time you call this method:
 
 ```js
 for (const entryType of ["navigation", "resource"]) {
   for (const { name: url, serverTiming } of performance.getEntriesByType(
-    entryType
+    entryType,
   )) {
     if (serverTiming) {
       for (const { name, duration } of serverTiming) {

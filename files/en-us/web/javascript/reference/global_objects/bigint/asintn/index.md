@@ -1,20 +1,30 @@
 ---
 title: BigInt.asIntN()
+short-title: asIntN()
 slug: Web/JavaScript/Reference/Global_Objects/BigInt/asIntN
-tags:
-  - BigInt
-  - JavaScript
-  - Method
-  - Reference
-  - asIntN
+page-type: javascript-static-method
 browser-compat: javascript.builtins.BigInt.asIntN
+sidebar: jsref
 ---
 
-{{JSRef}}
+The **`BigInt.asIntN()`** static method truncates a `BigInt` value to the given number of least significant bits and returns that value as a signed integer.
 
-The **`BigInt.asIntN`** static method clamps a `BigInt` value to the given number of bits, and returns that value as a signed integer.
+{{InteractiveExample("JavaScript Demo: BigInt.asIntN()")}}
 
-{{EmbedInteractiveExample("pages/js/bigint-asintn.html", "taller")}}
+```js interactive-example
+const I64_CEIL = 2n ** 63n;
+
+console.log(BigInt.asIntN(64, I64_CEIL - 1n));
+// 9223372036854775807n (2n ** 63n - 1n, the maximum non-wrapping value)
+console.log(BigInt.asIntN(64, I64_CEIL));
+// -9223372036854775808n (wraps to min value)
+console.log(BigInt.asIntN(64, I64_CEIL + 1n));
+// -9223372036854775807n (min value + 1n)
+console.log(BigInt.asIntN(64, I64_CEIL * 2n));
+// 0n (wrapped around to zero)
+console.log(BigInt.asIntN(64, -I64_CEIL * -42n));
+// 0n (also wraps on negative multiples)
+```
 
 ## Syntax
 
@@ -25,13 +35,13 @@ BigInt.asIntN(bits, bigint)
 ### Parameters
 
 - `bits`
-  - : The amount of bits available for the returned BigInt. Should be an integer between 0 and 2<sup>53</sup> - 1, inclusive.
+  - : The number of bits available for the returned BigInt. Should be an integer between 0 and 2<sup>53</sup> - 1, inclusive.
 - `bigint`
-  - : The BigInt value to clamp to fit into the supplied bits.
+  - : The BigInt value to truncate to fit into the supplied bits.
 
 ### Return value
 
-The value of `bigint` modulo 2^`bits`, as a signed integer.
+A BigInt containing the bit representation of `bigint` truncated to `bits` bits, interpreted as a signed integer.
 
 ### Exceptions
 
@@ -40,11 +50,11 @@ The value of `bigint` modulo 2^`bits`, as a signed integer.
 
 ## Description
 
-The `BigInt.asIntN` method clamps a `BigInt` value to the given number of bits, and interprets the result as a signed integer. For example, for `BigInt.asIntN(3, 25n)`, the value `25n` is clamped to `1n`:
+The `BigInt.asIntN` method truncates a `BigInt` value to the given number of bits, and interprets the result as a signed integer. For example, for `BigInt.asIntN(3, 25n)`, the value `25n` is truncated to `1n`:
 
 ```plain
 25n = 00011001 (base 2)
-          ^=== Clamp to three remaining bits
+          ^=== Use only the three remaining bits
 ===>       001 (base 2) = 1n
 ```
 
@@ -52,11 +62,12 @@ If the leading bit of the remaining number is `1`, the result is negative. For e
 
 ```plain
 25n = 00011001 (base 2)
-         ^==== Clamp to four remaining bits
+         ^==== Use only the four remaining bits
 ===>      1001 (base 2) = -7n
 ```
 
-> **Note:** `BigInt` values are always encoded as two's complement in binary.
+> [!NOTE]
+> `BigInt` values are always encoded as two's complement in binary.
 
 Unlike similar language APIs such as {{jsxref("Number.prototype.toExponential()")}}, `asIntN` is a static property of {{jsxref("BigInt")}}, so you always use it as `BigInt.asIntN()`, rather than as a method of a BigInt value. Exposing `asIntN()` as a "standard library function" allows [interop with asm.js](https://github.com/tc39/proposal-bigint/blob/master/ADVANCED.md#dont-break-asmjs).
 
@@ -85,5 +96,5 @@ BigInt.asIntN(64, max + 1n); // -9223372036854775808n
 
 ## See also
 
-- {{JSxRef("BigInt")}}
-- {{JSxRef("BigInt.asUintN()")}}
+- {{jsxref("BigInt")}}
+- {{jsxref("BigInt.asUintN()")}}

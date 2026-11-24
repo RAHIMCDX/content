@@ -1,18 +1,14 @@
 ---
-title: Element.remove()
+title: "Element: remove() method"
+short-title: remove()
 slug: Web/API/Element/remove
 page-type: web-api-instance-method
-tags:
-  - API
-  - Element
-  - DOM
-  - Method
 browser-compat: api.Element.remove
 ---
 
 {{APIRef("DOM")}}
 
-The **`Element.remove()`** method removes the element from the DOM.
+The **`remove()`** method of the {{domxref("Element")}} interface removes the element from its parent node. Nothing happens if {{domxref("Node.parentNode", "parentNode")}} is `null`.
 
 ## Syntax
 
@@ -39,7 +35,7 @@ None ({{jsxref("undefined")}}).
 ```
 
 ```js
-const element = document.getElementById('div-02');
+const element = document.getElementById("div-02");
 element.remove(); // Removes the div with the 'div-02' id
 ```
 
@@ -49,7 +45,7 @@ The `remove()` method is not scoped into the `with` statement.
 See {{jsxref("Symbol.unscopables")}} for more information.
 
 ```js
-with(node) {
+with (node) {
   remove();
 }
 // ReferenceError: remove is not defined
@@ -65,4 +61,5 @@ with(node) {
 
 ## See also
 
-- [Polyfill](https://github.com/chenzhenxi/element-remove)
+- {{domxref("CharacterData.remove()")}}
+- {{domxref("DocumentType.remove()")}}

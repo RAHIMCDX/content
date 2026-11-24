@@ -1,11 +1,8 @@
 ---
 title: "Animation: cancel event"
+short-title: cancel
 slug: Web/API/Animation/cancel_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
 browser-compat: api.Animation.cancel_event
 ---
 
@@ -13,14 +10,20 @@ browser-compat: api.Animation.cancel_event
 
 The **`cancel`** event of the {{domxref("Animation")}} interface is fired when the {{domxref("Animation.cancel()")}} method is called or when the animation enters the `"idle"` play state from another state, such as when the animation is removed from an element before it finishes playing.
 
-> **Note:** Creating a new animation that is initially idle does not trigger a `cancel` event on the new animation.
+> [!NOTE]
+> Creating a new animation that is initially idle does not trigger a `cancel` event on the new animation.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
 ```js-nolint
 addEventListener("cancel", (event) => { })
+```
+
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 oncancel = (event) => { }
 ```
 
@@ -29,15 +32,6 @@ oncancel = (event) => { }
 An {{domxref("AnimationPlaybackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("AnimationPlaybackEvent")}}
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("AnimationPlaybackEvent.currentTime")}} {{ReadOnlyInline}}
-  - : The current time of the animation that generated the event.
-- {{domxref("AnimationPlaybackEvent.timelineTime")}} {{ReadOnlyInline}}
-  - : The time value of the timeline of the animation that generated the event.
 
 ## Examples
 

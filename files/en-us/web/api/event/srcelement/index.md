@@ -1,18 +1,16 @@
 ---
-title: Event.srcElement
+title: "Event: srcElement property"
+short-title: srcElement
 slug: Web/API/Event/srcElement
 page-type: web-api-instance-property
-tags:
-  - Deprecated
-  - Property
-  - Reference
-  - Read-only
+status:
+  - deprecated
 browser-compat: api.Event.srcElement
 ---
 
-{{ApiRef("DOM")}}{{deprecated_header}}
+{{APIRef("DOM")}}{{AvailableInWorkers}}
 
-The deprecated **`Event.srcElement`** is an alias for the {{domxref("Event.target")}} property. Use {{domxref("Event.target")}} instead.
+The **`srcElement`** read-only property of the {{domxref("Event")}} interface is a deprecated alias for the {{domxref("Event.target")}} property. Use {{domxref("Event.target")}} instead.
 
 ## Specifications
 

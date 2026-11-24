@@ -1,18 +1,8 @@
 ---
-title: 'MediaStreamTrack: ended event'
+title: "MediaStreamTrack: ended event"
+short-title: ended
 slug: Web/API/MediaStreamTrack/ended_event
 page-type: web-api-event
-tags:
-  - Audio
-  - Event
-  - HTML DOM
-  - HTMLMediaElement
-  - Media
-  - Media Streams API
-  - Reference
-  - Video
-  - Web Audio API
-  - ended
 browser-compat: api.MediaStreamTrack.ended_event
 ---
 
@@ -24,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('ended', (event) => { });
+```js-nolint
+addEventListener("ended", (event) => { })
+```
 
-onended = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onended = (event) => { }
 ```
 
 ## Event type
@@ -43,27 +37,30 @@ A generic {{domxref("Event")}}.
 - There is no more data left to send.
 - The user revoked the permissions needed for the data to be sent.
 - The hardware generating the source data has been removed or ejected.
-- A remote peer has permanently stopped sending data; pausing media _does not_ generate an `ended` event.
+- A remote peer has permanently stopped sending data.
+- The only case where the track ends but the `ended` event is not fired is when calling {{domxref("MediaStreamTrack.stop")}}.
+
+Pausing media _does not_ generate an `ended` event.
 
 ## Examples
 
 This example sets up an event handler for the `ended` event, which changes an on-screen icon to indicate that the track is no longer active.
 
 ```js
-track.addEventListener('ended', () => {
+track.addEventListener("ended", () => {
   let statusElem = document.getElementById("status-icon");
   statusElem.src = "/images/stopped-icon.png";
-})
+});
 ```
 
-You can also set up the event handler using the `onended` property:
+You can also set up the event handler using the `onended` property (but note that this replaces other event listeners added using `onended`, if any):
 
 ```js
 track.onended = () => {
   let statusElem = document.getElementById("status-icon");
 
   statusElem.src = "/images/stopped-icon.png";
-}
+};
 ```
 
 ## Specifications

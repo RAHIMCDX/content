@@ -1,27 +1,12 @@
 ---
-title: 'XRReferenceSpace: reset event'
+title: "XRReferenceSpace: reset event"
+short-title: reset
 slug: Web/API/XRReferenceSpace/reset_event
 page-type: web-api-event
-tags:
-  - API
-  - AR
-  - Event
-  - Graphics
-  - Reality
-  - Reference
-  - VR
-  - Virtual
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - XRReferenceSpace
-  - augmented
-  - reset
 browser-compat: api.XRReferenceSpace.reset_event
 ---
 
-{{APIRef("WebXR Device API")}}
+{{APIRef("WebXR Device API")}}{{SecureContext_Header}}
 
 The **`reset`** event is sent to an {{domxref("XRReferenceSpace")}} object when a discontinuity is detected in either the native origin or the effective origin, causing a jump in the position or orientation of objects oriented using the reference space. This is common when the user calibrates or recalibrates an XR device, or if the device automatically changes its origin after losing tracking of the user, then re-gaining it.
 
@@ -33,26 +18,21 @@ This event is not cancelable.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('reset', (event) => { })
+```js-nolint
+addEventListener("reset", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onreset = (event) => { }
 ```
 
 ## Event type
 
 An {{domxref("XRReferenceSpaceEvent")}}. Inherits from {{domxref("Event")}}.
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("XRReferenceSpaceEvent.referenceSpace", "referenceSpace")}} {{ReadOnlyInline}}
-  - : An {{domxref("XRReferenceSpace")}} indicating the reference space that generated the event.
-- {{domxref("XRReferenceSpaceEvent.transform", "transform")}} {{ReadOnlyInline}}
-  - : An {{domxref("XRRigidTransform")}} object indicating the position and orientation of the specified `referenceSpace` object's native origin after the event, defined relative to the coordinate system before the event.
 
 ## Description
 
@@ -66,7 +46,8 @@ There are a number of reasons why a reset might occur. Most common among them ar
 - The user is in an `unbounded` reference space and has moved far enough from the starting position (the reference space's origin) that floating-point or other forms of error or drift are problematic. The coordinate system is thus reset with its new origin at or near the user's current position.
 - The WebXR infrastructure or hardware drivers detected that the device had temporarily lost tracking, causing the hardware and software to be out of sync on position and orientation.
 
-> **Note:** A `reset` event will _not_ occur if the reference space is able to regain tracking of its previous origin, since that means the origin has not been forced to be relocated. This event is only fired when the origin has to be relocated to recover from the tracking loss.
+> [!NOTE]
+> A `reset` event will _not_ occur if the reference space is able to regain tracking of its previous origin, since that means the origin has not been forced to be relocated. This event is only fired when the origin has to be relocated to recover from the tracking loss.
 
 ### Manual resets
 
@@ -92,7 +73,7 @@ viewerRefSpace.addEventListener("reset", (event) => {
 });
 ```
 
-The second option is to set the `XRReferenceSpace` object's `onreset` event handler property:
+The second option is to set the `XRReferenceSpace` object's `onreset` event handler property (but note that this replaces other event listeners added using `onreset`, if any):
 
 ```js
 viewerRefSpace.onreset = (event) => {

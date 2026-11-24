@@ -1,26 +1,40 @@
 ---
-title: PerformanceResourceTiming.encodedBodySize
+title: "PerformanceResourceTiming: encodedBodySize property"
+short-title: encodedBodySize
 slug: Web/API/PerformanceResourceTiming/encodedBodySize
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - Web Performance
 browser-compat: api.PerformanceResourceTiming.encodedBodySize
 ---
 
-{{APIRef("Performance API")}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}
 
-The **`encodedBodySize`** read-only property represents the size (in octets) received from the fetch (HTTP or cache) of the payload body before removing any applied content encodings (like gzip or Brotli). If the resource is retrieved from an application cache or a local resource, it must
-return the size of the payload body before removing any applied content encoding.
+The **`encodedBodySize`** read-only property represents the size (in octets) received from the fetch (HTTP or cache) of the payload body before removing any applied content encodings (like gzip or Brotli).
 
 ## Value
 
 The `encodedBodySize` property can have the following values:
 
 - A number representing the size (in octets) received from the fetch (HTTP or cache), of the payload body, before removing any applied content encoding.
-- `0` if the resource is a cross-origin request and no {{HTTPHeader("Timing-Allow-Origin")}} HTTP response header is used.
+- `0` if the resource is a cross-origin request made in `no-cors` [mode](/en-US/docs/Web/API/Request/mode), or if the request failed, for example, because it didn't pass the [CORS](/en-US/docs/Web/HTTP/Guides/CORS) check.
+
+## Description
+
+Content size information for a cross-origin resource is restricted unless the resource passes the [CORS](/en-US/docs/Web/HTTP/Guides/CORS) check, so if the value of the `encodedBodySize` property is `0`, the resource might be a cross-origin request.
+
+To expose cross-origin content size information, the resource must be requested in `cors` [mode](/en-US/docs/Web/API/Request/mode), and the response must pass the CORS check, which requires it to include an appropriate {{HTTPHeader("Access-Control-Allow-Origin")}} header.
+Requests made with {{domxref("Window/fetch", "fetch()")}} use `cors` mode by default.
+Elements such as {{HTMLElement("img")}} use `no-cors` mode unless the [`crossorigin`](/en-US/docs/Web/HTML/Reference/Attributes/crossorigin) attribute is set, so a cross-origin image loaded without it has a content size of `0`.
+
+To allow `https://developer.mozilla.org` to see content sizes, the cross-origin resource should send:
+
+```http
+Access-Control-Allow-Origin: https://developer.mozilla.org
+```
+
+Browsers are allowed to apply stricter restrictions than CORS requires, and may return `0` even when the CORS check passes.
+
+Frame navigations, such as an {{HTMLElement("iframe")}} loading its document, don't use CORS.
+Their content sizes are exposed only for same-origin frames that were loaded without cross-origin redirects, even if the frame's document passes the {{HTTPHeader("Timing-Allow-Origin")}} check.
 
 ## Examples
 
@@ -28,7 +42,7 @@ The `encodedBodySize` property can have the following values:
 
 If the `encodedBodySize` and {{domxref("PerformanceResourceTiming.decodedBodySize", "decodedBodySize")}} properties are non-null and differ, the content was compressed (for example, gzip or Brotli).
 
-Here's an example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline:
+Example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline. Use the `buffered` option to access entries from before the observer creation.
 
 ```js
 const observer = new PerformanceObserver((list) => {
@@ -57,16 +71,6 @@ resources.forEach((entry) => {
 });
 ```
 
-### Cross-origin content size information
-
-If the value of the `encodedBodySize` property is `0`, the resource might be a cross-origin request. To expose cross-origin content size information, the {{HTTPHeader("Timing-Allow-Origin")}} HTTP response header needs to be set.
-
-For example, to allow `https://developer.mozilla.org` to see content sizes, the cross-origin resource should send:
-
-```http
-Timing-Allow-Origin: https://developer.mozilla.org
-```
-
 ## Specifications
 
 {{Specifications}}
@@ -77,4 +81,6 @@ Timing-Allow-Origin: https://developer.mozilla.org
 
 ## See also
 
+- {{HTTPHeader("Access-Control-Allow-Origin")}}
 - {{HTTPHeader("Timing-Allow-Origin")}}
+- [Cross-origin resource sharing (CORS)](/en-US/docs/Web/HTTP/Guides/CORS)

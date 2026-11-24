@@ -1,22 +1,17 @@
 ---
-title: ANGLE_instanced_arrays.drawElementsInstancedANGLE()
+title: "ANGLE_instanced_arrays: drawElementsInstancedANGLE() method"
+short-title: drawElementsInstancedANGLE()
 slug: Web/API/ANGLE_instanced_arrays/drawElementsInstancedANGLE
-page-type: web-api-instance-method
-tags:
-  - ANGLE_instanced_arrays
-  - API
-  - Method
-  - Reference
-  - WebGL
-  - WebGL extension
+page-type: webgl-extension-method
 browser-compat: api.ANGLE_instanced_arrays.drawElementsInstancedANGLE
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`ANGLE_instanced_arrays.drawElementsInstancedANGLE()`** method of the [WebGL API](/en-US/docs/Web/API/WebGL_API) renders primitives from array data like the {{domxref("WebGLRenderingContext.drawElements()", "gl.drawElements()")}} method. In addition, it can execute multiple instances of a set of elements.
 
-> **Note:** When using {{domxref("WebGL2RenderingContext", "WebGL2")}}, this method is available as {{domxref("WebGL2RenderingContext.drawElementsInstanced()", "gl.drawElementsInstanced()")}} by default.
+> [!NOTE]
+> When using {{domxref("WebGL2RenderingContext", "WebGL2")}}, this method is available as {{domxref("WebGL2RenderingContext.drawElementsInstanced()", "gl.drawElementsInstanced()")}} by default.
 
 ## Syntax
 
@@ -27,9 +22,7 @@ drawElementsInstancedANGLE(mode, count, type, offset, primcount)
 ### Parameters
 
 - `mode`
-
   - : A {{domxref("WebGL_API/Types", "GLenum")}} specifying the type primitive to render. Possible values are:
-
     - `gl.POINTS`: Draws a single dot.
     - `gl.LINE_STRIP`: Draws a straight line to the next vertex.
     - `gl.LINE_LOOP`: Draws a straight line to the next vertex, and connects the last vertex back to the first.
@@ -41,9 +34,7 @@ drawElementsInstancedANGLE(mode, count, type, offset, primcount)
 - `count`
   - : A {{domxref("WebGL_API/Types", "GLsizei")}} specifying the number of elements to be rendered.
 - `type`
-
   - : A {{domxref("WebGL_API/Types", "GLenum")}} specifying the type of the values in the element array buffer. Possible values are:
-
     - `gl.UNSIGNED_BYTE`
     - `gl.UNSIGNED_SHORT`
     - `gl.UNSIGNED_INT` when using the {{domxref("OES_element_index_uint")}} extension.
@@ -60,7 +51,7 @@ None ({{jsxref("undefined")}}).
 ### Exceptions
 
 - If `mode` is not one of the accepted values, a `gl.INVALID_ENUM` error is thrown.
-- If `offset` is a invalid multiple of the size of the given type, a `gl.INVALID_OPERATION` error is thrown.
+- If `offset` is an invalid multiple of the size of the given type, a `gl.INVALID_OPERATION` error is thrown.
 - If `count` or `primcount` are negative, a `gl.INVALID_VALUE` error is thrown.
 
 ## Examples

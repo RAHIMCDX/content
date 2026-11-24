@@ -1,14 +1,8 @@
 ---
-title: 'HTMLMediaElement: seeked event'
+title: "HTMLMediaElement: seeked event"
+short-title: seeked
 slug: Web/API/HTMLMediaElement/seeked_event
 page-type: web-api-event
-tags:
-  - API
-  - Audio
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Video
 browser-compat: api.HTMLMediaElement.seeked_event
 ---
 
@@ -20,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('seeked', (event) => {});
+```js-nolint
+addEventListener("seeked", (event) => { })
+```
 
-onseeked = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onseeked = (event) => { }
 ```
 
 ## Event type
@@ -39,20 +37,20 @@ These examples add an event listener for the HTMLMediaElement's `seeked` event, 
 Using `addEventListener()`:
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
-video.addEventListener('seeked', (event) => {
-  console.log('Video found the playback position it was looking for.');
+video.addEventListener("seeked", (event) => {
+  console.log("Video found the playback position it was looking for.");
 });
 ```
 
-Using the `onseeked` event handler property:
+Using the `onseeked` event handler property (but note that this replaces other event listeners added using `onseeked`, if any):
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 video.onseeked = (event) => {
-  console.log('Video found the playback position it was looking for.');
+  console.log("Video found the playback position it was looking for.");
 };
 ```
 
@@ -69,7 +67,6 @@ video.onseeked = (event) => {
 - The HTMLMediaElement {{domxref("HTMLMediaElement.playing_event", 'playing')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.waiting_event", 'waiting')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.seeking_event", 'seeking')}} event
-- The HTMLMediaElement {{domxref("HTMLMediaElement.seeked_event", 'seeked')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.ended_event", 'ended')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.loadedmetadata_event", 'loadedmetadata')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.loadeddata_event", 'loadeddata')}} event

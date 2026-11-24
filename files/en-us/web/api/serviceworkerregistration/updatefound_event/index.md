@@ -1,29 +1,28 @@
 ---
-title: 'ServiceWorkerRegistration: updatefound event'
+title: "ServiceWorkerRegistration: updatefound event"
+short-title: updatefound
 slug: Web/API/ServiceWorkerRegistration/updatefound_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
-  - Service Workers
-  - ServiceWorkerRegistration
 browser-compat: api.ServiceWorkerRegistration.updatefound_event
 ---
 
-{{APIRef("Service Workers API")}}
+{{APIRef("Service Workers API")}}{{SecureContext_Header}} {{AvailableInWorkers}}
 
 The **`updatefound`** event of the
 {{domxref("ServiceWorkerRegistration")}} interface is fired any time the {{domxref("ServiceWorkerRegistration.installing")}} property acquires a new service worker.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('updatefound', (event) => { });
+```js-nolint
+addEventListener("updatefound", (event) => { })
+```
 
-onupdatefound = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onupdatefound = (event) => { }
 ```
 
 ## Event type
@@ -35,9 +34,9 @@ A generic {{domxref("Event")}}.
 ```js
 const registration = await navigator.serviceWorker.getRegistration();
 if (registration) {
-    registration.addEventListener('updatefound', () => {
-        console.log('Service Worker update found!');
-    });
+  registration.addEventListener("updatefound", () => {
+    console.log("Service Worker update found!");
+  });
 }
 ```
 

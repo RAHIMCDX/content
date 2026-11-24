@@ -1,19 +1,9 @@
 ---
-title: MediaTrackConstraints.height
+title: "MediaTrackConstraints: height property"
+short-title: height
 slug: Web/API/MediaTrackConstraints/height
 page-type: web-api-instance-property
-tags:
-  - API
-  - Constraints
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackConstraints
-  - Property
-  - Reference
-  - WebRTC
-  - height
-browser-compat: api.MediaTrackConstraints.height
+browser-compat: api.MediaStreamTrack.applyConstraints.height_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -21,10 +11,10 @@ browser-compat: api.MediaTrackConstraints.height
 The {{domxref("MediaTrackConstraints")}} dictionary's
 **`height`** property is a [`ConstrainULong`](/en-US/docs/Web/API/MediaTrackConstraints#constrainulong)
 describing the requested or mandatory constraints placed upon the value of the
-{{domxref("MediaTrackSettings.height", "height")}} constrainable property.
+[`height`](/en-US/docs/Web/API/MediaStreamTrack/getSettings#height) constrainable property.
 
 If needed, you can determine whether or not this constraint is supported by checking
-the value of {{domxref("MediaTrackSupportedConstraints.height")}} as returned by a call
+the value of [`height`](/en-US/docs/Web/API/MediaDevices/getSupportedConstraints#height) as returned by a call
 to {{domxref("MediaDevices.getSupportedConstraints()")}}. However, typically this is
 unnecessary since browsers will ignore any constraints they're unfamiliar with.
 
@@ -39,8 +29,7 @@ provided and have the same value) or to a best-possible value.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example:
-  Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 
@@ -56,5 +45,4 @@ See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constrain
 - [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
 - {{domxref("MediaTrackConstraints")}}
 - {{domxref("MediaDevices.getSupportedConstraints()")}}
-- {{domxref("MediaTrackSupportedConstraints")}}
 - {{domxref("MediaStreamTrack")}}

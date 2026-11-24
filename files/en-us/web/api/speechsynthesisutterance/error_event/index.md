@@ -1,11 +1,8 @@
 ---
-title: 'SpeechSynthesisUtterance: error event'
+title: "SpeechSynthesisUtterance: error event"
+short-title: error
 slug: Web/API/SpeechSynthesisUtterance/error_event
 page-type: web-api-event
-tags:
-  - Event
-  - Reference
-  - Web Speech API
 browser-compat: api.SpeechSynthesisUtterance.error_event
 ---
 
@@ -15,11 +12,15 @@ The **`error`** event of the [Web Speech API](/en-US/docs/Web/API/Web_Speech_API
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('error', (event) => { })
+```js-nolint
+addEventListener("error", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onerror = (event) => { }
 ```
 
@@ -29,37 +30,26 @@ A {{domxref("SpeechSynthesisErrorEvent")}}. Inherits from {{domxref("SpeechSynth
 
 {{InheritanceDiagram("SpeechSynthesisErrorEvent")}}
 
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("SpeechSynthesisEvent.charIndex", "charIndex")}} {{ReadOnlyInline}}
-  - : Returns the index position of the character in the {{domxref("SpeechSynthesisUtterance.text")}} that was being spoken when the event was triggered.
-- {{domxref("SpeechSynthesisEvent.elapsedTime", "elapsedTime")}} {{ReadOnlyInline}}
-  - : Returns the elapsed time in seconds after the {{domxref("SpeechSynthesisUtterance.text")}} started being spoken that the event was triggered at.
-- {{domxref("SpeechSynthesisErrorEvent.error", "error")}} {{ReadOnlyInline}}
-  - : Returns an error code indicating what has gone wrong with a speech synthesis attempt.
-- {{domxref("SpeechSynthesisEvent.name", "name")}} {{ReadOnlyInline}}
-  - : Returns the name associated with certain types of events occurring as the {{domxref("SpeechSynthesisUtterance.text")}} is being spoken: the name of the [SSML](https://www.w3.org/TR/speech-synthesis/#S3.3.2) marker reached in the case of a {{domxref("SpeechSynthesisUtterance.mark_event", "mark")}} event, or the type of boundary reached in the case of a {{domxref("SpeechSynthesisUtterance.boundary_event", "boundary")}} event.
-- {{domxref("SpeechSynthesisEvent.utterance", "utterance")}} {{ReadOnlyInline}}
-  - : Returns the {{domxref("SpeechSynthesisUtterance")}} instance that the event was triggered on.
-
 ## Examples
 
 You can use the `error` event in an [`addEventListener`](/en-US/docs/Web/API/EventTarget/addEventListener) method:
 
 ```js
-utterThis.addEventListener('error', (event) => {
-  console.log(`An error has occurred with the speech synthesis: ${event.error}`);
+utterThis.addEventListener("error", (event) => {
+  console.log(
+    `An error has occurred with the speech synthesis: ${event.error}`,
+  );
 });
 ```
 
-Or use the `onerror` event handler property:
+Or use the `onerror` event handler property (but note that this replaces other event listeners added using `onerror`, if any):
 
 ```js
 utterThis.onerror = (event) => {
-  console.log(`An error has occurred with the speech synthesis: ${event.error}`);
-}
+  console.log(
+    `An error has occurred with the speech synthesis: ${event.error}`,
+  );
+};
 ```
 
 ## Specifications

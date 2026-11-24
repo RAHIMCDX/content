@@ -1,28 +1,26 @@
 ---
-title: 'WebSocket: error event'
+title: "WebSocket: error event"
+short-title: error
 slug: Web/API/WebSocket/error_event
 page-type: web-api-event
-tags:
-  - API
-  - Error
-  - Event
-  - Reference
-  - Web
-  - WebSocket
 browser-compat: api.WebSocket.error_event
 ---
 
-{{APIRef}}
+{{APIRef("WebSockets API")}}{{AvailableInWorkers}}
 
 The `error` event is fired when a connection with a `WebSocket` has been closed due to an error (some data couldn't be sent for example).
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('error', (event) => { })
+```js-nolint
+addEventListener("error", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onerror = (event) => { }
 ```
 
@@ -34,11 +32,11 @@ A generic {{domxref("Event")}}.
 
 ```js
 // Create WebSocket connection
-const socket = new WebSocket('ws://localhost:8080');
+const socket = new WebSocket("ws://localhost:8080");
 
 // Listen for possible errors
-socket.addEventListener('error', (event) => {
-  console.log('WebSocket error: ', event);
+socket.addEventListener("error", (event) => {
+  console.log("WebSocket error: ", event);
 });
 ```
 

@@ -1,26 +1,27 @@
 ---
-title: 'Window: languagechange event'
+title: "Window: languagechange event"
+short-title: languagechange
 slug: Web/API/Window/languagechange_event
 page-type: web-api-event
-tags:
-  - Event
-  - HTML DOM
-  - Reference
-  - Window
 browser-compat: api.Window.languagechange_event
 ---
 
-{{APIRef}}
+{{APIRef("HTML DOM")}}
 
 The **`languagechange`** event is fired at the global scope object when the user's preferred language changes.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('languagechange', (event) => { });
-onlanguagechange = (event) => { };
+```js-nolint
+addEventListener("languagechange", (event) => { })
+```
+
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onlanguagechange = (event) => { }
 ```
 
 ## Event type
@@ -40,16 +41,16 @@ In addition to the `Window` interface, the event handler property `onlanguagecha
 You can use the `languagechange` event in an {{domxref("EventTarget/addEventListener", "addEventListener")}} method:
 
 ```js
-window.addEventListener('languagechange', () => {
-  console.log('languagechange event detected!');
+window.addEventListener("languagechange", () => {
+  console.log("languagechange event detected!");
 });
 ```
 
-Or use the `onlanguagechange` event handler property:
+Or use the `onlanguagechange` event handler property (but note that this replaces other event listeners added using `onlanguagechange`, if any):
 
 ```js
 window.onlanguagechange = (event) => {
-  console.log('languagechange event detected!');
+  console.log("languagechange event detected!");
 };
 ```
 

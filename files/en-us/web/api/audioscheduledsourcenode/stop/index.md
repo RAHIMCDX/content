@@ -1,17 +1,8 @@
 ---
-title: AudioScheduledSourceNode.stop()
+title: "AudioScheduledSourceNode: stop() method"
+short-title: stop()
 slug: Web/API/AudioScheduledSourceNode/stop
 page-type: web-api-instance-method
-tags:
-  - API
-  - Audio
-  - AudioScheduledSourceNode
-  - Media
-  - Method
-  - Reference
-  - Web Audio API
-  - sound
-  - stop
 browser-compat: api.AudioScheduledSourceNode.stop
 ---
 
@@ -25,7 +16,8 @@ Each time you call `stop()` on the same node, the specified time replaces
 any previously-scheduled stop time that hasn't occurred yet. If the node has already
 stopped, this method has no effect.
 
-> **Note:** If a scheduled stop time occurs before the node's scheduled
+> [!NOTE]
+> If a scheduled stop time occurs before the node's scheduled
 > start time, the node never starts to play.
 
 ## Syntax
@@ -41,7 +33,7 @@ stop(when)
   - : The time, in seconds, at which the sound should stop playing. This value is
     specified in the same time coordinate system as the {{domxref("AudioContext")}} is
     using for its {{domxref("BaseAudioContext/currentTime", "currentTime")}} attribute.
-    Omitting this parameter, specifying a value of 0, or passing a negative value causes
+    Omitting this parameter or specifying a value of 0 causes
     the sound to stop playback immediately.
 
 ### Return value
@@ -50,9 +42,8 @@ None ({{jsxref("undefined")}}).
 
 ### Exceptions
 
-- `InvalidStateNode` {{domxref("DOMException")}}
-  - : Thrown if the node has not been started by calling {{domxref("AudioScheduledSourceNode.start",
-    "start()")}}.
+- `InvalidStateError` {{domxref("DOMException")}}
+  - : Thrown if the node has not been started by calling {{domxref("AudioScheduledSourceNode.start", "start()")}}.
 - {{jsxref("RangeError")}}
   - : Thrown if the value specified for `when` is negative.
 

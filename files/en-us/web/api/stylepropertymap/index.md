@@ -2,38 +2,34 @@
 title: StylePropertyMap
 slug: Web/API/StylePropertyMap
 page-type: web-api-interface
-tags:
-  - API
-  - CSS Typed Object Model API
-  - Experimental
-  - Houdini
-  - Interface
-  - Reference
-  - StylePropertyMap
 browser-compat: api.StylePropertyMap
 ---
 
-{{APIRef("CSS Typed Object Model API")}}{{SeeCompatTable}}
+{{APIRef("CSS Typed Object Model API")}}
 
-The **`StylePropertyMap`** interface of the [CSS Typed Object Model API](/en-US/docs/Web/API/CSS_Object_Model#css_typed_object_model_experimental) provides a representation of a CSS declaration block that is an alternative to {{DOMxRef("CSSStyleDeclaration")}}.
+The **`StylePropertyMap`** interface of the [CSS Typed Object Model API](/en-US/docs/Web/API/CSS_Typed_OM_API) provides a representation of a CSS declaration block that is an alternative to {{DOMxRef("CSSStyleDeclaration")}}.
 
 {{InheritanceDiagram}}
 
+> [!NOTE]
+> This interface is only available on the window thread; unlike other interfaces in this API it cannot be accessed in {{domxref("Worker")}} or {{domxref("Worklet")}} contexts.
+> Worklets receive a read-only snapshot of an element's style through {{domxref("StylePropertyMapReadOnly")}}.
+
 ## Instance properties
 
-_Inherits properties from its parent, {{DOMxRef("StylePropertyMapReadOnly")}}._
+_Also inherits properties from its parent interface, {{DOMxRef("StylePropertyMapReadOnly")}}._
 
 ## Instance methods
 
-_Inherits methods from its parent, {{DOMxRef("StylePropertyMapReadOnly")}}._
+_Also inherits methods from its parent interface, {{DOMxRef("StylePropertyMapReadOnly")}}._
 
-- {{DOMxRef("StylePropertyMap.append()")}} {{Experimental_Inline}}
+- {{DOMxRef("StylePropertyMap.append()")}}
   - : Adds a new CSS declaration to the `StylePropertyMap` with the given property and value.
-- {{DOMxRef("StylePropertyMap.clear()")}} {{Experimental_Inline}}
+- {{DOMxRef("StylePropertyMap.clear()")}}
   - : Removes all declarations in the `StylePropertyMap`.
-- {{DOMxRef("StylePropertyMap.delete()")}} {{Experimental_Inline}}
+- {{DOMxRef("StylePropertyMap.delete()")}}
   - : Removes the CSS declaration with the given property.
-- {{DOMxRef("StylePropertyMap.set()")}} {{Experimental_Inline}}
+- {{DOMxRef("StylePropertyMap.set()")}}
   - : Changes the CSS declaration with the given property.
 
 ## Specifications

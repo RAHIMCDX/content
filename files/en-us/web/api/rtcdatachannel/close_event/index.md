@@ -1,38 +1,29 @@
 ---
-title: 'RTCDataChannel: close event'
+title: "RTCDataChannel: close event"
+short-title: close
 slug: Web/API/RTCDataChannel/close_event
 page-type: web-api-event
-tags:
-  - API
-  - Connection
-  - Connectivity
-  - Networking
-  - RTCDataChannel
-  - Reference
-  - WebRTC
-  - WebRTC API
-  - channel
-  - close
-  - data
-  - events
-  - Event
 browser-compat: api.RTCDataChannel.close_event
 ---
 
 {{APIRef("WebRTC")}}
 
-The **`close`** event is sent to the {{domxref("RTCDataChannel.close_event", "onclose")}} event handler on an {{domxref("RTCDataChannel")}} instance when the data transport for the data channel has closed. Before any further data can be transferred using `RTCDataChannel`, a new 'RTCDataChannel' instance must be created.
+The **`close`** event is sent to the `onclose` event handler on an {{domxref("RTCDataChannel")}} instance when the data transport for the data channel has closed. Before any further data can be transferred using `RTCDataChannel`, a new 'RTCDataChannel' instance must be created.
 
 This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('close', (event) => { });
+```js-nolint
+addEventListener("close", (event) => { })
+```
 
-onclose = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onclose = (event) => { }
 ```
 
 ## Event type
@@ -49,12 +40,12 @@ dc.addEventListener("close", (ev) => {
   sendButton.disabled = true;
   connectButton.disabled = false;
   disconnectButton.disabled = true;
-}, false);
+});
 ```
 
 All this code does in response to receiving the `close` event is to disable an input box and its "Send" button, and to enable the button used to start a call (while disabling the one that ends a call).
 
-You can also use the {{domxref("RTCDataChannel.close_event", "onclose")}} event handler property to set a handler for `close` events:
+You can also use the `onclose` event handler property to set a handler for `close` events (but note that this replaces other event listeners added using `onclose`, if any):
 
 ```js
 dc.onclose = (ev) => {
@@ -62,7 +53,7 @@ dc.onclose = (ev) => {
   sendButton.disabled = true;
   connectButton.disabled = false;
   disconnectButton.disabled = true;
-}
+};
 ```
 
 ## Specifications

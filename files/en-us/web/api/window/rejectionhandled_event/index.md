@@ -1,37 +1,29 @@
 ---
-title: 'Window: rejectionhandled event'
+title: "Window: rejectionhandled event"
+short-title: rejectionhandled
 slug: Web/API/Window/rejectionhandled_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - HTML DOM
-  - JavaScript
-  - Promise
-  - Promises
-  - Reference
-  - Window
-  - Worker
-  - events
-  - global
-  - onrejectionhandled
-  - rejectionhandled
 browser-compat: api.Window.rejectionhandled_event
 ---
 
 {{APIRef("HTML DOM")}}
 
-The **`rejectionhandled`** event is sent to the script's global scope (usually {{domxref("window")}} but also {{domxref("Worker")}}) whenever a rejected JavaScript {{jsxref("Promise")}} is handled late, i.e. when a handler is attached to the promise after its rejection had caused an {{domxref("Window.unhandledrejection_event", "unhandledrejection")}} event.
+The **`rejectionhandled`** event is sent to the script's global scope (usually {{domxref("window")}} but also {{domxref("Worker")}}) whenever a rejected JavaScript {{jsxref("Promise")}} is handled late, i.e., when a handler is attached to the promise after its rejection had caused an {{domxref("Window.unhandledrejection_event", "unhandledrejection")}} event.
 
 This can be used in debugging and for general application resiliency, in tandem with the `unhandledrejection` event, which is sent when a promise is rejected but there is no handler for the rejection at the time.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('rejectionhandled', (event) => { });
-onrejectionhandled = (event) => { };
+```js-nolint
+addEventListener("rejectionhandled", (event) => { })
+```
+
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onrejectionhandled = (event) => { }
 ```
 
 ## Event type
@@ -39,13 +31,6 @@ onrejectionhandled = (event) => { };
 A {{domxref("PromiseRejectionEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("PromiseRejectionEvent")}}
-
-## Event properties
-
-- {{domxref("PromiseRejectionEvent.promise")}} {{ReadOnlyInline}}
-  - : The JavaScript {{jsxref("Promise")}} that was rejected.
-- {{domxref("PromiseRejectionEvent.reason")}} {{ReadOnlyInline}}
-  - : A value or {{jsxref("Object")}} indicating why the promise was rejected, as passed to {{jsxref("Promise.reject()")}}.
 
 ## Event handler aliases
 
@@ -62,7 +47,7 @@ You can use the `rejectionhandled` event to log promises that get rejected to th
 ```js
 window.addEventListener("rejectionhandled", (event) => {
   console.log(`Promise rejected; reason: ${event.reason}`);
-}, false);
+});
 ```
 
 ## Specifications
@@ -75,7 +60,7 @@ window.addEventListener("rejectionhandled", (event) => {
 
 ## See also
 
-- {{SectionOnPage("/en-US/docs/Web/JavaScript/Guide/Using_promises", "Promise rejection events")}}
+- [Promise rejection events](/en-US/docs/Web/JavaScript/Guide/Using_promises#promise_rejection_events)
 - {{domxref("PromiseRejectionEvent")}}
 - {{jsxref("Promise")}}
 - {{domxref("Window/unhandledrejection_event", "unhandledrejection")}}

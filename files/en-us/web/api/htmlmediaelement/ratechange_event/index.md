@@ -1,14 +1,8 @@
 ---
-title: 'HTMLMediaElement: ratechange event'
+title: "HTMLMediaElement: ratechange event"
+short-title: ratechange
 slug: Web/API/HTMLMediaElement/ratechange_event
 page-type: web-api-event
-tags:
-  - API
-  - Audio
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Video
 browser-compat: api.HTMLMediaElement.ratechange_event
 ---
 
@@ -20,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('ratechange', (event) => {});
+```js-nolint
+addEventListener("ratechange", (event) => { })
+```
 
-onratechange = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onratechange = (event) => { }
 ```
 
 ## Event type
@@ -39,20 +37,20 @@ These examples add an event listener for the HTMLMediaElement's `ratechange` eve
 Using `addEventListener()`:
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
-video.addEventListener('ratechange', (event) => {
-  console.log('The playback rate changed.');
+video.addEventListener("ratechange", (event) => {
+  console.log("The playback rate changed.");
 });
 ```
 
-Using the `onratechange` event handler property:
+Using the `onratechange` event handler property (but note that this replaces other event listeners added using `onratechange`, if any):
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 video.onratechange = (event) => {
-  console.log('The playback rate changed.');
+  console.log("The playback rate changed.");
 };
 ```
 
@@ -79,7 +77,6 @@ video.onratechange = (event) => {
 - The HTMLMediaElement {{domxref("HTMLMediaElement.timeupdate_event", 'timeupdate')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.play_event", 'play')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.pause_event", 'pause')}} event
-- The HTMLMediaElement {{domxref("HTMLMediaElement.ratechange_event", 'ratechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.volumechange_event", 'volumechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.suspend_event", 'suspend')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.emptied_event", 'emptied')}} event

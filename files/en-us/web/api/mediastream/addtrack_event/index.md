@@ -1,26 +1,29 @@
 ---
-title: 'MediaStream: addtrack event'
+title: "MediaStream: addtrack event"
+short-title: addtrack
 slug: Web/API/MediaStream/addtrack_event
 page-type: web-api-event
-tags:
-  - Event
 browser-compat: api.MediaStream.addtrack_event
 ---
 
 {{APIRef("Media Capture and Streams")}}
 
-The `addtrack` event is fired when a new [`MediaStreamTrack`](/en-US/docs/Web/API/MediaStreamTrack) object has been added to a [`MediaStream`](/en-US/docs/Web/API/MediaStream).
+The **`addtrack`** event is fired when a new [`MediaStreamTrack`](/en-US/docs/Web/API/MediaStreamTrack) object has been added to a [`MediaStream`](/en-US/docs/Web/API/MediaStream).
 
 This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('addtrack', (event) => { });
+```js-nolint
+addEventListener("addtrack", (event) => { })
+```
 
-onaddtrack = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onaddtrack = (event) => { }
 ```
 
 ## Event type
@@ -29,29 +32,22 @@ A {{domxref("MediaStreamTrackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("MediaStreamTrackEvent")}}
 
-## Event properties
-
-_Also inherits properties from its parent interface, {{domxref("Event")}}._
-
-- `track` {{ReadOnlyInline}}
-  - : A {{domxref("MediaStreamTrack")}} object representing the track which was added to the stream.
-
 ## Examples
 
 Using `addEventListener()`:
 
 ```js
-let stream = new MediaStream();
+const stream = new MediaStream();
 
-stream.addEventListener('addtrack', (event) => {
+stream.addEventListener("addtrack", (event) => {
   console.log(`New ${event.track.kind} track added`);
 });
 ```
 
-Using the `onaddtrack` event handler property:
+Using the `onaddtrack` event handler property (but note that this replaces other event listeners added using `onaddtrack`, if any):
 
 ```js
-let stream = new MediaStream();
+const stream = new MediaStream();
 
 stream.onaddtrack = (event) => {
   console.log(`New ${event.track.kind} track added`);

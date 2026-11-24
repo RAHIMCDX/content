@@ -1,26 +1,26 @@
 ---
-title: 'VideoTrackList: addtrack event'
+title: "VideoTrackList: addtrack event"
+short-title: addtrack
 slug: Web/API/VideoTrackList/addtrack_event
 page-type: web-api-event
-tags:
-  - API
-  - Reference
-  - events
-  - Event
 browser-compat: api.VideoTrackList.addtrack_event
 ---
 
-{{APIRef}}
+{{APIRef("HTML DOM")}}
 
 The `addtrack` event is fired when a video track is added to a [`VideoTrackList`](/en-US/docs/Web/API/VideoTrackList).
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('addtrack', (event) => { })
+```js-nolint
+addEventListener("addtrack", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onaddtrack = (event) => { }
 ```
 
@@ -30,29 +30,22 @@ A {{domxref("TrackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("TrackEvent")}}
 
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("TrackEvent.track", "track")}} {{ReadOnlyInline}}
-  - : The newly-added {{domxref("VideoTrack")}} the event is in reference to.
-
 ## Examples
 
 Using `addEventListener()`:
 
 ```js
-const videoElement = document.querySelector('video');
+const videoElement = document.querySelector("video");
 
-videoElement.videoTracks.addEventListener('addtrack', (event) => {
+videoElement.videoTracks.addEventListener("addtrack", (event) => {
   console.log(`Video track: ${event.track.label} added`);
 });
 ```
 
-Using the `onaddtrack` event handler property:
+Using the `onaddtrack` event handler property (but note that this replaces other event listeners added using `onaddtrack`, if any):
 
 ```js
-const videoElement = document.querySelector('video');
+const videoElement = document.querySelector("video");
 
 videoElement.videoTracks.onaddtrack = (event) => {
   console.log(`Video track: ${event.track.label} added`);

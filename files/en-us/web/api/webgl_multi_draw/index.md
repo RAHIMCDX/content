@@ -1,19 +1,15 @@
 ---
-title: WEBGL_multi_draw
+title: WEBGL_multi_draw extension
+short-title: WEBGL_multi_draw
 slug: Web/API/WEBGL_multi_draw
 page-type: webgl-extension
-tags:
-  - API
-  - Reference
-  - WebGL
-  - WebGL extension
 browser-compat: api.WEBGL_multi_draw
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WEBGL_multi_draw`** extension is part of the
-[WebGL API](/en-US/docs/Web/API/WebGL_API) and allows to render more
+[WebGL API](/en-US/docs/Web/API/WebGL_API) and allows you to render more
 than one primitive with a single function call. This can improve a WebGL application's performance
 as it reduces binding costs in the renderer and speeds up GPU thread time with uniform data.
 
@@ -23,7 +19,8 @@ When this extension is enabled:
   (see method list below).
 - The `gl_DrawID` built-in is added to the shading language.
 
-> **Note:** This extension is available to both,
+> [!NOTE]
+> This extension is available to both,
 > {{domxref("WebGLRenderingContext", "WebGL 1", "", 1)}} and
 > {{domxref("WebGL2RenderingContext", "WebGL 2", "", 1)}} contexts.
 >
@@ -73,11 +70,10 @@ as `gl_DrawID`. For non-`multi*` calls, the value of
 ### Enabling the extension
 
 WebGL extensions are available using the {{domxref("WebGLRenderingContext.getExtension()")}} method.
-For more information, see also [Using Extensions](/en-US/docs/Web/API/WebGL_API/Using_Extensions)
-in the [WebGL tutorial](/en-US/docs/Web/API/WebGL_API/Tutorial).
+For more information, see [Using WebGL extensions](/en-US/docs/Web/API/WebGL_API/Using_Extensions).
 
 ```js
-let ext = gl.getExtension('WEBGL_multi_draw');
+let ext = gl.getExtension("WEBGL_multi_draw");
 ```
 
 ### Drawing multiple arrays
@@ -97,7 +93,16 @@ ext.multiDrawArraysWEBGL(gl.TRIANGLES, firsts, 0, counts, 0, firsts.length);
 const firsts = new Int32Array(/* … */);
 const counts = new Int32Array(/* … */);
 const instanceCounts = new Int32Array(/* … */);
-ext.multiDrawArraysInstancedWEBGL(gl.TRIANGLES, firsts, 0, counts, 0, instanceCounts, 0, firsts.length);
+ext.multiDrawArraysInstancedWEBGL(
+  gl.TRIANGLES,
+  firsts,
+  0,
+  counts,
+  0,
+  instanceCounts,
+  0,
+  firsts.length,
+);
 ```
 
 ### Drawing multiple elements
@@ -112,7 +117,15 @@ Assumes that the indices which have been previously uploaded to the
 // multiDrawElements variant
 const counts = new Int32Array(/* … */);
 const offsets = new Int32Array(/* … */);
-ext.multiDrawElementsWEBGL(gl.TRIANGLES, counts, 0, gl.UNSIGNED_SHORT, offsets, 0, counts.length);
+ext.multiDrawElementsWEBGL(
+  gl.TRIANGLES,
+  counts,
+  0,
+  gl.UNSIGNED_SHORT,
+  offsets,
+  0,
+  counts.length,
+);
 ```
 
 ```js
@@ -120,7 +133,17 @@ ext.multiDrawElementsWEBGL(gl.TRIANGLES, counts, 0, gl.UNSIGNED_SHORT, offsets, 
 const counts = new Int32Array(/* … */);
 const offsets = new Int32Array(/* … */);
 const instanceCounts = new Int32Array(/* … */);
-ext.multiDrawElementsInstancedWEBGL(gl.TRIANGLES, counts, 0, gl.UNSIGNED_SHORT, offsets, 0, instanceCounts, 0, counts.length);
+ext.multiDrawElementsInstancedWEBGL(
+  gl.TRIANGLES,
+  counts,
+  0,
+  gl.UNSIGNED_SHORT,
+  offsets,
+  0,
+  instanceCounts,
+  0,
+  counts.length,
+);
 ```
 
 ## Specifications

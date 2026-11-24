@@ -1,12 +1,10 @@
 ---
-title: Range.detach()
+title: "Range: detach() method"
+short-title: detach()
 slug: Web/API/Range/detach
 page-type: web-api-instance-method
-tags:
-  - API
-  - DOM
-  - Method
-  - Range
+status:
+  - deprecated
 browser-compat: api.Range.detach
 ---
 

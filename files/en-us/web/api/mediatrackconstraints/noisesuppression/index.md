@@ -1,26 +1,17 @@
 ---
-title: MediaTrackConstraints.noiseSuppression
+title: "MediaTrackConstraints: noiseSuppression property"
+short-title: noiseSuppression
 slug: Web/API/MediaTrackConstraints/noiseSuppression
 page-type: web-api-instance-property
-tags:
-  - API
-  - Audio
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackConstraints
-  - Property
-  - Web
-  - noiseSuppression
-browser-compat: api.MediaTrackConstraints.noiseSuppression
+browser-compat: api.MediaStreamTrack.applyConstraints.noiseSuppression_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
 
-The {{domxref("MediaTrackConstraints")}} dictionary's **`noiseSuppression`** property is a [`ConstrainBoolean`](/en-US/docs/Web/API/MediaTrackConstraints#constrainboolean) describing the requested or mandatory constraints placed upon the value of the {{domxref("MediaTrackSettings.noiseSuppression","noiseSuppression")}} constrainable property.
+The {{domxref("MediaTrackConstraints")}} dictionary's **`noiseSuppression`** property is a [`ConstrainBoolean`](/en-US/docs/Web/API/MediaTrackConstraints#constrainboolean) describing the requested or mandatory constraints placed upon the value of the [`noiseSuppression`](/en-US/docs/Web/API/MediaStreamTrack/getSettings#noisesuppression) constrainable property.
 
 If needed, you can determine whether or not this constraint is supported by checking
-the value of {{domxref("MediaTrackSupportedConstraints.noiseSuppression")}} as returned
+the value of [`noiseSuppression`](/en-US/docs/Web/API/MediaDevices/getSupportedConstraints#noisesuppression) as returned
 by a call to {{domxref("MediaDevices.getSupportedConstraints()")}}. However, typically
 this is unnecessary since browsers will ignore any constraints they're unfamiliar with.
 
@@ -38,7 +29,7 @@ result in an error.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example: Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 
@@ -54,5 +45,4 @@ See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constrain
 - [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
 - {{domxref("MediaTrackConstraints")}}
 - {{domxref("MediaDevices.getSupportedConstraints()")}}
-- {{domxref("MediaTrackSupportedConstraints")}}
 - {{domxref("MediaStreamTrack")}}

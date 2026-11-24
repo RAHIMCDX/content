@@ -1,23 +1,10 @@
 ---
-title: XRInputSourceArray.entries()
+title: "XRInputSourceArray: entries() method"
+short-title: entries()
 slug: Web/API/XRInputSourceArray/entries
 page-type: web-api-instance-method
-tags:
-  - API
-  - AR
-  - Entries
-  - Input Sources
-  - Inputs
-  - Iterator
-  - Method
-  - Reference
-  - VR
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - XRInputSourceArray
-  - Experimental
+status:
+  - experimental
 browser-compat: api.XRInputSourceArray.entries
 ---
 
@@ -27,7 +14,8 @@ The {{domxref("XRInputSourceArray")}} interface's
 **`entries()`** method returns a JavaScript
 [`iterator`](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
 which can then be used to iterate over the key/value pairs in the input source
-array. Each item in the array is an {{domxref("XRInputSource")}} object.
+array. Each key is the index of an input source in the array, and each value is
+the corresponding {{domxref("XRInputSource")}} object.
 
 Most frequently, you will use this in tandem with statements such as
 [`for...of`](/en-US/docs/Web/JavaScript/Reference/Statements/for...of).
@@ -45,7 +33,7 @@ None.
 ### Return value
 
 An [`iterator`](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
-which can be used to walk through the list of `XRInputSource` objects
+which yields an `[index, inputSource]` pair for each `XRInputSource` object
 included in the input source array.
 
 ## Examples
@@ -56,7 +44,7 @@ type of input device it supports using.
 ```js
 let sources = xrSession.inputSources;
 
-for (const input of sources.entries()) {
+for (const [index, input] of sources.entries()) {
   if (input.gamepad) {
     checkGamepad(input.gamepad);
   } else if (

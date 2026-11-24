@@ -1,24 +1,14 @@
 ---
-title: URL.toString()
+title: "URL: toString() method"
+short-title: toString()
 slug: Web/API/URL/toString
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - Stringifier
-  - URL
-  - URL API
 browser-compat: api.URL.toString
 ---
 
-{{ApiRef("URL API")}}
+{{ApiRef("URL API")}} {{AvailableInWorkers}}
 
-The **`URL.toString()`** {{Glossary("stringifier")}} method returns a
-string containing the whole URL. It is effectively a read-only version
-of {{domxref("URL.href")}}.
-
-{{AvailableInWorkers}}
+The **`toString()`** method of the {{domxref("URL")}} interface returns a string containing the whole URL, which is the same value as {{domxref("URL.href")}}.
 
 ## Syntax
 
@@ -37,7 +27,9 @@ A string.
 ## Examples
 
 ```js
-const url = new URL("https://developer.mozilla.org/en-US/docs/Web/API/URL/toString");
+const url = new URL(
+  "https://developer.mozilla.org/en-US/docs/Web/API/URL/toString",
+);
 url.toString(); // should return the URL as a string
 ```
 

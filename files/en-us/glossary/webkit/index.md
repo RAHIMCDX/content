@@ -1,12 +1,8 @@
 ---
 title: WebKit
 slug: Glossary/WebKit
-tags:
-  - Browser
-  - Intro
-  - Web
-  - WebKit
-  - WebMechanics
+page-type: glossary-definition
+sidebar: glossarysidebar
 ---
 
 _WebKit_ is a framework that displays properly-formatted webpages based on their markup. {{Glossary("Apple Safari")}} depends on WebKit, and so do many mobile browsers (since WebKit is highly portable and customizable).
@@ -18,4 +14,4 @@ WebKit is an Apple trademark, and the framework is distributed under a BSD-form 
 ## See also
 
 - [WebKit](https://en.wikipedia.org/wiki/WebKit) on Wikipedia
-- [WebKit CSS extensions](/en-US/docs/Web/CSS/WebKit_Extensions)
+- [WebKit CSS extensions](/en-US/docs/Web/CSS/Reference/Webkit_extensions)

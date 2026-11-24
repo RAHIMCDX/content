@@ -1,12 +1,8 @@
 ---
 title: Instance
 slug: Glossary/Instance
-tags:
-  - Beginner
-  - CodingScripting
-  - JavaScript
-  - NeedsExample
-  - OOP
+page-type: glossary-definition
+sidebar: glossarysidebar
 ---
 
 An {{glossary("object")}} created by a {{glossary("constructor")}} is an instance of that constructor.

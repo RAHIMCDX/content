@@ -1,11 +1,8 @@
 ---
 title: "Animation: finish event"
+short-title: finish
 slug: Web/API/Animation/finish_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
 browser-compat: api.Animation.finish_event
 ---
 
@@ -15,7 +12,8 @@ The **`finish`** event of the {{domxref("Animation")}} interface is fired when t
 when the {{domxref("Animation.finish()")}} method is called to immediately cause the
 animation to finish up.
 
-> **Note:** The `"paused"` play state supersedes the `"finished"` play
+> [!NOTE]
+> The `"paused"` play state supersedes the `"finished"` play
 > state; if the animation is both paused and finished, the `"paused"` state
 > is the one that will be reported. You can force the animation into the
 > `"finished"` state by setting its {{domxref("Animation.startTime", "startTime")}} to
@@ -23,10 +21,15 @@ animation to finish up.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
 ```js-nolint
 addEventListener("finish", (event) => { })
+```
+
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onfinish = (event) => { }
 ```
 
@@ -35,15 +38,6 @@ onfinish = (event) => { }
 An {{domxref("AnimationPlaybackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("AnimationPlaybackEvent")}}
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("AnimationPlaybackEvent.currentTime")}} {{ReadOnlyInline}}
-  - : The current time of the animation that generated the event.
-- {{domxref("AnimationPlaybackEvent.timelineTime")}} {{ReadOnlyInline}}
-  - : The time value of the timeline of the animation that generated the event.
 
 ## Examples
 

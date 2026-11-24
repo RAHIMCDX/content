@@ -1,31 +1,30 @@
 ---
 title: "ServiceWorkerGlobalScope: message event"
+short-title: message
 slug: Web/API/ServiceWorkerGlobalScope/message_event
 page-type: web-api-event
-tags:
-  - Event
-  - Reference
-  - Service worker API
-  - ServiceWorkerGlobalScope
-  - message
 browser-compat: api.ServiceWorkerGlobalScope.message_event
 ---
 
-{{APIRef("Service Workers API")}}
+{{APIRef("Service Workers API")}}{{SecureContext_Header}}{{AvailableInWorkers("service")}}
 
-The **`message`** event of the {{domxref("ServiceWorkerGlobalScope")}} interface occurs when incoming messages are received. Controlled pages can use the {{domxref("Worker.postMessage()", "ServiceWorker.postMessage()")}} method to send messages to service workers.
+The **`message`** event of the {{domxref("ServiceWorkerGlobalScope")}} interface occurs when incoming messages are received. Controlled pages can use the {{domxref("ServiceWorker.postMessage()")}} method to send messages to service workers.
 The service worker can optionally send a response back via the {{domxref("Client.postMessage()")}}, corresponding to the controlled page.
 
 This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener("message", (event) => {});
+```js-nolint
+addEventListener("message", (event) => { })
+```
 
-onmessage = (event) => {};
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onmessage = (event) => { }
 ```
 
 ## Event type
@@ -33,21 +32,6 @@ onmessage = (event) => {};
 An {{domxref("ExtendableMessageEvent")}}. Inherits from {{domxref("ExtendableEvent")}}.
 
 {{InheritanceDiagram("ExtendableMessageEvent")}}
-
-## Event properties
-
-_Inherits properties from its parent, {{domxref("ExtendableEvent")}}_.
-
-- {{domxref("ExtendableMessageEvent.data")}} {{ReadOnlyInline}}
-  - : Returns the event's data. It can be any data type.
-- {{domxref("ExtendableMessageEvent.origin")}} {{ReadOnlyInline}}
-  - : Returns the origin of the {{domxref("Client")}} that sent the message.
-- {{domxref("ExtendableMessageEvent.lastEventId")}} {{ReadOnlyInline}}
-  - : Represents, in [server-sent events](/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events), the last event ID of the event source. This is an empty string.
-- {{domxref("ExtendableMessageEvent.source")}} {{ReadOnlyInline}}
-  - : Returns a reference to the {{domxref("Client")}} object that sent the message.
-- {{domxref("ExtendableMessageEvent.ports")}} {{ReadOnlyInline}}
-  - : Returns the array containing the {{domxref("MessagePort")}} objects representing the ports of the associated message channel.
 
 ## Examples
 
@@ -81,7 +65,7 @@ addEventListener("message", (event) => {
 });
 ```
 
-Alternatively, the script can listen for the message using `onmessage`:
+Alternatively, the script can listen for the message using `onmessage` (but note that this replaces other event listeners added using `onmessage`, if any):
 
 ```js
 // service-worker.js
@@ -105,5 +89,4 @@ self.onmessage = (event) => {
 
 - [Using Service Workers](/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
 - [Service workers basic code example](https://github.com/mdn/dom-examples/tree/main/service-worker/simple-service-worker)
-- [Is ServiceWorker ready?](https://jakearchibald.github.io/isserviceworkerready/)
 - [Using web workers](/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)

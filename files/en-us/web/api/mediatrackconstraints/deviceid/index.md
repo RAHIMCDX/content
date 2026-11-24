@@ -1,20 +1,9 @@
 ---
-title: MediaTrackConstraints.deviceId
+title: "MediaTrackConstraints: deviceId property"
+short-title: deviceId
 slug: Web/API/MediaTrackConstraints/deviceId
 page-type: web-api-instance-property
-tags:
-  - API
-  - Constraints
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackConstraints
-  - Property
-  - Reference
-  - WebRTC
-  - deviceId
-  - getusermedia
-browser-compat: api.MediaTrackConstraints.deviceId
+browser-compat: api.MediaStreamTrack.applyConstraints.deviceId_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -22,10 +11,10 @@ browser-compat: api.MediaTrackConstraints.deviceId
 The {{domxref("MediaTrackConstraints")}} dictionary's
 **`deviceId`** property is a [`ConstrainDOMString`](/en-US/docs/Web/API/MediaTrackConstraints#constraindomstring)
 describing the requested or mandatory constraints placed upon the value of the
-{{domxref("MediaTrackSettings.deviceId", "deviceId")}} constrainable property.
+[`deviceId`](/en-US/docs/Web/API/MediaStreamTrack/getSettings#deviceid) constrainable property.
 
 If needed, you can determine whether or not this constraint is supported by checking
-the value of {{domxref("MediaTrackSupportedConstraints.deviceId")}} as returned by a
+the value of [`deviceId`](/en-US/docs/Web/API/MediaDevices/getSupportedConstraints#deviceid) as returned by a
 call to {{domxref("MediaDevices.getSupportedConstraints()")}}. However, typically this
 is unnecessary since browsers will ignore any constraints they're unfamiliar with.
 
@@ -49,17 +38,16 @@ call {{domxref("MediaStreamTrack.getCapabilities", "getCapabilities()")}}.
 Because of this, there's no use for the device ID when calling
 {{domxref("MediaStreamTrack.applyConstraints()")}}, since there is only one possible
 value; however, you can record a `deviceId` and use it to ensure that you get
-the same source for multiple calls to {{domxref("MediaDevices.getUserMedia",
-  "getUserMedia()")}}.
+the same source for multiple calls to {{domxref("MediaDevices.getUserMedia", "getUserMedia()")}}.
 
-> **Note:** An exception to the rule that device IDs are the same across browsing sessions:
+> [!NOTE]
+> An exception to the rule that device IDs are the same across browsing sessions:
 > private browsing mode will use a different ID, and will change it each browsing
 > session.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example:
-  Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 
@@ -75,5 +63,4 @@ See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constrain
 - [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
 - {{domxref("MediaTrackConstraints")}}
 - {{domxref("MediaDevices.getSupportedConstraints()")}}
-- {{domxref("MediaTrackSupportedConstraints")}}
 - {{domxref("MediaStreamTrack")}}

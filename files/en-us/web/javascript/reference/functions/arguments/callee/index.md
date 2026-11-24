@@ -1,19 +1,27 @@
 ---
 title: arguments.callee
+short-title: callee
 slug: Web/JavaScript/Reference/Functions/arguments/callee
-tags:
-  - Functions
-  - JavaScript
-  - Property
-  - arguments
+page-type: javascript-instance-data-property
+status:
+  - deprecated
 browser-compat: javascript.functions.arguments.callee
+sidebar: jssidebar
 ---
 
-{{jsSidebar("Functions")}}
+> [!NOTE]
+> Accessing `arguments.callee` in [strict mode](/en-US/docs/Web/JavaScript/Reference/Strict_mode) will throw a {{jsxref("TypeError")}}. If a function must reference itself, either give the [function expression](/en-US/docs/Web/JavaScript/Reference/Operators/function) a name or use a [function declaration](/en-US/docs/Web/JavaScript/Reference/Statements/function).
 
-The **`arguments.callee`** property contains the currently executing function.
+The **`arguments.callee`** data property contains the currently executing function that the arguments belong to.
 
-> **Warning:** Accessing `arguments.callee` in [strict mode](/en-US/docs/Web/JavaScript/Reference/Strict_mode) will throw a {{jsxref("TypeError")}}. If a function must reference itself, either give the function expression a name or use a function declaration.
+## Value
+
+A reference to the currently executing function.
+
+{{js_property_attributes(1, 0, 1)}}
+
+> [!NOTE]
+> `callee` is a data property only in non-strict functions with simple parameters (in which case the `arguments` object is also [auto-syncing](/en-US/docs/Web/JavaScript/Reference/Functions/arguments#assigning_to_indices)). Otherwise, it is an accessor property whose getter and setter both throw a {{jsxref("TypeError")}}.
 
 ## Description
 
@@ -52,13 +60,11 @@ did not. To get around this `arguments.callee` was added so you could do
 However, the design of `arguments.callee` has multiple issues. The first problem is that the recursive call will get a different `this` value. For example:
 
 ```js
-const global = this;
-
-const sillyFunction = function (recursed) {
-  if (this !== global) {
-    console.log('This is: ', this);
+function sillyFunction(recursed) {
+  if (this !== globalThis) {
+    console.log("This is:", this);
   } else {
-    console.log('This is the global');
+    console.log("This is the global");
   }
 
   if (!recursed) {
@@ -130,13 +136,14 @@ console.log(
   [1, 2, 3, 4, 5].map(
     // Wrap the higher-order function in the Y-combinator
     // "factorial" is not a function's name: it's introduced as a parameter
-    Y((factorial) => (n) => (n <= 1 ? 1 : factorial(n - 1) * n))
-  )
+    Y((factorial) => (n) => (n <= 1 ? 1 : factorial(n - 1) * n)),
+  ),
 );
 // [ 1, 2, 6, 24, 120 ]
 ```
 
-> **Note:** This method allocates a new closure for every iteration, which may significantly increase memory usage. It's only here to demonstrate the possibility, but should be avoided in production. Use a temporary variable or a named function expression instead.
+> [!NOTE]
+> This method allocates a new closure for every iteration, which may significantly increase memory usage. It's only here to demonstrate the possibility, but should be avoided in production. Use a temporary variable or a named function expression instead.
 
 ## Specifications
 
@@ -148,4 +155,7 @@ console.log(
 
 ## See also
 
-- {{jsxref("Function")}}
+- [Functions](/en-US/docs/Web/JavaScript/Guide/Functions) guide
+- [Functions](/en-US/docs/Web/JavaScript/Reference/Functions)
+- {{jsxref("Functions/arguments", "arguments")}}
+- {{jsxref("Function.prototype.caller")}}

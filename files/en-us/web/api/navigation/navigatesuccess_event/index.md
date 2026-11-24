@@ -1,25 +1,12 @@
 ---
 title: "Navigation: navigatesuccess event"
+short-title: navigatesuccess
 slug: Web/API/Navigation/navigatesuccess_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Experimental
-  - History
-  - Navigate
-  - navigatesuccess
-  - Navigation
-  - Navigation API
-  - Property
-  - Reference
-  - Scroll
-  - Traversal
-  - updateCurrentEntry
 browser-compat: api.Navigation.navigatesuccess_event
 ---
 
-{{APIRef("Navigation API")}}{{SeeCompatTable}}
+{{APIRef("Navigation API")}}
 
 The **`navigatesuccess`** event of the {{domxref("Navigation")}} interface is fired when a successful navigation has finished.
 
@@ -27,12 +14,16 @@ In the case of an intercepted navigation, this would occur after any promises re
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener("navigatesuccess", (event) => {});
+```js-nolint
+addEventListener("navigatesuccess", (event) => { })
+```
 
-onnavigatesuccess = (event) => {};
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onnavigatesuccess = (event) => { }
 ```
 
 ## Event type
@@ -44,7 +35,7 @@ A generic {{domxref("Event")}}.
 You might deal with a successful navigation by hiding a previously displayed progress indicator, like this:
 
 ```js
-navigation.addEventListener('navigatesuccess', (event) => {
+navigation.addEventListener("navigatesuccess", (event) => {
   loadingIndicator.hidden = true;
 });
 ```
@@ -52,7 +43,7 @@ navigation.addEventListener('navigatesuccess', (event) => {
 Or you might show an error message on failure:
 
 ```js
-navigation.addEventListener('navigateerror', (event) => {
+navigation.addEventListener("navigateerror", (event) => {
   loadingIndicator.hidden = true; // also hide indicator
   showMessage(`Failed to load page: ${event.message}`);
 });
@@ -70,4 +61,3 @@ navigation.addEventListener('navigateerror', (event) => {
 
 - [Modern client-side routing: the Navigation API](https://developer.chrome.com/docs/web-platform/navigation-api/)
 - [Navigation API explainer](https://github.com/WICG/navigation-api/blob/main/README.md)
-- Domenic Denicola's [Navigation API live demo](https://gigantic-honored-octagon.glitch.me/)

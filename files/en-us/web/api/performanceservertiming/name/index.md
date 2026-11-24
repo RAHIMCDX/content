@@ -1,16 +1,12 @@
 ---
-title: PerformanceServerTiming.name
+title: "PerformanceServerTiming: name property"
+short-title: name
 slug: Web/API/PerformanceServerTiming/name
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - ServerTiming
 browser-compat: api.PerformanceServerTiming.name
 ---
 
-{{APIRef("Performance API")}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}
 
 The **`name`** read-only property returns a
 string value of the server-specified metric name.
@@ -29,29 +25,33 @@ Server timing metrics require the server to send the {{HTTPHeader("Server-Timing
 Server-Timing: cache;desc="Cache Read";dur=23.2
 ```
 
-Then use a {{domxref("PerformanceObserver")}} to watch for {{domxref("PerformanceServerTiming")}} entries as they are recorded.
+The `serverTiming` entries can live on `navigation` and `resource` entries.
+
+Example using a {{domxref("PerformanceObserver")}}, which notifies of new `navigation` and `resource` performance entries as they are recorded in the browser's performance timeline. Use the `buffered` option to access entries from before the observer creation.
 
 ```js
 const observer = new PerformanceObserver((list) => {
   list.getEntries().forEach((entry) => {
     entry.serverTiming.forEach((serverEntry) => {
       console.log(
-        `${serverEntry.name} (${serverEntry.description}) duration: ${serverEntry.duration}`
+        `${serverEntry.name} (${serverEntry.description}) duration: ${serverEntry.duration}`,
       );
       // Logs "cache (Cache Read) duration: 23.2"
     });
   });
 });
 
-observer.observe({ entryTypes: ["resource", "navigation"] });
+["navigation", "resource"].forEach((type) =>
+  observer.observe({ type, buffered: true }),
+);
 ```
 
-Alternatively, you can use {{domxref("Performance.getEntriesByType()")}} to get performance entries present in the browser's performance timeline at the time you call this method:
+Example using {{domxref("Performance.getEntriesByType()")}}, which only shows `navigation` and `resource` performance entries present in the browser's performance timeline at the time you call this method:
 
 ```js
 for (const entryType of ["navigation", "resource"]) {
   for (const { name: url, serverTiming } of performance.getEntriesByType(
-    entryType
+    entryType,
   )) {
     if (serverTiming) {
       for (const { name, description, duration } of serverTiming) {

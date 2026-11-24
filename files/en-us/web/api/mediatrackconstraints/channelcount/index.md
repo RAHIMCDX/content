@@ -1,19 +1,9 @@
 ---
-title: MediaTrackConstraints.channelCount
+title: "MediaTrackConstraints: channelCount property"
+short-title: channelCount
 slug: Web/API/MediaTrackConstraints/channelCount
 page-type: web-api-instance-property
-tags:
-  - API
-  - Constraints
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackConstraints
-  - Property
-  - Reference
-  - WebRTC
-  - channelCount
-browser-compat: api.MediaTrackConstraints.channelCount
+browser-compat: api.MediaStreamTrack.applyConstraints.channelCount_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -21,10 +11,10 @@ browser-compat: api.MediaTrackConstraints.channelCount
 The {{domxref("MediaTrackConstraints")}} dictionary's
 **`channelCount`** property is a [`ConstrainULong`](/en-US/docs/Web/API/MediaTrackConstraints#constrainulong)
 describing the requested or mandatory constraints placed upon the value of the
-{{domxref("MediaTrackSettings.channelCount", "channelCount")}} constrainable property.
+[`channelCount`](/en-US/docs/Web/API/MediaStreamTrack/getSettings#channelcount) constrainable property.
 
 If needed, you can determine whether or not this constraint is supported by checking
-the value of {{domxref("MediaTrackSupportedConstraints.channelCount")}} as returned by a
+the value of [`channelCount`](/en-US/docs/Web/API/MediaDevices/getSupportedConstraints#channelcount) as returned by a
 call to {{domxref("MediaDevices.getSupportedConstraints()")}}. However, typically this
 is unnecessary since browsers will ignore any constraints they're unfamiliar with.
 
@@ -42,8 +32,7 @@ The channel count is 1 for monaural sound, 2 for stereo, and so forth.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example:
-  Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 
@@ -59,5 +48,4 @@ See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constrain
 - [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
 - {{domxref("MediaTrackConstraints")}}
 - {{domxref("MediaDevices.getSupportedConstraints()")}}
-- {{domxref("MediaTrackSupportedConstraints")}}
 - {{domxref("MediaStreamTrack")}}

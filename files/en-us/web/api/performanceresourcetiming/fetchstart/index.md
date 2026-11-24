@@ -1,27 +1,25 @@
 ---
-title: PerformanceResourceTiming.fetchStart
+title: "PerformanceResourceTiming: fetchStart property"
+short-title: fetchStart
 slug: Web/API/PerformanceResourceTiming/fetchStart
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - Web Performance
 browser-compat: api.PerformanceResourceTiming.fetchStart
 ---
 
-{{APIRef("Performance API")}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}
 
 The **`fetchStart`** read-only property represents a {{domxref("DOMHighResTimeStamp","timestamp")}} immediately before the browser starts to fetch the resource.
-
-If there are HTTP redirects, the property returns the time immediately before the user agent starts to fetch the final resource in the redirection.
-
-Unlike many other `PerformanceResourceTiming` properties, the `fetchStart` property is available for cross-origin requests without the need of the {{HTTPHeader("Timing-Allow-Origin")}} HTTP response header.
 
 ## Value
 
 A {{domxref("DOMHighResTimeStamp")}} immediately before the browser starts to fetch the
 resource.
+
+## Description
+
+If there are no HTTP redirects or their timing information is not exposed, this value is equivalent to {{domxref("PerformanceEntry.startTime")}}. Otherwise, this value can be later than `startTime`.
+
+Unlike many other `PerformanceResourceTiming` properties, the `fetchStart` property is available for cross-origin requests without the need for the {{HTTPHeader("Timing-Allow-Origin")}} HTTP response header. However, without this header, `fetchStart` is equivalent to `startTime`, so it doesn't reveal the time spent on redirects. The exception is cross-origin {{HTMLElement("iframe")}} elements, for which `fetchStart` is `0` (see [Cross-origin iframes](/en-US/docs/Web/API/PerformanceResourceTiming/responseEnd#cross-origin_iframes)).
 
 ## Examples
 
@@ -33,7 +31,7 @@ The `fetchStart` and {{domxref("PerformanceResourceTiming.responseEnd", "respons
 const timeToFetch = entry.responseEnd - entry.fetchStart;
 ```
 
-Using a {{domxref("PerformanceObserver")}}:
+Example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline. Use the `buffered` option to access entries from before the observer creation.
 
 ```js
 const observer = new PerformanceObserver((list) => {
@@ -48,7 +46,7 @@ const observer = new PerformanceObserver((list) => {
 observer.observe({ type: "resource", buffered: true });
 ```
 
-Or using {{domxref("Performance.getEntriesByType()")}}, which only shows `resource` performance entries present in the browser's performance timeline at the time you call this method:
+Example using {{domxref("Performance.getEntriesByType()")}}, which only shows `resource` performance entries present in the browser's performance timeline at the time you call this method:
 
 ```js
 const resources = performance.getEntriesByType("resource");
@@ -67,3 +65,8 @@ resources.forEach((entry) => {
 ## Browser compatibility
 
 {{Compat}}
+
+## See also
+
+- {{HTTPHeader("Timing-Allow-Origin")}}
+- [Resource timing](/en-US/docs/Web/API/Performance_API/Resource_timing)

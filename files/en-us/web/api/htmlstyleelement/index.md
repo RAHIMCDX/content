@@ -2,12 +2,6 @@
 title: HTMLStyleElement
 slug: Web/API/HTMLStyleElement
 page-type: web-api-interface
-tags:
-  - API
-  - HTML DOM
-  - HTMLStyleElement
-  - Interface
-  - Reference
 browser-compat: api.HTMLStyleElement
 ---
 
@@ -15,7 +9,7 @@ browser-compat: api.HTMLStyleElement
 
 The **`HTMLStyleElement`** interface represents a {{HTMLElement("style")}} element. It inherits properties and methods from its parent, {{domxref("HTMLElement")}}.
 
-This interface doesn't allow to manipulate the CSS it contains (in most case). To manipulate CSS, see [Using dynamic styling information](/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information) for an overview of the objects used to manipulate specified CSS properties using the DOM.
+In most cases, this interface doesn't allow you to manipulate the CSS it contains. To manipulate CSS, see [Using dynamic styling information](/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information) for an overview of the objects used to manipulate specified CSS properties using the DOM.
 
 {{InheritanceDiagram}}
 
@@ -23,6 +17,8 @@ This interface doesn't allow to manipulate the CSS it contains (in most case). T
 
 _Inherits properties from its parent, {{domxref("HTMLElement")}}._
 
+- {{domxref("HTMLStyleElement.blocking")}}
+  - : A string indicating that certain operations should be blocked on the fetching of critical subresources. It reflects the `blocking` attribute of the {{HTMLElement("style")}} element.
 - {{domxref("HTMLStyleElement.media")}}
   - : A string reflecting the HTML attribute representing the intended destination medium for style information.
 - {{domxref("HTMLStyleElement.type")}} {{deprecated_inline}}
@@ -30,9 +26,7 @@ _Inherits properties from its parent, {{domxref("HTMLElement")}}._
 - {{domxref("HTMLStyleElement.disabled")}}
   - : A boolean value indicating whether or not the associated stylesheet is disabled.
 - {{domxref("HTMLStyleElement.sheet")}} {{ReadOnlyInline}}
-  - : Returns the {{domxref("CSSStyleSheet")}} object associated with the given element, or `null` if there is none
-- {{domxref("HTMLStyleElement.scoped")}} {{non-standard_inline}} {{deprecated_inline}}
-  - : A boolean value indicating if the element applies to the whole document (`false`) or only to the parent's sub-tree (`true`).
+  - : Returns the {{domxref("CSSStyleSheet")}} object associated with the given element, or `null` if there is none.
 
 ## Instance methods
 

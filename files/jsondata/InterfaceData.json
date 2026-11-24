@@ -20,6 +20,10 @@
       "inh": "Sensor",
       "impl": []
     },
+    "Alarms": {
+      "inh": "",
+      "impl": []
+    },
     "AmbientLightSensor": {
       "inh": "Sensor",
       "impl": []
@@ -56,12 +60,24 @@
       "inh": "",
       "impl": []
     },
+    "AnimationTrigger": {
+      "inh": "",
+      "impl": []
+    },
     "AnimationWorkletGlobalScope": {
       "inh": "WorkletGlobalScope",
       "impl": []
     },
     "Attr": {
       "inh": "Node",
+      "impl": []
+    },
+    "Attribution": {
+      "inh": "",
+      "impl": []
+    },
+    "AttributionAggregationServices": {
+      "inh": "",
       "impl": []
     },
     "AudioBuffer": {
@@ -81,7 +97,7 @@
       "impl": []
     },
     "AudioDecoder": {
-      "inh": "",
+      "inh": "EventTarget",
       "impl": []
     },
     "AudioDestinationNode": {
@@ -89,7 +105,7 @@
       "impl": []
     },
     "AudioEncoder": {
-      "inh": "",
+      "inh": "EventTarget",
       "impl": []
     },
     "AudioListener": {
@@ -108,20 +124,20 @@
       "inh": "",
       "impl": []
     },
+    "AudioPlaybackStats": {
+      "inh": "",
+      "impl": []
+    },
     "AudioProcessingEvent": {
-      "inh": "Event",
-      "impl": []
-    },
-    "AudioRenderCapacity": {
-      "inh": "EventTarget",
-      "impl": []
-    },
-    "AudioRenderCapacityEvent": {
       "inh": "Event",
       "impl": []
     },
     "AudioScheduledSourceNode": {
       "inh": "AudioNode",
+      "impl": []
+    },
+    "AudioSession": {
+      "inh": "EventTarget",
       "impl": []
     },
     "AudioSinkInfo": {
@@ -162,6 +178,10 @@
     },
     "AuthenticatorResponse": {
       "inh": "",
+      "impl": []
+    },
+    "AutofillEvent": {
+      "inh": "Event",
       "impl": []
     },
     "BackgroundFetchEvent": {
@@ -236,8 +256,28 @@
       "inh": "",
       "impl": []
     },
+    "BluetoothDataFilter": {
+      "inh": "",
+      "impl": []
+    },
     "BluetoothDevice": {
       "inh": "EventTarget",
+      "impl": []
+    },
+    "BluetoothLEScan": {
+      "inh": "",
+      "impl": []
+    },
+    "BluetoothLEScanFilter": {
+      "inh": "",
+      "impl": []
+    },
+    "BluetoothLEScanPermissionResult": {
+      "inh": "PermissionStatus",
+      "impl": []
+    },
+    "BluetoothManufacturerDataFilter": {
+      "inh": "",
       "impl": []
     },
     "BluetoothManufacturerDataMap": {
@@ -264,6 +304,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "BluetoothServiceDataFilter": {
+      "inh": "",
+      "impl": []
+    },
     "BluetoothServiceDataMap": {
       "inh": "",
       "impl": []
@@ -280,8 +324,16 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "Browser": {
+      "inh": "",
+      "impl": []
+    },
     "BrowserCaptureMediaStreamTrack": {
       "inh": "MediaStreamTrack",
+      "impl": []
+    },
+    "BufferedChangeEvent": {
+      "inh": "Event",
       "impl": []
     },
     "ByteLengthQueuingStrategy": {
@@ -321,7 +373,11 @@
       "impl": []
     },
     "CaptureController": {
-      "inh": "",
+      "inh": "EventTarget",
+      "impl": []
+    },
+    "CapturedMouseEvent": {
+      "inh": "Event",
       "impl": []
     },
     "CaretPosition": {
@@ -338,6 +394,10 @@
     },
     "ChannelSplitterNode": {
       "inh": "AudioNode",
+      "impl": []
+    },
+    "ChapterInformation": {
+      "inh": "",
       "impl": []
     },
     "CharacterBoundsUpdateEvent": {
@@ -364,6 +424,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "ClipboardChangeEvent": {
+      "inh": "Event",
+      "impl": []
+    },
     "ClipboardEvent": {
       "inh": "Event",
       "impl": []
@@ -378,6 +442,10 @@
     },
     "CloseWatcher": {
       "inh": "EventTarget",
+      "impl": []
+    },
+    "CommandEvent": {
+      "inh": "Event",
       "impl": []
     },
     "Comment": {
@@ -404,6 +472,10 @@
       "inh": "",
       "impl": []
     },
+    "ContainerQueryList": {
+      "inh": "",
+      "impl": []
+    },
     "ContentIndex": {
       "inh": "",
       "impl": []
@@ -412,7 +484,7 @@
       "inh": "ExtendableEvent",
       "impl": []
     },
-    "ContentVisibilityAutoStateChangedEvent": {
+    "ContentVisibilityAutoStateChangeEvent": {
       "inh": "Event",
       "impl": []
     },
@@ -436,8 +508,12 @@
       "inh": "",
       "impl": []
     },
-    "CrashReportBody": {
-      "inh": "ReportBody",
+    "CrashReportContext": {
+      "inh": "",
+      "impl": []
+    },
+    "CreateMonitor": {
+      "inh": "EventTarget",
       "impl": []
     },
     "Credential": {
@@ -452,6 +528,10 @@
       "inh": "",
       "impl": []
     },
+    "CrossOriginStorageManager": {
+      "inh": "",
+      "impl": []
+    },
     "Crypto": {
       "inh": "",
       "impl": []
@@ -460,12 +540,16 @@
       "inh": "",
       "impl": []
     },
-    "CSPViolationReportBody": {
-      "inh": "ReportBody",
-      "impl": []
-    },
     "CSSAnimation": {
       "inh": "Animation",
+      "impl": []
+    },
+    "CSSApplyBlockRule": {
+      "inh": "CSSGroupingRule",
+      "impl": []
+    },
+    "CSSApplyStatementRule": {
+      "inh": "CSSRule",
       "impl": []
     },
     "CSSColor": {
@@ -488,8 +572,24 @@
       "inh": "CSSConditionRule",
       "impl": []
     },
+    "CSSContentsBlockRule": {
+      "inh": "CSSGroupingRule",
+      "impl": []
+    },
+    "CSSContentsStatementRule": {
+      "inh": "CSSRule",
+      "impl": []
+    },
     "CSSCounterStyleRule": {
       "inh": "CSSRule",
+      "impl": []
+    },
+    "CSSCustomMediaRule": {
+      "inh": "CSSRule",
+      "impl": []
+    },
+    "CSSFontFaceDescriptors": {
+      "inh": "CSSStyleDeclaration",
       "impl": []
     },
     "CSSFontFaceRule": {
@@ -506,6 +606,18 @@
     },
     "CSSFontPaletteValuesRule": {
       "inh": "CSSRule",
+      "impl": []
+    },
+    "CSSFunctionDeclarations": {
+      "inh": "CSSRule",
+      "impl": []
+    },
+    "CSSFunctionDescriptors": {
+      "inh": "CSSStyleDeclaration",
+      "impl": []
+    },
+    "CSSFunctionRule": {
+      "inh": "CSSGroupingRule",
       "impl": []
     },
     "CSSGroupingRule": {
@@ -600,7 +712,15 @@
       "inh": "CSSConditionRule",
       "impl": []
     },
+    "CSSMixinRule": {
+      "inh": "CSSGroupingRule",
+      "impl": []
+    },
     "CSSNamespaceRule": {
+      "inh": "CSSRule",
+      "impl": []
+    },
+    "CSSNestedDeclarations": {
       "inh": "CSSRule",
       "impl": []
     },
@@ -618,6 +738,10 @@
     },
     "CSSOKLCH": {
       "inh": "CSSColorValue",
+      "impl": []
+    },
+    "CSSPageDescriptors": {
+      "inh": "CSSStyleDeclaration",
       "impl": []
     },
     "CSSPageRule": {
@@ -656,12 +780,20 @@
       "inh": "CSSTransformComponent",
       "impl": []
     },
+    "CSSPositionTryDescriptors": {
+      "inh": "CSSStyleDeclaration",
+      "impl": []
+    },
+    "CSSPositionTryRule": {
+      "inh": "CSSRule",
+      "impl": []
+    },
     "CSSPropertyRule": {
       "inh": "CSSRule",
       "impl": []
     },
     "CSSPseudoElement": {
-      "inh": "EventTarget",
+      "inh": "",
       "impl": []
     },
     "CSSRGB": {
@@ -684,6 +816,10 @@
       "inh": "CSSTransformComponent",
       "impl": []
     },
+    "CSSScopeRule": {
+      "inh": "CSSGroupingRule",
+      "impl": []
+    },
     "CSSSkew": {
       "inh": "CSSTransformComponent",
       "impl": []
@@ -696,12 +832,20 @@
       "inh": "CSSTransformComponent",
       "impl": []
     },
+    "CSSStartingStyleRule": {
+      "inh": "CSSGroupingRule",
+      "impl": []
+    },
     "CSSStyleDeclaration": {
       "inh": "",
       "impl": []
     },
+    "CSSStyleProperties": {
+      "inh": "CSSStyleDeclaration",
+      "impl": []
+    },
     "CSSStyleRule": {
-      "inh": "CSSRule",
+      "inh": "CSSGroupingRule",
       "impl": []
     },
     "CSSStyleSheet": {
@@ -710,6 +854,10 @@
     },
     "CSSStyleValue": {
       "inh": "",
+      "impl": []
+    },
+    "CSSSupportsConditionRule": {
+      "inh": "CSSGroupingRule",
       "impl": []
     },
     "CSSSupportsRule": {
@@ -742,6 +890,10 @@
     },
     "CSSVariableReferenceValue": {
       "inh": "",
+      "impl": []
+    },
+    "CSSViewTransitionRule": {
+      "inh": "CSSRule",
       "impl": []
     },
     "CustomElementRegistry": {
@@ -784,8 +936,12 @@
       "inh": "AudioNode",
       "impl": []
     },
-    "DeprecationReportBody": {
-      "inh": "ReportBody",
+    "DelegatedInkTrailPresenter": {
+      "inh": "",
+      "impl": []
+    },
+    "DeviceChangeEvent": {
+      "inh": "Event",
       "impl": []
     },
     "DeviceMotionEvent": {
@@ -808,6 +964,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "DigitalCredential": {
+      "inh": "Credential",
+      "impl": []
+    },
     "DigitalGoodsService": {
       "inh": "",
       "impl": []
@@ -818,6 +978,14 @@
     },
     "DocumentFragment": {
       "inh": "Node",
+      "impl": []
+    },
+    "DocumentPictureInPicture": {
+      "inh": "EventTarget",
+      "impl": []
+    },
+    "DocumentPictureInPictureEvent": {
+      "inh": "Event",
       "impl": []
     },
     "DocumentTimeline": {
@@ -936,11 +1104,15 @@
       "inh": "",
       "impl": []
     },
+    "Exception": {
+      "inh": "",
+      "impl": []
+    },
     "EXT_blend_minmax": {
       "inh": "",
       "impl": []
     },
-    "EXT_clip_cull_distance": {
+    "EXT_clip_control": {
       "inh": "",
       "impl": []
     },
@@ -949,6 +1121,14 @@
       "impl": []
     },
     "EXT_color_buffer_half_float": {
+      "inh": "",
+      "impl": []
+    },
+    "EXT_conservative_depth": {
+      "inh": "",
+      "impl": []
+    },
+    "EXT_depth_clamp": {
       "inh": "",
       "impl": []
     },
@@ -965,6 +1145,14 @@
       "impl": []
     },
     "EXT_frag_depth": {
+      "inh": "",
+      "impl": []
+    },
+    "EXT_polygon_offset_clamp": {
+      "inh": "",
+      "impl": []
+    },
+    "EXT_render_snorm": {
       "inh": "",
       "impl": []
     },
@@ -985,6 +1173,10 @@
       "impl": []
     },
     "EXT_texture_filter_anisotropic": {
+      "inh": "",
+      "impl": []
+    },
+    "EXT_texture_mirror_clamp_to_edge": {
       "inh": "",
       "impl": []
     },
@@ -1020,8 +1212,20 @@
       "inh": "Credential",
       "impl": []
     },
+    "Fence": {
+      "inh": "",
+      "impl": []
+    },
+    "FencedFrameConfig": {
+      "inh": "",
+      "impl": []
+    },
     "FetchEvent": {
       "inh": "ExtendableEvent",
+      "impl": []
+    },
+    "FetchLaterResult": {
+      "inh": "",
       "impl": []
     },
     "File": {
@@ -1164,14 +1368,6 @@
       "inh": "",
       "impl": []
     },
-    "GamepadPose": {
-      "inh": "",
-      "impl": []
-    },
-    "GamepadTouch": {
-      "inh": "",
-      "impl": []
-    },
     "Geolocation": {
       "inh": "",
       "impl": []
@@ -1186,10 +1382,6 @@
     },
     "GeolocationPositionError": {
       "inh": "",
-      "impl": []
-    },
-    "GeolocationSensor": {
-      "inh": "Sensor",
       "impl": []
     },
     "Global": {
@@ -1272,6 +1464,10 @@
       "inh": "GPUError",
       "impl": []
     },
+    "GPUPipelineError": {
+      "inh": "DOMException",
+      "impl": []
+    },
     "GPUPipelineLayout": {
       "inh": "",
       "impl": []
@@ -1344,6 +1540,18 @@
       "inh": "Sensor",
       "impl": []
     },
+    "HandwritingDrawing": {
+      "inh": "",
+      "impl": []
+    },
+    "HandwritingRecognizer": {
+      "inh": "",
+      "impl": []
+    },
+    "HandwritingStroke": {
+      "inh": "",
+      "impl": []
+    },
     "HashChangeEvent": {
       "inh": "Event",
       "impl": []
@@ -1412,6 +1620,10 @@
       "inh": "HTMLElement",
       "impl": []
     },
+    "HTMLCameraElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
     "HTMLCanvasElement": {
       "inh": "HTMLElement",
       "impl": []
@@ -1456,6 +1668,10 @@
       "inh": "HTMLElement",
       "impl": []
     },
+    "HTMLFencedFrameElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
     "HTMLFieldSetElement": {
       "inh": "HTMLElement",
       "impl": []
@@ -1477,6 +1693,10 @@
       "impl": []
     },
     "HTMLFrameSetElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
+    "HTMLGeolocationElement": {
       "inh": "HTMLElement",
       "impl": []
     },
@@ -1505,6 +1725,10 @@
       "impl": []
     },
     "HTMLInputElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
+    "HTMLInstallElement": {
       "inh": "HTMLElement",
       "impl": []
     },
@@ -1545,6 +1769,10 @@
       "impl": []
     },
     "HTMLMeterElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
+    "HTMLMicrophoneElement": {
       "inh": "HTMLElement",
       "impl": []
     },
@@ -1609,6 +1837,10 @@
       "impl": []
     },
     "HTMLScriptElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
+    "HTMLSelectedContentElement": {
       "inh": "HTMLElement",
       "impl": []
     },
@@ -1684,6 +1916,10 @@
       "inh": "HTMLElement",
       "impl": []
     },
+    "HTMLUserMediaElement": {
+      "inh": "HTMLElement",
+      "impl": []
+    },
     "HTMLVideoElement": {
       "inh": "HTMLMediaElement",
       "impl": []
@@ -1720,6 +1956,10 @@
       "inh": "IDBRequest",
       "impl": []
     },
+    "IDBRecord": {
+      "inh": "",
+      "impl": []
+    },
     "IDBRequest": {
       "inh": "EventTarget",
       "impl": []
@@ -1734,6 +1974,10 @@
     },
     "IdentityCredential": {
       "inh": "Credential",
+      "impl": []
+    },
+    "IdentityCredentialError": {
+      "inh": "DOMException",
       "impl": []
     },
     "IdentityProvider": {
@@ -1784,10 +2028,6 @@
       "inh": "",
       "impl": []
     },
-    "InkPresenter": {
-      "inh": "",
-      "impl": []
-    },
     "InputDeviceCapabilities": {
       "inh": "",
       "impl": []
@@ -1800,8 +2040,20 @@
       "inh": "UIEvent",
       "impl": []
     },
+    "InstallEvent": {
+      "inh": "ExtendableEvent",
+      "impl": []
+    },
+    "InstallResultEvent": {
+      "inh": "Event",
+      "impl": []
+    },
     "Instance": {
       "inh": "",
+      "impl": []
+    },
+    "InteractionContentfulPaint": {
+      "inh": "PerformanceEntry",
       "impl": []
     },
     "IntersectionObserver": {
@@ -1810,10 +2062,6 @@
     },
     "IntersectionObserverEntry": {
       "inh": "",
-      "impl": []
-    },
-    "InterventionReportBody": {
-      "inh": "ReportBody",
       "impl": []
     },
     "IntrinsicSizes": {
@@ -1844,7 +2092,35 @@
       "inh": "AnimationEffect",
       "impl": []
     },
+    "KeyFrameRequestEvent": {
+      "inh": "Event",
+      "impl": []
+    },
     "KHR_parallel_shader_compile": {
+      "inh": "",
+      "impl": []
+    },
+    "LanguageDetector": {
+      "inh": "",
+      "impl": []
+    },
+    "LanguageModel": {
+      "inh": "EventTarget",
+      "impl": []
+    },
+    "LanguageModelParams": {
+      "inh": "",
+      "impl": []
+    },
+    "LanguageModelToolCall": {
+      "inh": "",
+      "impl": []
+    },
+    "LanguageModelToolError": {
+      "inh": "",
+      "impl": []
+    },
+    "LanguageModelToolSuccess": {
       "inh": "",
       "impl": []
     },
@@ -1906,6 +2182,18 @@
     },
     "Magnetometer": {
       "inh": "Sensor",
+      "impl": []
+    },
+    "ManagedMediaSource": {
+      "inh": "MediaSource",
+      "impl": []
+    },
+    "ManagedSourceBuffer": {
+      "inh": "SourceBuffer",
+      "impl": []
+    },
+    "MathMLAnchorElement": {
+      "inh": "MathMLElement",
       "impl": []
     },
     "MathMLElement": {
@@ -2008,11 +2296,23 @@
       "inh": "AudioNode",
       "impl": []
     },
+    "MediaStreamTrackAudioStats": {
+      "inh": "",
+      "impl": []
+    },
     "MediaStreamTrackEvent": {
       "inh": "Event",
       "impl": []
     },
+    "MediaStreamTrackHandle": {
+      "inh": "",
+      "impl": []
+    },
     "MediaStreamTrackProcessor": {
+      "inh": "",
+      "impl": []
+    },
+    "MediaStreamTrackVideoStats": {
       "inh": "",
       "impl": []
     },
@@ -2076,10 +2376,6 @@
       "inh": "",
       "impl": []
     },
-    "MLCommandEncoder": {
-      "inh": "",
-      "impl": []
-    },
     "MLContext": {
       "inh": "",
       "impl": []
@@ -2096,8 +2392,12 @@
       "inh": "",
       "impl": []
     },
-    "MLOperator": {
+    "MLTensor": {
       "inh": "",
+      "impl": []
+    },
+    "ModelContext": {
+      "inh": "EventTarget",
       "impl": []
     },
     "Module": {
@@ -2106,10 +2406,6 @@
     },
     "MouseEvent": {
       "inh": "UIEvent",
-      "impl": []
-    },
-    "MutationEvent": {
-      "inh": "Event",
       "impl": []
     },
     "MutationObserver": {
@@ -2140,6 +2436,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "NavigationActivation": {
+      "inh": "",
+      "impl": []
+    },
     "NavigationCurrentEntryChangeEvent": {
       "inh": "Event",
       "impl": []
@@ -2156,6 +2456,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "NavigationPrecommitController": {
+      "inh": "",
+      "impl": []
+    },
     "NavigationPreloadManager": {
       "inh": "",
       "impl": []
@@ -2166,6 +2470,14 @@
     },
     "Navigator": {
       "inh": "",
+      "impl": []
+    },
+    "NavigatorLogin": {
+      "inh": "",
+      "impl": []
+    },
+    "NavigatorManagedData": {
+      "inh": "EventTarget",
       "impl": []
     },
     "NavigatorUAData": {
@@ -2204,12 +2516,32 @@
       "inh": "",
       "impl": []
     },
+    "NodeRange": {
+      "inh": "AbstractRange",
+      "impl": []
+    },
     "Notification": {
       "inh": "EventTarget",
       "impl": []
     },
     "NotificationEvent": {
       "inh": "ExtendableEvent",
+      "impl": []
+    },
+    "NotRestoredReasonDetails": {
+      "inh": "",
+      "impl": []
+    },
+    "NotRestoredReasons": {
+      "inh": "",
+      "impl": []
+    },
+    "NV_shader_noperspective_interpolation": {
+      "inh": "",
+      "impl": []
+    },
+    "Observable": {
+      "inh": "",
       "impl": []
     },
     "OES_draw_buffers_indexed": {
@@ -2221,6 +2553,14 @@
       "impl": []
     },
     "OES_fbo_render_mipmap": {
+      "inh": "",
+      "impl": []
+    },
+    "OES_sample_variables": {
+      "inh": "",
+      "impl": []
+    },
+    "OES_shader_multisample_interpolation": {
       "inh": "",
       "impl": []
     },
@@ -2264,8 +2604,16 @@
       "inh": "",
       "impl": []
     },
+    "OnAlarmEvent": {
+      "inh": "",
+      "impl": []
+    },
     "OrientationSensor": {
       "inh": "Sensor",
+      "impl": []
+    },
+    "Origin": {
+      "inh": "",
       "impl": []
     },
     "OscillatorNode": {
@@ -2282,6 +2630,14 @@
     },
     "OVR_multiview2": {
       "inh": "",
+      "impl": []
+    },
+    "PageRevealEvent": {
+      "inh": "Event",
+      "impl": []
+    },
+    "PageSwapEvent": {
+      "inh": "Event",
       "impl": []
     },
     "PageTransitionEvent": {
@@ -2309,10 +2665,6 @@
       "impl": []
     },
     "Path2D": {
-      "inh": "",
-      "impl": []
-    },
-    "PaymentInstruments": {
       "inh": "",
       "impl": []
     },
@@ -2344,6 +2696,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "PerformanceContainerTiming": {
+      "inh": "PerformanceEntry",
+      "impl": []
+    },
     "PerformanceElementTiming": {
       "inh": "PerformanceEntry",
       "impl": []
@@ -2353,6 +2709,10 @@
       "impl": []
     },
     "PerformanceEventTiming": {
+      "inh": "PerformanceEntry",
+      "impl": []
+    },
+    "PerformanceLongAnimationFrameTiming": {
       "inh": "PerformanceEntry",
       "impl": []
     },
@@ -2392,11 +2752,23 @@
       "inh": "PerformanceEntry",
       "impl": []
     },
+    "PerformanceScriptTiming": {
+      "inh": "PerformanceEntry",
+      "impl": []
+    },
     "PerformanceServerTiming": {
       "inh": "",
       "impl": []
     },
+    "PerformanceSoftNavigation": {
+      "inh": "PerformanceEntry",
+      "impl": []
+    },
     "PerformanceTiming": {
+      "inh": "",
+      "impl": []
+    },
+    "PerformanceTimingConfidence": {
       "inh": "",
       "impl": []
     },
@@ -2418,10 +2790,6 @@
     },
     "PermissionsPolicy": {
       "inh": "",
-      "impl": []
-    },
-    "PermissionsPolicyViolationReportBody": {
-      "inh": "ReportBody",
       "impl": []
     },
     "PermissionStatus": {
@@ -2448,6 +2816,10 @@
       "inh": "MouseEvent",
       "impl": []
     },
+    "PointerTimeline": {
+      "inh": "AnimationTimeline",
+      "impl": []
+    },
     "PopStateEvent": {
       "inh": "Event",
       "impl": []
@@ -2457,6 +2829,14 @@
       "impl": []
     },
     "PortalHost": {
+      "inh": "EventTarget",
+      "impl": []
+    },
+    "PreferenceManager": {
+      "inh": "",
+      "impl": []
+    },
+    "PreferenceObject": {
       "inh": "EventTarget",
       "impl": []
     },
@@ -2516,6 +2896,10 @@
       "inh": "Event",
       "impl": []
     },
+    "Proofreader": {
+      "inh": "",
+      "impl": []
+    },
     "ProximitySensor": {
       "inh": "Sensor",
       "impl": []
@@ -2548,12 +2932,16 @@
       "inh": "",
       "impl": []
     },
+    "QuotaExceededError": {
+      "inh": "DOMException",
+      "impl": []
+    },
     "RadioNodeList": {
       "inh": "NodeList",
       "impl": []
     },
     "Range": {
-      "inh": "AbstractRange",
+      "inh": "NodeRange",
       "impl": []
     },
     "RdfDataset": {
@@ -2608,14 +2996,6 @@
       "inh": "EventTarget",
       "impl": []
     },
-    "Report": {
-      "inh": "",
-      "impl": []
-    },
-    "ReportBody": {
-      "inh": "",
-      "impl": []
-    },
     "ReportingObserver": {
       "inh": "",
       "impl": []
@@ -2637,6 +3017,14 @@
       "impl": []
     },
     "Response": {
+      "inh": "",
+      "impl": []
+    },
+    "RestrictionTarget": {
+      "inh": "",
+      "impl": []
+    },
+    "Rewriter": {
       "inh": "",
       "impl": []
     },
@@ -2684,6 +3072,14 @@
       "inh": "",
       "impl": []
     },
+    "RTCIceCandidatePair": {
+      "inh": "",
+      "impl": []
+    },
+    "RTCIceCandidatePairEvent": {
+      "inh": "Event",
+      "impl": []
+    },
     "RTCIceTransport": {
       "inh": "EventTarget",
       "impl": []
@@ -2721,10 +3117,18 @@
       "impl": []
     },
     "RTCRtpScriptTransformer": {
-      "inh": "",
+      "inh": "EventTarget",
       "impl": []
     },
     "RTCRtpSender": {
+      "inh": "",
+      "impl": []
+    },
+    "RTCRtpSFrameDecryptor": {
+      "inh": "EventTarget",
+      "impl": []
+    },
+    "RTCRtpSFrameEncryptor": {
       "inh": "",
       "impl": []
     },
@@ -2780,10 +3184,6 @@
       "inh": "EventTarget",
       "impl": []
     },
-    "ScriptingPolicyReportBody": {
-      "inh": "ReportBody",
-      "impl": []
-    },
     "ScriptProcessorNode": {
       "inh": "AudioNode",
       "impl": []
@@ -2836,7 +3236,11 @@
       "inh": "EventTarget",
       "impl": []
     },
-    "SFrameTransform": {
+    "SFrameDecryptorStream": {
+      "inh": "EventTarget",
+      "impl": []
+    },
+    "SFrameEncryptorStream": {
       "inh": "",
       "impl": []
     },
@@ -2858,6 +3262,10 @@
     },
     "SharedWorkerGlobalScope": {
       "inh": "WorkerGlobalScope",
+      "impl": []
+    },
+    "SnapEvent": {
+      "inh": "Event",
       "impl": []
     },
     "SourceBuffer": {
@@ -2892,6 +3300,10 @@
       "inh": "Event",
       "impl": []
     },
+    "SpeechRecognitionPhrase": {
+      "inh": "",
+      "impl": []
+    },
     "SpeechRecognitionResult": {
       "inh": "",
       "impl": []
@@ -2921,7 +3333,7 @@
       "impl": []
     },
     "StaticRange": {
-      "inh": "AbstractRange",
+      "inh": "NodeRange",
       "impl": []
     },
     "StereoPannerNode": {
@@ -2929,6 +3341,18 @@
       "impl": []
     },
     "Storage": {
+      "inh": "",
+      "impl": []
+    },
+    "StorageAccessHandle": {
+      "inh": "",
+      "impl": []
+    },
+    "StorageBucket": {
+      "inh": "",
+      "impl": []
+    },
+    "StorageBucketManager": {
       "inh": "",
       "impl": []
     },
@@ -2960,7 +3384,15 @@
       "inh": "Event",
       "impl": []
     },
+    "Subscriber": {
+      "inh": "",
+      "impl": []
+    },
     "SubtleCrypto": {
+      "inh": "",
+      "impl": []
+    },
+    "Summarizer": {
       "inh": "",
       "impl": []
     },
@@ -3054,10 +3486,6 @@
     },
     "SVGDescElement": {
       "inh": "SVGElement",
-      "impl": []
-    },
-    "SVGDiscardElement": {
-      "inh": "SVGAnimationElement",
       "impl": []
     },
     "SVGElement": {
@@ -3240,6 +3668,10 @@
       "inh": "SVGGeometryElement",
       "impl": []
     },
+    "SVGPathSegment": {
+      "inh": "",
+      "impl": []
+    },
     "SVGPatternElement": {
       "inh": "SVGElement",
       "impl": []
@@ -3340,10 +3772,6 @@
       "inh": "SVGGraphicsElement",
       "impl": []
     },
-    "SVGUseElementShadowRoot": {
-      "inh": "ShadowRoot",
-      "impl": []
-    },
     "SVGViewElement": {
       "inh": "SVGElement",
       "impl": []
@@ -3357,6 +3785,10 @@
       "impl": []
     },
     "Table": {
+      "inh": "",
+      "impl": []
+    },
+    "Tag": {
       "inh": "",
       "impl": []
     },
@@ -3400,6 +3832,10 @@
       "inh": "",
       "impl": []
     },
+    "TextEvent": {
+      "inh": "UIEvent",
+      "impl": []
+    },
     "TextFormat": {
       "inh": "",
       "impl": []
@@ -3440,6 +3876,22 @@
       "inh": "",
       "impl": []
     },
+    "ToggleEvent": {
+      "inh": "Event",
+      "impl": []
+    },
+    "Tool": {
+      "inh": "",
+      "impl": []
+    },
+    "ToolActivatedEvent": {
+      "inh": "Event",
+      "impl": []
+    },
+    "ToolCancelEvent": {
+      "inh": "Event",
+      "impl": []
+    },
     "Touch": {
       "inh": "",
       "impl": []
@@ -3468,11 +3920,19 @@
       "inh": "Event",
       "impl": []
     },
+    "Translator": {
+      "inh": "",
+      "impl": []
+    },
     "TreeWalker": {
       "inh": "",
       "impl": []
     },
     "TrustedHTML": {
+      "inh": "",
+      "impl": []
+    },
+    "TrustedHTMLParserOptions": {
       "inh": "",
       "impl": []
     },
@@ -3585,11 +4045,11 @@
       "impl": []
     },
     "VideoDecoder": {
-      "inh": "",
+      "inh": "EventTarget",
       "impl": []
     },
     "VideoEncoder": {
-      "inh": "",
+      "inh": "EventTarget",
       "impl": []
     },
     "VideoFrame": {
@@ -3612,6 +4072,10 @@
       "inh": "EventTarget",
       "impl": []
     },
+    "Viewport": {
+      "inh": "",
+      "impl": []
+    },
     "ViewTimeline": {
       "inh": "ScrollTimeline",
       "impl": []
@@ -3620,8 +4084,16 @@
       "inh": "",
       "impl": []
     },
+    "ViewTransitionTypeSet": {
+      "inh": "",
+      "impl": []
+    },
     "VirtualKeyboard": {
       "inh": "EventTarget",
+      "impl": []
+    },
+    "VisibilityStateEntry": {
+      "inh": "PerformanceEntry",
       "impl": []
     },
     "VisualViewport": {
@@ -3649,6 +4121,14 @@
       "impl": []
     },
     "WEBGL_blend_equation_advanced_coherent": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_blend_func_extended": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_clip_cull_distance": {
       "inh": "",
       "impl": []
     },
@@ -3709,6 +4189,26 @@
       "impl": []
     },
     "WEBGL_multi_draw_instanced_base_vertex_base_instance": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_polygon_mode": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_provoking_vertex": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_render_shared_exponent": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_shader_pixel_local_storage": {
+      "inh": "",
+      "impl": []
+    },
+    "WEBGL_stencil_texturing": {
       "inh": "",
       "impl": []
     },
@@ -3808,6 +4308,10 @@
       "inh": "",
       "impl": []
     },
+    "WebTransportDatagramsWritable": {
+      "inh": "WritableStream",
+      "impl": []
+    },
     "WebTransportError": {
       "inh": "DOMException",
       "impl": []
@@ -3816,8 +4320,20 @@
       "inh": "ReadableStream",
       "impl": []
     },
+    "WebTransportSendGroup": {
+      "inh": "",
+      "impl": []
+    },
     "WebTransportSendStream": {
       "inh": "WritableStream",
+      "impl": []
+    },
+    "WebTransportWriter": {
+      "inh": "WritableStreamDefaultWriter",
+      "impl": []
+    },
+    "WGSLLanguageFeatures": {
+      "inh": "",
       "impl": []
     },
     "WheelEvent": {
@@ -3876,6 +4392,10 @@
       "inh": "",
       "impl": []
     },
+    "WorkletPerformance": {
+      "inh": "",
+      "impl": []
+    },
     "WritableStream": {
       "inh": "",
       "impl": []
@@ -3885,6 +4405,10 @@
       "impl": []
     },
     "WritableStreamDefaultWriter": {
+      "inh": "",
+      "impl": []
+    },
+    "Writer": {
       "inh": "",
       "impl": []
     },
@@ -3928,6 +4452,14 @@
       "inh": "",
       "impl": []
     },
+    "XRBody": {
+      "inh": "",
+      "impl": []
+    },
+    "XRBodySpace": {
+      "inh": "XRSpace",
+      "impl": []
+    },
     "XRBoundedReferenceSpace": {
       "inh": "XRReferenceSpace",
       "impl": []
@@ -3962,6 +4494,18 @@
     },
     "XRFrame": {
       "inh": "",
+      "impl": []
+    },
+    "XRGPUBinding": {
+      "inh": "",
+      "impl": []
+    },
+    "XRGPUDepthInformation": {
+      "inh": "XRDepthInformation",
+      "impl": []
+    },
+    "XRGPUSubImage": {
+      "inh": "XRSubImage",
       "impl": []
     },
     "XRHand": {
@@ -4020,8 +4564,24 @@
       "inh": "",
       "impl": []
     },
+    "XRMesh": {
+      "inh": "",
+      "impl": []
+    },
+    "XRMeshSet": {
+      "inh": "",
+      "impl": []
+    },
     "XRPermissionStatus": {
       "inh": "PermissionStatus",
+      "impl": []
+    },
+    "XRPlane": {
+      "inh": "",
+      "impl": []
+    },
+    "XRPlaneSet": {
+      "inh": "",
       "impl": []
     },
     "XRPose": {
@@ -4094,6 +4654,10 @@
     },
     "XRViewport": {
       "inh": "",
+      "impl": []
+    },
+    "XRVisibilityMaskChangeEvent": {
+      "inh": "Event",
       "impl": []
     },
     "XRWebGLBinding": {

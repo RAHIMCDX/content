@@ -1,11 +1,8 @@
 ---
 title: Port
 slug: Glossary/Port
-tags:
-  - Intro
-  - Security
-  - computer network
-  - port
+page-type: glossary-definition
+sidebar: glossarysidebar
 ---
 
 For a computer connected to a network with an {{Glossary("IP address")}}, a **port** is a communication endpoint. Ports are designated by numbers, and below 1024 each port is associated by default with a specific {{Glossary("protocol")}}.

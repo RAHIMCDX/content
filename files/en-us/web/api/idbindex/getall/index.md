@@ -1,14 +1,8 @@
 ---
-title: IDBIndex.getAll()
+title: "IDBIndex: getAll() method"
+short-title: getAll()
 slug: Web/API/IDBIndex/getAll
 page-type: web-api-instance-method
-tags:
-  - API
-  - IDBIndex
-  - IndexedDB
-  - Method
-  - Reference
-  - Storage
 browser-compat: api.IDBIndex.getAll
 ---
 
@@ -31,23 +25,46 @@ use `getAll()`.
 getAll()
 getAll(query)
 getAll(query, count)
+getAll(options)
+
 ```
 
 ### Parameters
 
+The `getAll()` method can take separate parameters or a single options object containing the parameters as properties.
+
+The parameters can include:
+
 - `query` {{optional_inline}}
-  - : A key or an {{domxref("IDBKeyRange")}} identifying the records to retrieve. If this
-    value is null or missing, the browser will use an unbound key range.
+  - : A key or an {{domxref("IDBKeyRange")}} identifying the records to retrieve. If this value is `null` or not specified, the browser will use an unbound key range.
 - `count` {{optional_inline}}
   - : The number of records to return. If this value exceeds the number of records in the
     query, the browser will only retrieve the queried records. If it is lower than
     `0` or greater than `2^32 - 1` a {{jsxref("TypeError")}}
     exception will be thrown.
 
+If an object parameter is specified, its properties can include:
+
+- `query` {{optional_inline}}
+  - : See the earlier [`query`](#query) definition.
+- `count` {{optional_inline}}
+  - : See the earlier [`count`](#count) definition.
+- `direction` {{optional_inline}}
+  - : An enumerated value specifying the direction in which the objects are traversed. Possible values are:
+    - `next`
+      - : The objects are traversed from the beginning, in increasing key order. This is the default value.
+    - `nextunique`
+      - : The objects are traversed from the beginning, in increasing key order. For every key with duplicate objects, only the object closest to the start is yielded.
+    - `prev`
+      - : The objects are traversed from the end, in decreasing key order.
+    - `prevunique`
+      - : The objects are traversed from the end, in decreasing key order. For every key with duplicate objects, only the object closest to the start is yielded.
+
 ### Return value
 
-An {{domxref("IDBRequest")}} object on which subsequent events related to this
-operation are fired.
+An {{domxref("IDBRequest")}} object on which subsequent events related to this operation are fired.
+
+If the operation is successful, the value of the request's {{domxref("IDBRequest.result", "result")}} property is an {{jsxref("Array")}} of the values of all records matching the given query, up to the value of `count`, if `count` was supplied.
 
 ### Exceptions
 
@@ -57,18 +74,17 @@ This method may raise a {{domxref("DOMException")}} of the following types:
   - : Thrown if this {{domxref("IDBIndex")}}'s transaction is inactive.
 - `InvalidStateError` {{domxref("DOMException")}}
   - : Thrown if the {{domxref("IDBIndex")}} has been deleted or removed.
-
-A {{jsxref("TypeError")}} exception is thrown if the `count` parameter is
-not between `0` and `2^32> - 1` included.
+- {{jsxref("TypeError")}}
+  - : Thrown if the [`count`](#count) parameter is not between `0` and `2^32 - 1`, inclusive.
 
 ## Examples
 
 ```js
-const myIndex = objectStore.index('index');
+const myIndex = objectStore.index("index");
 const getAllRequest = myIndex.getAll();
 getAllRequest.onsuccess = () => {
   console.log(getAllRequest.result);
-}
+};
 ```
 
 ## Specifications

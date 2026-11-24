@@ -1,19 +1,14 @@
 ---
-title: FontFaceSet.size
+title: "FontFaceSet: size property"
+short-title: size
 slug: Web/API/FontFaceSet/size
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - size
-  - FontFaceSet
 browser-compat: api.FontFaceSet.size
 ---
 
-{{APIRef("CSS Font Loading API")}}
+{{APIRef("CSS Font Loading API")}}{{AvailableInWorkers}}
 
-The **`size`** property of the {{domxref("FontFaceSet")}} interface returns the number of items in the `FontFaceSet`.
+The **`size`** read-only property of the {{domxref("FontFaceSet")}} interface returns the number of items in the `FontFaceSet`.
 
 ## Value
 

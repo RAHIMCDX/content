@@ -1,15 +1,10 @@
 ---
-title: ContactsManager.select()
+title: "ContactsManager: select() method"
+short-title: select()
 slug: Web/API/ContactsManager/select
 page-type: web-api-instance-method
-tags:
-  - Contact Picker API
-  - Contacts
-  - ContactsPicker
-  - Method
-  - PWA
-  - contact picker
-  - Experimental
+status:
+  - experimental
 browser-compat: api.ContactsManager.select
 ---
 
@@ -31,10 +26,8 @@ select(properties, options)
 ### Parameters
 
 - `properties`
-
   - : An array of {{jsxref('String', 'strings')}} defining what information to retrieve
     from a contact. Allowed values are as follows:
-
     - `'name'`: The contact's name.
     - `'tel'`: The telephone number(s) of the contact.
     - `'email'`: The email address of the contact.
@@ -42,15 +35,13 @@ select(properties, options)
     - `'icon'`: The avatar of the contact.
 
 - `options` {{optional_inline}}
-
   - : Options are as follows:
-
     - `multiple`
       - : A Boolean that allows multiple contacts to be selected. The default is `false`.
 
 ### Return value
 
-Returns a {{jsxref('Promise')}} that resolves with an array of objects containing contact information. Each object represents a single contact may contain the following properties:
+Returns a {{jsxref('Promise')}} that resolves with an array of objects containing contact information. Each object represents a single contact and may contain the following properties:
 
 - `address`
   - : An {{jsxref("Array")}} of {{domxref("ContactAddress")}} objects, each containing specifics of a unique physical address.
@@ -59,19 +50,23 @@ Returns a {{jsxref('Promise')}} that resolves with an array of objects containin
 - `icon`
   - : An array of {{domxref("Blob")}} objects containing images of an individual.
 - `name`
-  - : An array strings, each a unique name of an individual.
+  - : An array of strings, each containing a unique name of an individual.
 - `tel`
-  - : An array strings, each a unique phone number of an individual.
+  - : An array of strings, each containing a unique phone number of an individual.
 
 ### Exceptions
 
 - `InvalidStateError` {{domxref("DOMException")}}
-  - : Returned if the browsing context is not top-level or the contact picker is showing a flag. A flag denotes an already existing contact picker; only one picker can exist at any time.
+  - : Returned if the browsing context is not top-level, if the contact picker shows a flag that denotes an already existing contact picker since only one picker can exist at any time, or if launching a contact picker failed.
 - `SecurityError` {{domxref("DOMException")}}
-  - : Returned if the method is not triggered by user interaction.
+  - : Returned if the method is not triggered by [user activation](/en-US/docs/Web/Security/Defenses/User_activation).
 - {{jsxref("TypeError")}}
   - : Returned if `properties` is empty, or if any of the specified properties are not
     supported.
+
+## Security
+
+{{Glossary("Transient activation")}} is required. The user has to interact with the page or a UI element in order for this feature to work.
 
 ## Examples
 
@@ -100,7 +95,7 @@ async function getContacts() {
 
 ### Select Using Only Supported Properties
 
-The following example uses {{jsxref("ContactsManager.getProperties", "getProperties()")}} to ensure that only supported properties are passed. Otherwise, `select()` might throw a {{jsxref("TypeError")}}. `handleResults()` is a developer defined function.
+The following example uses {{domxref("ContactsManager.getProperties", "getProperties()")}} to ensure that only supported properties are passed. Otherwise, `select()` might throw a {{jsxref("TypeError")}}. `handleResults()` is a developer defined function.
 
 ```js
 const supportedProperties = await navigator.contacts.getProperties();

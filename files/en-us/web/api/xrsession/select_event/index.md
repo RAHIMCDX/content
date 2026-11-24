@@ -1,19 +1,14 @@
 ---
-title: 'XRSession: select event'
+title: "XRSession: select event"
+short-title: select
 slug: Web/API/XRSession/select_event
 page-type: web-api-event
-tags:
-  - API
-  - Reference
-  - Event
-  - WebXR
-  - XR
-  - XRInputSourceEvent
-  - Experimental
+status:
+  - experimental
 browser-compat: api.XRSession.select_event
 ---
 
-{{APIRef("WebXR Device API")}}{{SeeCompatTable}}
+{{APIRef("WebXR Device API")}}{{SeeCompatTable}}{{SecureContext_Header}}
 
 The WebXR **`select`** event is sent to an {{domxref("XRSession")}} when one of the session's input sources has completed a [primary action](/en-US/docs/Web/API/WebXR_Device_API/Inputs#primary_action).
 
@@ -21,11 +16,15 @@ The {{domxref("Element.beforexrselect_event", "beforexrselect")}} is fired befor
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('select', (event) => { })
+```js-nolint
+addEventListener("select", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onselect = (event) => { }
 ```
 
@@ -34,15 +33,6 @@ onselect = (event) => { }
 An {{domxref("XRInputSourceEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("XRInputSourceEvent")}}
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("XRInputSourceEvent.frame", "frame")}} {{ReadOnlyInline}}
-  - : An {{domxref("XRFrame")}} object providing the needed information about the event frame during which the event occurred. This frame may have been rendered in the past rather than being a current frame. Because this is an _event_ frame, not an _animation_ frame, you cannot call {{domxref("XRFrame.getViewerPose", "XRFrame.getViewerPose()")}} on it; instead, use {{domxref("XRFrame.getPose", "getPose()")}}.
-- {{domxref("XRInputSourceEvent.inputSource", "inputSource")}} {{ReadOnlyInline}}
-  - : An {{domxref("XRInputSource")}} object indicating which input source generated the input event.
 
 ## Description
 
@@ -65,8 +55,10 @@ The following example uses {{domxref("EventTarget.addEventListener", "addEventLi
 ```js
 xrSession.addEventListener("select", (event) => {
   if (event.inputSource.targetRayMode === "tracked-pointer") {
-    let targetRayPose = event.frame.getPose(event.inputSource.targetRaySpace,
-                              myRefSpace);
+    let targetRayPose = event.frame.getPose(
+      event.inputSource.targetRaySpace,
+      myRefSpace,
+    );
     if (targetRayPose) {
       myHandleSelectWithRay(targetRayPose.transform);
     }
@@ -74,13 +66,15 @@ xrSession.addEventListener("select", (event) => {
 });
 ```
 
-You can also set up a handler for `select` events by setting the {{domxref("XRSession")}} object's `onselect` event handler property to a function that handles the event:
+You can also set up a handler for `select` events by setting the {{domxref("XRSession")}} object's `onselect` event handler property to a function that handles the event (but note that this replaces other event listeners added using `onselect`, if any):
 
 ```js
 xrSession.onselect = (event) => {
   if (event.inputSource.targetRayMode === "tracked-pointer") {
-    let targetRayPose = event.frame.getPose(event.inputSource.targetRaySpace,
-                              myRefSpace);
+    let targetRayPose = event.frame.getPose(
+      event.inputSource.targetRaySpace,
+      myRefSpace,
+    );
     if (targetRayPose) {
       myHandleSelectWithRay(targetRayPose.transform);
     }

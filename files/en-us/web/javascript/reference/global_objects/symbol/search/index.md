@@ -1,29 +1,44 @@
 ---
 title: Symbol.search
+short-title: search
 slug: Web/JavaScript/Reference/Global_Objects/Symbol/search
-tags:
-  - ECMAScript 2015
-  - JavaScript
-  - Property
-  - Symbol
-  - Polyfill
+page-type: javascript-static-data-property
 browser-compat: javascript.builtins.Symbol.search
+sidebar: jsref
 ---
 
-{{JSRef}}
+The **`Symbol.search`** static data property represents the [well-known symbol](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#well-known_symbols) `Symbol.search`. The {{jsxref("String.prototype.search()")}} method looks up this symbol on its first argument for the method that returns the index within a string that matches the current object.
 
-The **`Symbol.search`** well-known symbol specifies the method that returns the index within a string that matches the regular expression. This function is called by the {{jsxref("String.prototype.search()")}} method.
+For more information, see [`RegExp.prototype[Symbol.search]()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.search) and {{jsxref("String.prototype.search()")}}.
 
-For more information, see {{jsxref("RegExp.@@search", "RegExp.prototype[@@search]()")}} and {{jsxref("String.prototype.search()")}}.
+{{InteractiveExample("JavaScript Demo: Symbol.search")}}
 
-{{EmbedInteractiveExample("pages/js/symbol-search.html")}}{{js_property_attributes(0,0,0)}}
+```js interactive-example
+class Search1 {
+  constructor(value) {
+    this.value = value;
+  }
+  [Symbol.search](string) {
+    return string.indexOf(this.value);
+  }
+}
+
+console.log("foobar".search(new Search1("bar")));
+// Expected output: 3
+```
+
+## Value
+
+The well-known symbol `Symbol.search`.
+
+{{js_property_attributes(0, 0, 0)}}
 
 ## Examples
 
 ### Custom string search
 
 ```js
-class caseInsensitiveSearch {
+class CaseInsensitiveSearch {
   constructor(value) {
     this.value = value.toLowerCase();
   }
@@ -32,7 +47,7 @@ class caseInsensitiveSearch {
   }
 }
 
-console.log("foobar".search(new caseInsensitiveSearch("BaR"))); // 3
+console.log("foobar".search(new CaseInsensitiveSearch("BaR"))); // 3
 ```
 
 ## Specifications
@@ -45,8 +60,10 @@ console.log("foobar".search(new caseInsensitiveSearch("BaR"))); // 3
 
 ## See also
 
-- [Polyfill of `Symbol.search` in `core-js`](https://github.com/zloirock/core-js#ecmascript-symbol)
+- [Polyfill of `Symbol.search` in `core-js`](https://core-js.io/docs/features/ecmascript/symbol)
 - {{jsxref("Symbol.match")}}
+- {{jsxref("Symbol.matchAll")}}
 - {{jsxref("Symbol.replace")}}
 - {{jsxref("Symbol.split")}}
-- {{jsxref("RegExp.@@search", "RegExp.prototype[@@search]()")}}
+- {{jsxref("String.prototype.search()")}}
+- [`RegExp.prototype[Symbol.search]()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.search)

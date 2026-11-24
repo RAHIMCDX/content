@@ -1,18 +1,14 @@
 ---
-title: BackgroundFetchRegistration.failureReason
+title: "BackgroundFetchRegistration: failureReason property"
+short-title: failureReason
 slug: Web/API/BackgroundFetchRegistration/failureReason
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - failureReason
-  - BackgroundFetchRegistration
-  - Experimental
+status:
+  - experimental
 browser-compat: api.BackgroundFetchRegistration.failureReason
 ---
 
-{{APIRef("Background Fetch API")}}{{SeeCompatTable}}
+{{APIRef("Background Fetch API")}}{{SeeCompatTable}}{{AvailableInWorkers}}
 
 The **`failureReason`** read-only property of the {{domxref("BackgroundFetchRegistration")}} interface returns a string with a value that indicates a reason for a background fetch failure.
 
@@ -25,7 +21,7 @@ One of the following strings:
 - `""`
   - : The background fetch has not completed, or was successful.
 - `"aborted"`
-  - : The operation was cancelled by the user, or {{domxref("BackgroundFetchRegistration.abort()","abort()")}} was called.
+  - : The operation was canceled by the user, or {{domxref("BackgroundFetchRegistration.abort()","abort()")}} was called.
 - `"bad-status"`
   - : A response had a not-ok status (a status outside the range 200-299).
 - `"fetch-error"`

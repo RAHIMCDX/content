@@ -1,19 +1,12 @@
 ---
 title: "HTMLInputElement: invalid event"
+short-title: invalid
 slug: Web/API/HTMLInputElement/invalid_event
 page-type: web-api-event
-tags:
-  - API
-  - Constraint Validation API
-  - Constraint validation
-  - Event
-  - Forms
-  - Reference
-  - invalid
 browser-compat: api.HTMLInputElement.invalid_event
 ---
 
-{{APIRef}}
+{{APIRef("HTML DOM")}}
 
 The **`invalid`** event fires when a submittable element has been checked for validity and doesn't satisfy its constraints.
 
@@ -23,12 +16,16 @@ It is not checked on {{domxref("Element/blur_event", "blur")}}.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('invalid', (event) => {});
+```js-nolint
+addEventListener("invalid", (event) => { })
+```
 
-oninvalid = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+oninvalid = (event) => { }
 ```
 
 ## Event type
@@ -56,18 +53,23 @@ Invalid values:
 <ul id="log"></ul>
 ```
 
+```js hidden
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+```
+
 ### JavaScript
 
 ```js
-const input = document.querySelector('input')
-const log = document.getElementById('log')
+const input = document.querySelector("input");
+const log = document.getElementById("log");
 
-input.addEventListener('invalid', (e) => {
-  log.appendChild(Object.assign(
-    document.createElement('li'),
-    { textContent: JSON.stringify(e.target.value) }
-  ))
-})
+input.addEventListener("invalid", (e) => {
+  log.appendChild(document.createElement("li")).textContent = JSON.stringify(
+    e.target.value,
+  );
+});
 ```
 
 ### Result

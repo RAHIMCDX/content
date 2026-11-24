@@ -1,28 +1,48 @@
 ---
 title: Inequality (!=)
 slug: Web/JavaScript/Reference/Operators/Inequality
-tags:
-  - JavaScript
-  - Language feature
-  - Operator
-  - Reference
+page-type: javascript-operator
 browser-compat: javascript.operators.inequality
+sidebar: jssidebar
 ---
-
-{{jsSidebar("Operators")}}
 
 The **inequality (`!=`)** operator checks whether its two operands are not
 equal, returning a Boolean result.
 Unlike the [strict inequality](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality) operator,
 it attempts to convert and compare operands that are of different types.
 
-{{EmbedInteractiveExample("pages/js/expressions-inequality.html")}}
+{{InteractiveExample("JavaScript Demo: Inequality (!=) operator")}}
+
+```js interactive-example
+console.log(1 != 1);
+// Expected output: false
+
+console.log("hello" != "hello");
+// Expected output: false
+
+console.log("1" != 1);
+// Expected output: false
+
+console.log(0 != false);
+// Expected output: false
+```
 
 ## Syntax
 
 ```js-nolint
 x != y
 ```
+
+### Parameters
+
+- `x`
+  - : An expression with [precedence](/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table) 8 (equality) or above.
+- `y`
+  - : An expression with [precedence](/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table) 9 (relational operators) or above.
+
+### Return value
+
+`true` if `x` and `y` are unequal according to [loose equality](/en-US/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness#loose_equality_using), and `false` otherwise.
 
 ## Description
 
@@ -107,6 +127,6 @@ console.log(object1 != object1); // false
 
 ## See also
 
-- [Equality operator](/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
-- [Strict equality operator](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
-- [Strict inequality operator](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality)
+- [Equality (`==`)](/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
+- [Strict equality (`===`)](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
+- [Strict inequality (`!==`)](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality)

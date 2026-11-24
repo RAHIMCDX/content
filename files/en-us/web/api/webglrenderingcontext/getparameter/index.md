@@ -1,17 +1,12 @@
 ---
-title: WebGLRenderingContext.getParameter()
+title: "WebGLRenderingContext: getParameter() method"
+short-title: getParameter()
 slug: Web/API/WebGLRenderingContext/getParameter
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - WebGL
-  - WebGLRenderingContext
 browser-compat: api.WebGLRenderingContext.getParameter
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WebGLRenderingContext.getParameter()`** method of the [WebGL API](/en-US/docs/Web/API/WebGL_API) returns a value for the passed
 parameter name.
@@ -131,7 +126,7 @@ You can query the following `pname` parameters when using a
     <tr>
       <td><code>gl.COLOR_WRITEMASK</code></td>
       <td>
-        sequence&#x3C;{{domxref("WebGL_API/Types", "GLboolean")}}>
+        <code>sequence&#x3C;{{domxref("WebGL_API/Types", "GLboolean", "", "nocode")}}></code>
         (with 4 values)
       </td>
       <td></td>
@@ -898,8 +893,7 @@ You can query the following `pname` parameters when using a
       </td>
       <td>
         See
-        {{domxref("WebGL2RenderingContext/bindTransformFeedback",
-        "bindTransformFeedback")}}.
+        {{domxref("WebGL2RenderingContext/bindTransformFeedback", "bindTransformFeedback")}}.
       </td>
     </tr>
     <tr>
@@ -1062,6 +1056,12 @@ You can query the following `pname` parameters when using [WebGL extensions](/en
       <td>{{domxref("WebGL_API/Types", "GLint")}}</td>
       <td>{{domxref("OVR_multiview2")}}</td>
       <td>Maximum number of views.</td>
+    </tr>
+    <tr>
+      <td><code>ext.POLYGON_OFFSET_CLAMP_EXT</code></td>
+      <td>{{domxref("WebGL_API/Types", "GLfloat")}}</td>
+      <td>{{domxref("EXT_polygon_offset_clamp")}}</td>
+      <td>Maximum or minimum depth offset.</td>
     </tr>
   </tbody>
 </table>

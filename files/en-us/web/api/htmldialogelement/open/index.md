@@ -1,14 +1,8 @@
 ---
-title: HTMLDialogElement.open
+title: "HTMLDialogElement: open property"
+short-title: open
 slug: Web/API/HTMLDialogElement/open
 page-type: web-api-instance-property
-tags:
-  - API
-  - HTML DOM
-  - HTMLDialogElement
-  - Property
-  - Reference
-  - open
 browser-compat: api.HTMLDialogElement.open
 ---
 
@@ -16,84 +10,84 @@ browser-compat: api.HTMLDialogElement.open
 
 The **`open`** property of the
 {{domxref("HTMLDialogElement")}} interface is a boolean value reflecting the
-{{htmlattrxref("open", "dialog")}} HTML attribute, indicating whether the {{htmlelement("dialog")}} is
+[`open`](/en-US/docs/Web/HTML/Reference/Elements/dialog#open) HTML attribute, indicating whether the {{htmlelement("dialog")}} is
 available for interaction.
 
 ## Value
 
-A boolean value representing the state of the {{htmlattrxref("open",
-  "dialog")}} HTML attribute. `true` means it is set, and therefore the dialog
-is shown. `false` means it not set, and therefore the dialog is not shown.
+A boolean value representing the state of the [`open`](/en-US/docs/Web/HTML/Reference/Elements/dialog#open) HTML attribute. A value of `true` means that the dialog is showing, while `false` means it's not showing.
 
-The property is now read only — it is possible to set the value to programmatically
-show or hide the dialog.
+> [!WARNING]
+> While the `open` property is technically not read-only and can be set directly, doing so is strongly discouraged by [the HTML specification](https://html.spec.whatwg.org/multipage/interactive-elements.html#note-dialog-remove-open-attribute), as it can break normal dialog interactions in unexpected ways.
+> For example, the [`close`](/en-US/docs/Web/API/HTMLDialogElement/close_event) event won't fire when programmatically setting `open` to `false`, and subsequent calls to the [`close()`](/en-US/docs/Web/API/HTMLDialogElement/close) and [`requestClose()`](/en-US/docs/Web/API/HTMLDialogElement/requestClose) methods will have no effect.
+> Instead, it's better to use methods such as [`show()`](/en-US/docs/Web/API/HTMLDialogElement/show), [`showModal()`](/en-US/docs/Web/API/HTMLDialogElement/showModal), `close()`, and `requestClose()` to change the value of the `open` attribute.
 
 ## Examples
 
-The following example shows a simple button that, when clicked, opens a
-{{htmlelement("dialog")}} containing a form via the `showModal()` method.
-From there you can click the _Cancel_ button to close the dialog (via the
-{{domxref("HTMLDialogElement.close()")}} method), or submit the form via the submit
-button.
+### Opening a dialog
+
+The following example shows a simple button that, when clicked, opens a {{htmlelement("dialog")}} containing a form via the `showModal()` method.
+From there you can click the _Cancel_ button to close the dialog (via the {{domxref("HTMLDialogElement.close()")}} method), or submit the form via the submit button.
+
+The code logs the value of `open` when the dialog state changes.
+
+#### HTML
 
 ```html
-<!-- Simple pop-up dialog box, containing a form -->
-<dialog id="favDialog">
+<!-- Simple pop-up dialog box -->
+<dialog id="dialog">
   <form method="dialog">
-    <section>
-      <p>
-        <label for="favAnimal">Favorite animal:</label>
-        <select id="favAnimal" name="favAnimal">
-          <option></option>
-          <option>Brine shrimp</option>
-          <option>Red panda</option>
-          <option>Spider monkey</option>
-        </select>
-      </p>
-    </section>
-    <menu>
-      <button id="cancel" type="reset">Cancel</button>
-      <button type="submit">Confirm</button>
-    </menu>
+    <button type="submit">Close</button>
   </form>
 </dialog>
 
-<menu>
-  <button id="updateDetails">Update details</button>
-</menu>
-
-<script>
-  (() => {
-    const updateButton = document.getElementById("updateDetails");
-    const cancelButton = document.getElementById("cancel");
-    const dialog = document.getElementById("favDialog");
-    dialog.returnValue = "favAnimal";
-
-    function openCheck(dialog) {
-      if (dialog.open) {
-        console.log("Dialog open");
-      } else {
-        console.log("Dialog closed");
-      }
-    }
-
-    // Update button opens a modal dialog
-    updateButton.addEventListener("click", () => {
-      dialog.showModal();
-      openCheck(dialog);
-    });
-
-    // Form cancel button closes the dialog box
-    cancelButton.addEventListener("click", () => {
-      dialog.close("animalNotChosen");
-      openCheck(dialog);
-    });
-  })();
-</script>
+<button id="open">Open Dialog</button>
 ```
 
-> **Note:** You can find this example on GitHub as [htmldialogelement-basic](https://github.com/mdn/dom-examples/blob/main/htmldialogelement-basic/index.html)
-> ([see it live also](https://mdn.github.io/dom-examples/htmldialogelement-basic/)).
+```html hidden
+<pre id="log"></pre>
+```
+
+```css hidden
+#log {
+  height: 170px;
+  overflow: scroll;
+  padding: 0.5rem;
+  border: 1px solid black;
+}
+```
+
+#### JavaScript
+
+```js hidden
+const logElement = document.getElementById("log");
+function log(text) {
+  logElement.innerText = `${logElement.innerText}${text}\n`;
+  logElement.scrollTop = logElement.scrollHeight;
+}
+```
+
+```js
+const dialog = document.getElementById("dialog");
+const openButton = document.getElementById("open");
+
+function openCheck(dialog) {
+  log(dialog.open ? "Dialog: open" : "Dialog: closed");
+}
+
+openButton.addEventListener("click", () => {
+  dialog.showModal();
+  openCheck(dialog);
+});
+
+dialog.addEventListener("close", () => {
+  openCheck(dialog);
+});
+```
+
+### Result
+
+{{ EmbedLiveSample('Opening a dialog', '100%', '250px') }}
 
 ## Specifications
 
@@ -105,4 +99,4 @@ button.
 
 ## See also
 
-- The HTML element implementing this interface: {{ HTMLElement("dialog") }}.
+- HTML {{htmlelement("dialog")}} element

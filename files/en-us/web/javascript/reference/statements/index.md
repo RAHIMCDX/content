@@ -1,17 +1,12 @@
 ---
 title: Statements and declarations
 slug: Web/JavaScript/Reference/Statements
-tags:
-  - JavaScript
-  - Landing page
-  - Reference
-  - statements
+page-type: landing-page
 browser-compat: javascript.statements
+sidebar: jssidebar
 ---
 
-{{jsSidebar("Statements")}}
-
-JavaScript applications consist of statements with an appropriate syntax. A single statement may span multiple lines. Multiple statements may occur on a single line if each statement is separated by a semicolon. This isn't a keyword, but a group of keywords.
+JavaScript code is built from statements and declarations, which can contain expressions. This reference groups the constructs used to control execution and declare bindings. A statement can span multiple lines, and a line can contain multiple statements.
 
 ## Statements and declarations by category
 
@@ -39,9 +34,13 @@ For an alphabetical listing see the sidebar on the left.
 - {{jsxref("Statements/var", "var")}}
   - : Declares a variable, optionally initializing it to a value.
 - {{jsxref("Statements/let", "let")}}
-  - : Declares a block scope local variable, optionally initializing it to a value.
+  - : Declares a block-scoped variable, optionally initializing it to a value.
 - {{jsxref("Statements/const", "const")}}
-  - : Declares a read-only named constant.
+  - : Declares a block-scoped variable that cannot be re-assigned, which must be initialized at declaration.
+- {{jsxref("Statements/using", "using")}}
+  - : Declares a variable like `const` that is _synchronously disposed_.
+- {{jsxref("Statements/await_using", "await using")}}
+  - : Declares a variable like `const` that is _asynchronously disposed_.
 
 ### Functions and classes
 
@@ -63,11 +62,11 @@ For an alphabetical listing see the sidebar on the left.
 - {{jsxref("Statements/for", "for")}}
   - : Creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a statement executed in the loop.
 - {{jsxref("Statements/for...in", "for...in")}}
-  - : Iterates over the enumerable properties of an object, in arbitrary order. For each distinct property, statements can be executed.
+  - : Iterates over the enumerable properties of an object. For each distinct property, statements can be executed.
 - {{jsxref("Statements/for...of", "for...of")}}
-  - : Iterates over iterable objects (including {{jsxref("Global_Objects/Array","arrays","","true")}}, array-like objects, [iterators and generators](/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators)), invoking a custom iteration hook with statements to be executed for the value of each distinct property.
+  - : Iterates over iterable objects (including {{jsxref("Array", "arrays", "", 1)}}, [iterators](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator), and [generators](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator)), invoking a custom iteration hook with statements to be executed for each yielded value.
 - {{jsxref("Statements/for-await...of", "for await...of")}}
-  - : Iterates over async iterable objects, array-like objects, [iterators and generators](/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators), invoking a custom iteration hook with statements to be executed for the value of each distinct property.
+  - : Iterates over async or sync iterable objects, invoking a custom iteration hook with statements to be executed for each yielded value.
 - {{jsxref("Statements/while", "while")}}
   - : Creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.
 
@@ -76,24 +75,34 @@ For an alphabetical listing see the sidebar on the left.
 - {{jsxref("Statements/Empty", "Empty", "", 1)}}
   - : An empty statement is used to provide no statement, although the JavaScript syntax would expect one.
 - {{jsxref("Statements/block", "Block", "", 1)}}
-  - : A block statement is used to group zero or more statements. The block is delimited by a pair of curly brackets.
+  - : A block statement is used to group zero or more statements. The block is delimited by a pair of curly braces.
+- {{jsxref("Statements/Expression_statement", "Expression statement", "", 1)}}
+  - : An expression statement evaluates an expression and discards its result. It allows the expression to perform side effects, such as executing a function or updating a variable.
 - {{jsxref("Statements/debugger", "debugger")}}
   - : Invokes any available debugging functionality. If no debugging functionality is available, this statement has no effect.
 - {{jsxref("Statements/export", "export")}}
   - : Used to export functions to make them available for imports in external modules, and other scripts.
 - {{jsxref("Statements/import", "import")}}
   - : Used to import functions exported from an external module, another script.
+- {{jsxref("Statements/import/defer", "import defer")}}
+  - : Loads a module as a namespace, deferring synchronous evaluation until the returned namespace's properties are accessed.
+- {{jsxref("Statements/import/source", "import source")}}
+  - : Results in an object representing the module's compiled source, without loading its dependencies, linking it, or evaluating it.
 - {{jsxref("Statements/label", "label", "", 1)}}
   - : Provides a statement with an identifier that you can refer to using a `break` or `continue` statement.
-- {{jsxref("Statements/with", "with")}} {{Deprecated_Inline}}
+- {{jsxref("Statements/with", "with")}} {{deprecated_inline}}
   - : Extends the scope chain for a statement.
 
-## Difference between statements and declarations
+## What are statements, declarations, and expressions?
 
-In this section, we will be mixing two kinds of constructs: [_statements_](https://tc39.es/ecma262/#prod-Statement) and [_declarations_](https://tc39.es/ecma262/#prod-Declaration). They are two disjoint sets of grammars. The following are declarations:
+All JavaScript programs are composed of a sequence of top-level constructs, using one of the syntaxes listed above. These are known as [_statements_](https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#prod-Statement) and [_declarations_](https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#prod-Declaration). In MDN docs, we often colloquially refer to both as _statements_, but they are technically two disjoint sets of grammars.
+
+The following are declarations:
 
 - {{jsxref("Statements/let", "let")}}
 - {{jsxref("Statements/const", "const")}}
+- {{jsxref("Statements/using", "using")}}
+- {{jsxref("Statements/await_using", "await using")}}
 - {{jsxref("Statements/function", "function")}}
 - {{jsxref("Statements/function*", "function*")}}
 - {{jsxref("Statements/async_function", "async function")}}
@@ -106,7 +115,7 @@ Everything else in the [list above](#statements_and_declarations_by_category) is
 
 The terms "statement" and "declaration" have a precise meaning in the formal syntax of JavaScript that affects where they may be placed in code. For example, in most control-flow structures, the body only accepts statements — such as the two arms of an [`if...else`](/en-US/docs/Web/JavaScript/Reference/Statements/if...else):
 
-```js
+```js-nolint
 if (condition)
   statement1;
 else
@@ -115,27 +124,28 @@ else
 
 If you use a declaration instead of a statement, it would be a {{jsxref("SyntaxError")}}. For example, a [`let`](/en-US/docs/Web/JavaScript/Reference/Statements/let) declaration is not a statement, so you can't use it in its bare form as the body of an `if` statement.
 
-```js example-bad
+```js-nolint example-bad
 if (condition)
   let i = 0; // SyntaxError: Lexical declaration cannot appear in a single-statement context
 ```
 
 On the other hand, [`var`](/en-US/docs/Web/JavaScript/Reference/Statements/var) is a statement, so you can use it on its own as the `if` body.
 
-```js example-good
+```js-nolint example-good
 if (condition)
   var i = 0;
 ```
 
-You can see declarations as "binding identifiers to values", and statements as "carrying out actions". The fact that `var` is a statement instead of a declaration is a special case, because it doesn't follow normal lexical scoping rules and may create side effects — in the form of creating global variables, mutating existing `var`-defined variables, and defining variables that are visible outside of its block (because `var`-defined variables aren't block-scoped).
+You can see declarations as "{{Glossary("binding")}} identifiers to values", and statements as "carrying out actions". The fact that `var` is a statement instead of a declaration is a special case, because it doesn't follow normal lexical scoping rules and may create side effects — in the form of creating global variables, mutating existing `var`-defined variables, and defining variables that are visible outside of its block (because `var`-defined variables aren't block-scoped).
 
 As another example, [labels](/en-US/docs/Web/JavaScript/Reference/Statements/label) can only be attached to statements.
 
-```js example-bad
+```js-nolint example-bad
 label: const a = 1; // SyntaxError: Lexical declaration cannot appear in a single-statement context
 ```
 
-> **Note:** there's a legacy grammar that allows [function declarations to have labels](/en-US/docs/Web/JavaScript/Reference/Statements/label#labeled_function_declarations), but it's only standardized for compatibility with web reality.
+> [!NOTE]
+> There's a legacy grammar that allows [function declarations to have labels](/en-US/docs/Web/JavaScript/Reference/Statements/label#labeled_function_declarations), but it's only standardized for compatibility with web reality.
 
 To get around this, you can wrap the declaration in braces — this makes it part of a [block statement](/en-US/docs/Web/JavaScript/Reference/Statements/block).
 
@@ -149,10 +159,24 @@ if (condition) {
 }
 ```
 
+In JavaScript, statements and declarations produce values, but these values are almost never observable (other than {{jsxref("Global_Objects/eval", "eval()")}}). Their purpose is to manipulate the surrounding environment and produce side effects—creating variable bindings, outputting things, modifying variable values, etc. The values they use come from evaluating [_expressions_](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-Expression).
+
+Expressions are not top-level constructs; they can only be used in specific slots inside statements and declarations, such as `if (expression)`, `const x = expression`, etc. The [expression statement](/en-US/docs/Web/JavaScript/Reference/Statements/Expression_statement) syntax allows most expressions to be used as statements, but that's just a statement with a single expression slot.
+
+You can map out JavaScript syntax structures using just statements, declarations, and expressions:
+
+- Statements can contain statements, declarations, and expressions (like `if (expression) statement` and block statements `{ statement; declaration }`)
+- Declarations can contain statements, declarations, and expressions (like `function x() { statement; declaration }` and `const x = expression`)
+- Expressions can contain statements, declarations, and expressions (like `() => { statement; declaration }` and `console.log(expression)`)
+
+In the reference documentation for each piece of syntax, we describe all its "slots" and say whether each slot is a statement, declaration, or expression.
+
+_Operators_ is another important concept in JavaScript grammar, but they do not work like building blocks. See [What are operators?](/en-US/docs/Web/JavaScript/Reference/Operators#what_are_operators) for more information.
+
 ## Browser compatibility
 
 {{Compat}}
 
 ## See also
 
-- [Operators](/en-US/docs/Web/JavaScript/Reference/Operators)
+- [Expressions and operators](/en-US/docs/Web/JavaScript/Reference/Operators)

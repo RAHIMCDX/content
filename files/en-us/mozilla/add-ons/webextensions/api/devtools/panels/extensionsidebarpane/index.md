@@ -1,24 +1,14 @@
 ---
 title: devtools.panels.ExtensionSidebarPane
 slug: Mozilla/Add-ons/WebExtensions/API/devtools/panels/ExtensionSidebarPane
-tags:
-  - API
-  - Add-ons
-  - DevTools
-  - Extensions
-  - Type
-  - Reference
-  - WebExtensions
-  - devtools.panels
-  - devtools.panels.ExtensionSidebarPane
+page-type: webextension-api-type
 browser-compat: webextensions.api.devtools.panels.ExtensionSidebarPane
+sidebar: addonsidebar
 ---
-
-{{AddonSidebar}}
 
 The `ExtensionSidebarPane` object represents a pane that an extension has added to the sidebar in the browser's HTML/CSS inspector.
 
-![new pane titled "My pane" that displays a JSON object](inspector-sidebar.png)
+![New pane titled "My pane" that displays a JSON object, in the Firefox inspector](inspector-sidebar.png)
 
 To create an `ExtensionSidebarPane`, call the [`browser.devtools.panels.elements.createSidebarPane()`](/en-US/docs/Mozilla/Add-ons/WebExtensions/API/devtools/panels/ElementsPanel/createSidebarPane) function.
 
@@ -38,13 +28,14 @@ To create an `ExtensionSidebarPane`, call the [`browser.devtools.panels.elements
 - [`devtools.panels.ExtensionSidebarPane.onHidden`](/en-US/docs/Mozilla/Add-ons/WebExtensions/API/devtools/panels/ExtensionSidebarPane/onHidden)
   - : Fired when the sidebar pane is hidden.
 
+{{WebExtExamples("h2")}}
+
 ## Browser compatibility
 
 {{Compat}}
 
-{{WebExtExamples("h2")}}
-
-> **Note:** This API is based on Chromium's [`chrome.devtools.panels`](https://developer.chrome.com/docs/extensions/reference/devtools_panels/) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.devtools.panels`](https://developer.chrome.com/docs/extensions/reference/api/devtools/panels) API.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

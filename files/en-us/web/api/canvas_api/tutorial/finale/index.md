@@ -2,13 +2,9 @@
 title: Finale
 slug: Web/API/Canvas_API/Tutorial/Finale
 page-type: guide
-tags:
-  - Canvas
-  - Graphics
-  - Tutorial
 ---
 
-{{CanvasSidebar}} {{PreviousNext("Web/API/Canvas_API/Tutorial/Optimizing_canvas")}}
+{{DefaultAPISidebar("Canvas API")}} {{PreviousNext("Web/API/Canvas_API/Tutorial/Optimizing_canvas")}}
 
 Congratulations! You finished the [Canvas tutorial](/en-US/docs/Web/API/Canvas_API/Tutorial)! This knowledge will help you to make great 2D graphics on the web.
 
@@ -18,8 +14,6 @@ There are a variety of demos and further explanations about canvas on these site
 
 - [Canvas Codepens](https://codepen.io/search/pens?q=canvas)
   - : Front End Developer Playground & Code Editor in the Browser.
-- [Canvas Tutorials](https://www.html5canvastutorials.com/)
-  - : Examples for most canvas APIs.
 - [Game development](/en-US/docs/Games)
   - : Gaming is one of the most popular computer activities. New technologies are constantly arriving to make it possible to develop better and more powerful games that can be run in any standards-compliant web browser.
 

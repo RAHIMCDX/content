@@ -1,14 +1,8 @@
 ---
-title: ShadowRoot.fullscreenElement
+title: "ShadowRoot: fullscreenElement property"
+short-title: fullscreenElement
 slug: Web/API/ShadowRoot/fullscreenElement
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - ShadowRoot
-  - Web Components
-  - shadow dom
 browser-compat: api.ShadowRoot.fullscreenElement
 ---
 
@@ -19,13 +13,13 @@ The **`fullscreenElement`** read-only property of the
 
 ## Value
 
-The {{domxref('Element')}} which is currently is displayed in full screen mode,
-or `null` if there is no full screen element.
+The {{domxref('Element')}} which is currently is displayed in fullscreen mode,
+or `null` if there is no fullscreen element.
 
 ## Examples
 
 ```js
-let customElem = document.querySelector('my-shadow-dom-element');
+let customElem = document.querySelector("my-shadow-dom-element");
 let shadow = customElem.shadowRoot;
 let fullscreenElem = shadow.fullscreenElement;
 ```

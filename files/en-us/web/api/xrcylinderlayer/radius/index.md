@@ -1,17 +1,10 @@
 ---
-title: XRCylinderLayer.radius
+title: "XRCylinderLayer: radius property"
+short-title: radius
 slug: Web/API/XRCylinderLayer/radius
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - VR
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - Experimental
+status:
+  - experimental
 browser-compat: api.XRCylinderLayer.radius
 ---
 
@@ -27,17 +20,17 @@ A number representing the radius of the cylinder.
 
 ### Getting a layer's radius
 
-The {{domxref("XRWebGLBinding.createCylinderLayer()")}} method creates a cylinder layer and allows to specify a `radius`. The `XRCylinder.radius` property can be used after layer creation to get the radius used or to set it to a new one.
+The {{domxref("XRWebGLBinding.createCylinderLayer()")}} method creates a cylinder layer and allows you to specify a `radius`. The `XRCylinder.radius` property can be used after layer creation to get the radius used or to set it to a new one.
 
 ```js
 const cylinderLayer = xrGlBinding.createCylinderLayer({
   space: xrReferenceSpace,
   viewPixelWidth: 1200,
   viewPixelHeight: 600,
-  centralAngle : 60 * Math.PI / 180,
-  aspectRatio : 2,
-  radius : 2,
-  transform : new XRRigidTransform(/* … */),
+  centralAngle: (60 * Math.PI) / 180,
+  aspectRatio: 2,
+  radius: 2,
+  transform: new XRRigidTransform(/* … */),
 });
 
 cylinderLayer.radius; // 2

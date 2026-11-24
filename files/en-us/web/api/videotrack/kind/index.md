@@ -1,27 +1,14 @@
 ---
-title: VideoTrack.kind
+title: "VideoTrack: kind property"
+short-title: kind
 slug: Web/API/VideoTrack/kind
 page-type: web-api-instance-property
-tags:
-  - API
-  - HTML DOM
-  - Media
-  - Property
-  - Read-only
-  - Reference
-  - Video
-  - Video Track
-  - VideoTrack
-  - id
-  - track
 browser-compat: api.VideoTrack.kind
 ---
 
 {{APIRef("HTML DOM")}}
 
-The **`kind`** property contains a
-string indicating the category of video contained in the
-**{{domxref("VideoTrack")}}**.
+The **`kind`** read-only property of the {{domxref("VideoTrack")}} interface contains a string indicating the category of video contained in the **{{domxref("VideoTrack")}}**.
 
 The `kind` can be used
 to determine the scenarios in which specific tracks should be enabled or disabled. See
@@ -40,13 +27,13 @@ The kinds available for video tracks are:
   - : A potential alternative to the main track, such as a different video take or a
     version of the soundtrack with only the music and no dialogue.
 - `"captions"`
-  - : A version of the main video track with captions burnt in.
+  - : A version of the main video track with captions burned in.
 - `"main"`
   - : The primary video track.
 - `"sign"`
   - : A sign-language interpretation of an audio track.
 - `"subtitles"`
-  - : A version of the main video track with subtitles burnt in.
+  - : A version of the main video track with subtitles burned in.
 - `"commentary"`
   - : A video track containing a commentary. This might be used to contain the director's
     commentary track on a movie, for example.

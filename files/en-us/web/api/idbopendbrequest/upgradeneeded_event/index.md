@@ -1,12 +1,8 @@
 ---
-title: 'IDBOpenDBRequest: upgradeneeded event'
+title: "IDBOpenDBRequest: upgradeneeded event"
+short-title: upgradeneeded
 slug: Web/API/IDBOpenDBRequest/upgradeneeded_event
 page-type: web-api-event
-tags:
-  - Event
-  - IDBOpenDBRequest
-  - Reference
-  - upgradeneeded
 browser-compat: api.IDBOpenDBRequest.upgradeneeded_event
 ---
 
@@ -18,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('upgradeneeded', (event) => { });
+```js-nolint
+addEventListener("upgradeneeded", (event) => { })
+```
 
-onupgradeneeded = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onupgradeneeded = (event) => { }
 ```
 
 ## Event type
@@ -32,60 +32,59 @@ An {{domxref("IDBVersionChangeEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("IDBVersionChangeEvent")}}
 
-## Event properties
-
-_Also inherits properties from its parent, {{domxref("Event")}} interface._
-
-- {{ domxref("IDBVersionChangeEvent.oldVersion") }} {{ReadOnlyInline}}
-  - : Returns the old version of the database.
-- {{ domxref("IDBVersionChangeEvent.newVersion") }} {{ReadOnlyInline}}
-  - : Returns the new version of the database.
-
 ## Examples
 
 This example opens a database and handles the `upgradeneeded` event by making any necessary updates to the object store.
 
 ```js
 // Open the database
-const dBOpenRequest = window.indexedDB.open('toDoList', 4);
+const dBOpenRequest = window.indexedDB.open("toDoList", 4);
 
-dBOpenRequest.addEventListener('upgradeneeded', (event) => {
+dBOpenRequest.addEventListener("upgradeneeded", (event) => {
   const db = event.target.result;
   console.log(`Upgrading to version ${db.version}`);
 
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 });
 ```
 
-This is the same example, but uses the onupgradeneeded event handler property.
+This is the same example, but uses the `onupgradeneeded` event handler property (but note that this replaces other event listeners added using `onupgradeneeded`, if any).
 
 ```js
 // Open the database
-const dBOpenRequest = window.indexedDB.open('toDoList', 4);
+const dBOpenRequest = window.indexedDB.open("toDoList", 4);
 
 dBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
   console.log(`Upgrading to version ${db.version}`);
 
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 };
 ```
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

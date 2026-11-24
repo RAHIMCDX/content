@@ -1,20 +1,26 @@
 ---
 title: Object.values()
+short-title: values()
 slug: Web/JavaScript/Reference/Global_Objects/Object/values
-tags:
-  - JavaScript
-  - Method
-  - Object
-  - Reference
-  - Polyfill
+page-type: javascript-static-method
 browser-compat: javascript.builtins.Object.values
+sidebar: jsref
 ---
 
-{{JSRef}}
+The **`Object.values()`** static method returns an array of a given object's own enumerable string-keyed property values.
 
-The **`Object.values()`** method returns an array of a given object's own enumerable string-keyed property values.
+{{InteractiveExample("JavaScript Demo: Object.values()")}}
 
-{{EmbedInteractiveExample("pages/js/object-values.html")}}
+```js interactive-example
+const object = {
+  a: "some string",
+  b: 42,
+  c: false,
+};
+
+console.log(Object.values(object));
+// Expected output: Array ["some string", 42, false]
+```
 
 ## Syntax
 
@@ -33,7 +39,7 @@ An array containing the given object's own enumerable string-keyed property valu
 
 ## Description
 
-`Object.values()` returns an array whose elements are strings corresponding to the enumerable string-keyed property values found directly upon `object`. This is the same as iterating with a {{jsxref("Statements/for...in", "for...in")}} loop, except that a `for...in` loop enumerates properties in the prototype chain as well. The order of the array returned by `Object.values()` is the same as that provided by a {{jsxref("Statements/for...in", "for...in")}} loop.
+`Object.values()` returns an array whose elements are values of enumerable string-keyed properties found directly upon `object`. This is similar to accessing the values inside a {{jsxref("Statements/for...in", "for...in")}} loop, except that a `for...in` loop enumerates properties in the prototype chain as well. The order of the array returned by `Object.values()` is the same as that provided by a {{jsxref("Statements/for...in", "for...in")}} loop.
 
 If you need the property keys, use {{jsxref("Object.keys()")}} instead. If you need both the property keys and values, use {{jsxref("Object.entries()")}} instead.
 
@@ -71,13 +77,13 @@ console.log(Object.values(myObj)); // ['bar']
 
 ### Using Object.values() on primitives
 
-Non-object arguments are [coerced to objects](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#object_coercion). Only strings may have own enumerable properties, while all other primitives return an empty array.
+Non-object arguments are [coerced to objects](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#object_coercion). [`undefined`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) and [`null`](/en-US/docs/Web/JavaScript/Reference/Operators/null) cannot be coerced to objects and throw a {{jsxref("TypeError")}} upfront. Only strings may have own enumerable properties, while all other primitives return an empty array.
 
 ```js
 // Strings have indices as enumerable own properties
 console.log(Object.values("foo")); // ['f', 'o', 'o']
 
-// Other primitives have no own properties
+// Other primitives except undefined and null have no own properties
 console.log(Object.values(100)); // []
 ```
 
@@ -91,8 +97,9 @@ console.log(Object.values(100)); // []
 
 ## See also
 
-- [Polyfill of `Object.values` in `core-js`](https://github.com/zloirock/core-js#ecmascript-object)
-- [Enumerability and ownership of properties](/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)
+- [Polyfill of `Object.values` in `core-js`](https://core-js.io/docs/features/ecmascript/object)
+- [es-shims polyfill of `Object.values`](https://www.npmjs.com/package/object.values)
+- [Enumerability and ownership of properties](/en-US/docs/Web/JavaScript/Guide/Enumerability_and_ownership_of_properties)
 - {{jsxref("Object.keys()")}}
 - {{jsxref("Object.entries()")}}
 - {{jsxref("Object.prototype.propertyIsEnumerable()")}}

@@ -1,25 +1,18 @@
 ---
-title: Notification.image
+title: "Notification: image property"
+short-title: image
 slug: Web/API/Notification/image
 page-type: web-api-instance-property
-tags:
-  - API
-  - Image
-  - Notification
-  - Notifications
-  - Notifications API
-  - Property
-  - Reference
-  - Experimental
+status:
+  - experimental
 browser-compat: api.Notification.image
 ---
 
-{{APIRef("Web Notifications")}}{{AvailableInWorkers}}{{SecureContext_Header}}{{SeeCompatTable}}
+{{APIRef("Web Notifications")}}{{SecureContext_Header}}{{SeeCompatTable}} {{AvailableInWorkers}}
 
-The `image` read-only property of the
-{{domxref("Notification")}} interface contains the URL of an image to be displayed as
-part of the notification, as specified in the `image` option of the
-{{domxref("Notification.Notification","Notification()")}} constructor.
+The **`image`** read-only property of the {{domxref("Notification")}} interface returns a string containing the URL of a large image displayed as part of the notification's content body — for example, a news photo or product thumbnail. It has the highest visual priority of the three image options (`image`, `icon`, `badge`).
+
+See [Notifications with different images](/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification#notifications_with_different_images) for a comparison of the three image options.
 
 ## Value
 

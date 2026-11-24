@@ -1,17 +1,12 @@
 ---
-title: Window.outerWidth
+title: "Window: outerWidth property"
+short-title: outerWidth
 slug: Web/API/Window/outerWidth
 page-type: web-api-instance-property
-tags:
-  - API
-  - CSSOM View
-  - NeedsContent
-  - Property
-  - Reference
 browser-compat: api.Window.outerWidth
 ---
 
-{{APIRef}}
+{{APIRef("CSSOM view API")}}
 
 **`Window.outerWidth`** read-only property returns the width of the outside of the browser window. It represents the width of the whole browser window including sidebar (if expanded), window chrome and window resizing borders/handles.
 
@@ -19,7 +14,7 @@ browser-compat: api.Window.outerWidth
 
 To change the size of a window, see {{domxref("window.resizeBy()")}} and {{domxref("window.resizeTo()")}}.
 
-To get the inner width of a window, i.e. the width of the page being displayed, see {{domxref("window.innerWidth")}}.
+To get the inner width of a window, i.e., the width of the page being displayed, see {{domxref("window.innerWidth")}}.
 
 ## Specifications
 

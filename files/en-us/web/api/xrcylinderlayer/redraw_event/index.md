@@ -1,17 +1,10 @@
 ---
-title: 'XRCylinderLayer: redraw event'
+title: "XRCylinderLayer: redraw event"
+short-title: redraw
 slug: Web/API/XRCylinderLayer/redraw_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
-  - VR
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - Experimental
+status:
+  - experimental
 browser-compat: api.XRCylinderLayer.redraw_event
 ---
 
@@ -23,24 +16,21 @@ See also the {{domxref("XRCompositionLayer.needsRedraw")}} property which is als
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('redraw', (event) => { })
+```js-nolint
+addEventListener("redraw", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onredraw = (event) => { }
 ```
 
 ## Event type
 
 An {{domxref("XRLayerEvent")}}. Inherits from {{domxref("Event")}}.
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("XRLayerEvent.layer", "layer")}} {{ReadOnlyInline}}
-  - : The {{domxref("XRLayer")}} which generated the event.
 
 ## Examples
 
@@ -54,12 +44,12 @@ cylinderLayer.addEventListener("redraw", (event) => {
 });
 ```
 
-Alternatively, you can use the `onredraw` event handler property to establish a handler for the `redraw` event:
+Alternatively, you can use the `onredraw` event handler property to establish a handler for the `redraw` event (but note that this replaces other event listeners added using `onredraw`, if any):
 
 ```js
 cylinderLayer.onredraw = (event) => {
- // redraw the layer
-}
+  // redraw the layer
+};
 ```
 
 ## Specifications

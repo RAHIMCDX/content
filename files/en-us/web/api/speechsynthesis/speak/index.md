@@ -1,16 +1,8 @@
 ---
-title: SpeechSynthesis.speak()
+title: "SpeechSynthesis: speak() method"
+short-title: speak()
 slug: Web/API/SpeechSynthesis/speak
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - SpeechSynthesis
-  - Web Speech API
-  - speak
-  - speech
-  - synthesis
 browser-compat: api.SpeechSynthesis.speak
 ---
 
@@ -38,27 +30,28 @@ None ({{jsxref("undefined")}}).
 ## Examples
 
 This snippet is excerpted from our [Speech synthesizer demo](https://github.com/mdn/dom-examples/blob/main/web-speech-api/speak-easy-synthesis/script.js) ([see it live](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/)). When a form containing the text we want to speak is submitted,
-we (amongst other things) create a new utterance containing this text, then speak it by
+we (among other things) create a new utterance containing this text, then speak it by
 passing it into `speak()` as a parameter.
 
 ```js
 const synth = window.speechSynthesis;
 
-// ...
+// …
 
 inputForm.onsubmit = (event) => {
   event.preventDefault();
 
   const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-  const selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
-  for (let i = 0; i < voices.length ; i++) {
-    if (voices[i].name === selectedOption) {
-      utterThis.voice = voices[i];
+  const selectedOption =
+    voiceSelect.selectedOptions[0].getAttribute("data-name");
+  for (const voice of voices) {
+    if (voice.name === selectedOption) {
+      utterThis.voice = voice;
     }
   }
   synth.speak(utterThis);
   inputTxt.blur();
-}
+};
 ```
 
 ## Specifications

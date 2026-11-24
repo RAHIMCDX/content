@@ -1,25 +1,26 @@
 ---
 title: "BatteryManager: chargingchange event"
+short-title: chargingchange
 slug: Web/API/BatteryManager/chargingchange_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
 browser-compat: api.BatteryManager.chargingchange_event
 ---
 
-{{APIRef("Battery API")}}
+{{ApiRef("Battery API")}}{{securecontext_header}}
 
-The **`chargingchange`** event of the [Battery Status API](/en-US/docs/Web/API/Battery_Status_API) is fired when the battery {{domxref("BatteryManager.charging","charging")}} property is updated.
+The **`chargingchange`** event of the {{domxref("BatteryManager")}} interface is fired when the battery {{domxref("BatteryManager.charging", "charging")}} property is updated.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
 ```js-nolint
 addEventListener("chargingchange", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onchargingchange = (event) => { }
 ```
 
@@ -29,14 +30,14 @@ _A generic {{domxref("Event")}}._
 
 ## Example
 
-### HTML Content
+### HTML
 
 ```html
 <div id="level">(battery level unknown)</div>
 <div id="chargingTime">(charging time unknown)</div>
 ```
 
-### JavaScript Content
+### JavaScript
 
 ```js
 navigator.getBattery().then((battery) => {
@@ -60,4 +61,4 @@ navigator.getBattery().then((battery) => {
 ## See also
 
 - {{domxref("BatteryManager")}}
-- {{domxref("Navigator.getBattery")}}
+- {{domxref("Navigator.getBattery()")}}

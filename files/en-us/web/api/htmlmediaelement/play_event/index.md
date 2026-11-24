@@ -1,13 +1,8 @@
 ---
-title: 'HTMLMediaElement: play event'
+title: "HTMLMediaElement: play event"
+short-title: play
 slug: Web/API/HTMLMediaElement/play_event
 page-type: web-api-event
-tags:
-  - Audio
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Video
 browser-compat: api.HTMLMediaElement.play_event
 ---
 
@@ -19,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('play', (event) => {});
+```js-nolint
+addEventListener("play", (event) => { })
+```
 
-onplay = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onplay = (event) => { }
 ```
 
 ## Event type
@@ -38,22 +37,24 @@ These examples add an event listener for the HTMLMediaElement's `play` event, th
 Using `addEventListener()`:
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
-video.addEventListener('play', (event) => {
-  console.log('The Boolean paused property is now false. Either the ' +
-  'play() method was called or the autoplay attribute was toggled.');
+video.addEventListener("play", (event) => {
+  console.log(
+    "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled.",
+  );
 });
 ```
 
-Using the `onplay` event handler property:
+Using the `onplay` event handler property (but note that this replaces other event listeners added using `onplay`, if any):
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 video.onplay = (event) => {
-  console.log('The Boolean paused property is now false. Either the ' +
-  'play() method was called or the autoplay attribute was toggled.');
+  console.log(
+    "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled.",
+  );
 };
 ```
 
@@ -78,7 +79,6 @@ video.onplay = (event) => {
 - The HTMLMediaElement {{domxref("HTMLMediaElement.canplaythrough_event", 'canplaythrough')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.durationchange_event", 'durationchange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.timeupdate_event", 'timeupdate')}} event
-- The HTMLMediaElement {{domxref("HTMLMediaElement.play_event", 'play')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.pause_event", 'pause')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.ratechange_event", 'ratechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.volumechange_event", 'volumechange')}} event

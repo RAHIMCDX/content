@@ -2,21 +2,6 @@
 title: Fundamentals of WebXR
 slug: Web/API/WebXR_Device_API/Fundamentals
 page-type: guide
-tags:
-  - API
-  - AR
-  - Getting Started
-  - Guide
-  - Reality
-  - VR
-  - Virtual
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - augmented
-  - basics
-  - memory
 ---
 
 {{DefaultAPISidebar("WebXR Device API")}}
@@ -59,7 +44,7 @@ A human eye is able to take in a FOV of around 135°. Assuming a person has two 
 
 The drawing shown here demonstrates the concept of FOV: blue wedge for the left eye, red wedge for the right eye. The light brown overlapping area is where the viewer has binocular vision and can perceive depth. If you look carefully, you'll see that each eye sees the die slightly differently, and the combined view blends the two into a 3D shape.
 
-Generally, applications only define and manage the horizontal FOV. For more details, see {{SectionOnPage("/en-US/docs/Web/API/WebXR_Device_API/Rendering", "The optics of 3D")}}.
+Generally, applications only define and manage the horizontal FOV. For more details, see [The optics of 3D](/en-US/docs/Web/API/WebXR_Device_API/Rendering#the_optics_of_3d).
 
 #### Field of view and mixed reality devices
 
@@ -117,7 +102,7 @@ Both types of device should be capable of also presenting VR sessions. WebXR doe
 
 ## Types of WebXR hardware
 
-The simplest XR presentation involves rendering the scene directly to the user's screen, either in the context of a web document, or in full screen mode. This is most common when the user either doesn't have a dedicated XR device, or when the user is viewing the AR or VR app on a phone or other handheld device.
+The simplest XR presentation involves rendering the scene directly to the user's screen, either in the context of a web document, or in fullscreen mode. This is most common when the user either doesn't have a dedicated XR device, or when the user is viewing the AR or VR app on a phone or other handheld device.
 
 Simpler and lower-priced XR devices typically use an integrated computer or connect to a smartphone, essentially using the mobile CPU and GPU to run apps, render images, and display them to the user. Higher-powered solutions typically offload application execution and graphics processing to an external device such as a desktop computer, and are either tethered to the computer using a cable or use a wireless network to receive the imagery to display to the user.
 
@@ -125,7 +110,7 @@ Simpler and lower-priced XR devices typically use an integrated computer or conn
 
 Most immersive VR experiences take place using goggles or a headset of some kind. A VR headset is worn on the head, with a strap that goes behind the head to fasten it in place, and one or two displays whose screens are focused into the eyes using lenses. By presenting a slightly different image to each eye, the illusion of depth is created, giving the user a simulated 3D experience.
 
-![Drawing of a standard VR headset](publicdomainq-virtual_reality_headset.svg)
+![Drawing of a standard VR headset](publicdomain-virtual_reality_headset.svg)
 
 The vast majority of headsets use a single display whose frame is divided in half, with one half focused onto each of the user's eyes. For example, if a headset uses a 2560x1440 screen, with the left half being used for the left eye's view and the right half for the right eye's view, the framebuffer is used like this:
 

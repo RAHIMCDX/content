@@ -1,17 +1,12 @@
 ---
-title: WebGL2RenderingContext.deleteSync()
+title: "WebGL2RenderingContext: deleteSync() method"
+short-title: deleteSync()
 slug: Web/API/WebGL2RenderingContext/deleteSync
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - WebGL
-  - WebGL2
 browser-compat: api.WebGL2RenderingContext.deleteSync
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WebGL2RenderingContext.deleteSync()`** method of the [WebGL 2 API](/en-US/docs/Web/API/WebGL_API) deletes a given
 {{domxref("WebGLSync")}} object.
@@ -25,7 +20,7 @@ deleteSync(sync)
 ### Parameters
 
 - `sync`
-  - : A {{domxref("WebGLSync")}} object to delete.
+  - : A {{domxref("WebGLSync")}} object to delete. Passing `null` does nothing.
 
 ### Return value
 

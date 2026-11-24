@@ -1,18 +1,12 @@
 ---
-title: ReadableByteStreamController.desiredSize
+title: "ReadableByteStreamController: desiredSize property"
+short-title: desiredSize
 slug: Web/API/ReadableByteStreamController/desiredSize
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - ReadableByteStreamController
-  - Reference
-  - Streams
-  - desiredSize
 browser-compat: api.ReadableByteStreamController.desiredSize
 ---
 
-{{APIRef("Streams")}}
+{{APIRef("Streams")}}{{AvailableInWorkers}}
 
 The **`desiredSize`** read-only property of the {{domxref("ReadableByteStreamController")}} interface returns the number of bytes required to fill the stream's internal queue to its "desired size".
 
@@ -23,9 +17,9 @@ The `desiredSize` is used to apply [backpressure](/en-US/docs/Web/API/Streams_AP
 
 ## Value
 
-An integer. Note that this can be negative if the queue is over-full.
+A number, or `null`.
 
-The value will be `null` if the stream has errored and `0` if it is closed.
+The number can be negative if the queue is over-full. Although the queue size is measured in bytes, a fractional [high water mark](/en-US/docs/Web/API/Streams_API/Concepts#internal_queues_and_queuing_strategies) can cause the number to have a fractional component. The value is `null` if the stream has errored and `0` if it is closed.
 
 ## Examples
 
@@ -40,3 +34,8 @@ While the example uses a default source, the concepts are exactly the same as fo
 ## Browser compatibility
 
 {{Compat}}
+
+## See also
+
+- [Using readable byte streams](/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams)
+- {{domxref("ReadableByteStreamController")}}

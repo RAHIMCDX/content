@@ -1,15 +1,8 @@
 ---
-title: AudioBufferSourceNode()
+title: "AudioBufferSourceNode: AudioBufferSourceNode() constructor"
+short-title: AudioBufferSourceNode()
 slug: Web/API/AudioBufferSourceNode/AudioBufferSourceNode
 page-type: web-api-constructor
-tags:
-  - API
-  - Audio
-  - AudioBufferSourceNode
-  - Constructor
-  - Media
-  - Reference
-  - Web Audio API
 browser-compat: api.AudioBufferSourceNode.AudioBufferSourceNode
 ---
 
@@ -29,9 +22,7 @@ new AudioBufferSourceNode(context, options)
 - `context`
   - : A reference to an {{domxref("AudioContext")}}.
 - `options` {{optional_inline}}
-
   - : Options are as follows:
-
     - `buffer`
       - : An instance of {{domxref("AudioBuffer")}} to be played.
     - `detune`
@@ -66,20 +57,6 @@ new AudioBufferSourceNode(context, options)
       - : The speed at which to render the audio stream. Its
         default value is `1`. This parameter is k-rate. This is a compound
         parameter with detune. Its nominal range is (-∞ to +∞).
-    - `channelCount`
-      - : Represents an integer used to determine how many channels are used when [up-mixing and down-mixing](/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API#up-mixing_and_down-mixing) connections to any inputs to the node. (See
-        {{domxref("AudioNode.channelCount")}} for more information.) Its usage and precise
-        definition depend on the value of `channelCountMode`.
-    - `channelCountMode`
-      - : Represents an enumerated value describing the way channels must be matched between
-        the node's inputs and outputs. (See {{domxref("AudioNode.channelCountMode")}} for more
-        information including default values.)
-    - `channelInterpretation`
-      - : Represents an enumerated value describing the meaning of the channels. This
-        interpretation will define how audio [up-mixing and down-mixing](/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API#up-mixing_and_down-mixing) will happen.
-        The possible values are `"speakers"` or `"discrete"`. (See
-        {{domxref("AudioNode.channelCountMode")}} for more information including default
-        values.)
 
 ### Return value
 

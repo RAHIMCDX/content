@@ -1,20 +1,29 @@
 ---
 title: Object.getOwnPropertySymbols()
+short-title: getOwnPropertySymbols()
 slug: Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols
-tags:
-  - ECMAScript 2015
-  - JavaScript
-  - Method
-  - Object
-  - Polyfill
+page-type: javascript-static-method
 browser-compat: javascript.builtins.Object.getOwnPropertySymbols
+sidebar: jsref
 ---
 
-{{JSRef}}
+The **`Object.getOwnPropertySymbols()`** static method returns an array of all symbol properties found directly upon a given object.
 
-The **`Object.getOwnPropertySymbols()`** method returns an array of all symbol properties found directly upon a given object.
+{{InteractiveExample("JavaScript Demo: Object.getOwnPropertySymbols()")}}
 
-{{EmbedInteractiveExample("pages/js/object-getownpropertysymbols.html")}}
+```js interactive-example
+const object = {};
+const a = Symbol("a");
+const b = Symbol.for("b");
+
+object[a] = "localSymbol";
+object[b] = "globalSymbol";
+
+const objectSymbols = Object.getOwnPropertySymbols(object);
+
+console.log(objectSymbols.length);
+// Expected output: 2
+```
 
 ## Syntax
 
@@ -39,21 +48,21 @@ As all objects have no own symbol properties initially, `Object.getOwnPropertySy
 
 ## Examples
 
-### Using getOwnPropertySymbols
+### Using Object.getOwnPropertySymbols()
 
 ```js
 const obj = {};
-const a = Symbol('a');
-const b = Symbol.for('b');
+const a = Symbol("a");
+const b = Symbol.for("b");
 
-obj[a] = 'localSymbol';
-obj[b] = 'globalSymbol';
+obj[a] = "localSymbol";
+obj[b] = "globalSymbol";
 
 const objectSymbols = Object.getOwnPropertySymbols(obj);
 
 console.log(objectSymbols.length); // 2
-console.log(objectSymbols);        // [Symbol(a), Symbol(b)]
-console.log(objectSymbols[0]);     // Symbol(a)
+console.log(objectSymbols); // [Symbol(a), Symbol(b)]
+console.log(objectSymbols[0]); // Symbol(a)
 ```
 
 ## Specifications
@@ -66,6 +75,6 @@ console.log(objectSymbols[0]);     // Symbol(a)
 
 ## See also
 
-- [Polyfill of `Object.getOwnPropertySymbols` in `core-js`](https://github.com/zloirock/core-js#ecmascript-symbol)
+- [Polyfill of `Object.getOwnPropertySymbols` in `core-js`](https://core-js.io/docs/features/ecmascript/symbol)
 - {{jsxref("Object.getOwnPropertyNames()")}}
 - {{jsxref("Symbol")}}

@@ -1,17 +1,12 @@
 ---
-title: WebGL2RenderingContext.framebufferTextureLayer()
+title: "WebGL2RenderingContext: framebufferTextureLayer() method"
+short-title: framebufferTextureLayer()
 slug: Web/API/WebGL2RenderingContext/framebufferTextureLayer
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - WebGL
-  - WebGL2
 browser-compat: api.WebGL2RenderingContext.framebufferTextureLayer
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WebGL2RenderingContext.framebufferTextureLayer()`**
 method of the [WebGL 2 API](/en-US/docs/Web/API/WebGL_API) attaches a single
@@ -29,19 +24,15 @@ framebufferTextureLayer(target, attachment, texture, level, layer)
 ### Parameters
 
 - `target`
-
   - : A {{domxref("WebGL_API/Types", "GLenum")}} specifying the binding point (target). Possible values:
-
     - `gl.FRAMEBUFFER`: Collection buffer data storage of color, alpha,
       depth and stencil buffers used to render an image.
     - `gl.DRAW_FRAMEBUFFER`: Equivalent to `gl.FRAMEBUFFER`.
     - `gl.READ_FRAMEBUFFER`: Used as a source for reading operations.
 
 - `attachment`
-
   - : A {{domxref("WebGL_API/Types", "GLenum")}} specifying the attachment point for the
     `texture`. Possible values:
-
     - `gl.COLOR_ATTACHMENT{0-15}`: Attaches the texture to one of the
       framebuffer's color buffers.
     - `gl.DEPTH_ATTACHMENT`: Attaches the texture to the framebuffer's
@@ -51,7 +42,7 @@ framebufferTextureLayer(target, attachment, texture, level, layer)
     - `gl.DEPTH_STENCIL_ATTACHMENT`: depth and stencil buffer.
 
 - `texture`
-  - : A {{domxref("WebGLTexture")}} object whose image to attach.
+  - : A {{domxref("WebGLTexture")}} object whose image to attach, or `null` to detach the image currently attached to the specified attachment point.
 - `level`
   - : A {{domxref("WebGL_API/Types", "GLint")}} specifying the mipmap level of the texture image to attach.
 - `layer`
@@ -64,8 +55,7 @@ None ({{jsxref("undefined")}}).
 ## Examples
 
 ```js
-gl.framebufferTextureLayer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
-                           texture, 0, 8);
+gl.framebufferTextureLayer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, texture, 0, 8);
 ```
 
 ## Specifications

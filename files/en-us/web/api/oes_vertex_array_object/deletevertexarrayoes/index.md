@@ -1,18 +1,12 @@
 ---
-title: OES_vertex_array_object.deleteVertexArrayOES()
+title: "OES_vertex_array_object: deleteVertexArrayOES() method"
+short-title: deleteVertexArrayOES()
 slug: Web/API/OES_vertex_array_object/deleteVertexArrayOES
 page-type: webgl-extension-method
-tags:
-  - API
-  - Method
-  - Reference
-  - VAO
-  - WebGL
-  - WebGL extension
 browser-compat: api.OES_vertex_array_object.deleteVertexArrayOES
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`OES_vertex_array_object.deleteVertexArrayOES()`** method
 of the [WebGL API](/en-US/docs/Web/API/WebGL_API) deletes a given
@@ -36,7 +30,7 @@ None ({{jsxref("undefined")}}).
 ## Examples
 
 ```js
-const ext = gl.getExtension('OES_vertex_array_object');
+const ext = gl.getExtension("OES_vertex_array_object");
 const vao = ext.createVertexArrayOES();
 ext.bindVertexArrayOES(vao);
 

@@ -1,35 +1,26 @@
 ---
 title: "AudioTrackList: removetrack event"
+short-title: removetrack
 slug: Web/API/AudioTrackList/removetrack_event
 page-type: web-api-event
-tags:
-  - API
-  - Audio
-  - AudioTrackList
-  - Event
-  - HTML DOM
-  - Media
-  - Property
-  - Reference
-  - Removing Audio Tracks
-  - Removing Tracks
-  - remove
-  - removetrack
-  - track
 browser-compat: api.AudioTrackList.removetrack_event
 ---
 
-{{APIRef}}
+{{APIRef("HTML DOM")}}
 
 The `removetrack` event is fired when a track is removed from an [`AudioTrackList`](/en-US/docs/Web/API/AudioTrackList).
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
 ```js-nolint
 addEventListener("removetrack", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onremovetrack = (event) => { }
 ```
 
@@ -39,18 +30,11 @@ A {{domxref("TrackEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("TrackEvent")}}
 
-## Event properties
-
-_`TrackEvent` is based on {{domxref("Event")}}, so properties of `Event` are also available on `TrackEvent` objects._
-
-- {{domxref("TrackEvent.track", "track")}} {{ReadOnlyInline}}
-  - : The DOM track object the event is in reference to. If not `null`, this is always an object of one of the media track types: {{domxref("AudioTrack")}}, {{domxref("VideoTrack")}}, or {{domxref("TextTrack")}}).
-
 ## Description
 
 ### Trigger
 
-The {{domxref("AudioTrackList/removetrack_event", "removetrack")}} event is called whenever a track is removed from the media
+The `removetrack` event is called whenever a track is removed from the media
 element whose audio tracks are represented by the `AudioTrackList` object.
 
 This event is not cancelable and does not bubble.
@@ -71,7 +55,7 @@ videoElement.audioTracks.addEventListener("removetrack", (event) => {
 });
 ```
 
-Using the `onremovetrack` event handler property:
+Using the `onremovetrack` event handler property (but note that this replaces other event listeners added using `onremovetrack`, if any):
 
 ```js
 const videoElement = document.querySelector("video");

@@ -1,19 +1,16 @@
 ---
-title: TrustedHTML.toJSON()
+title: "TrustedHTML: toJSON() method"
+short-title: toJSON()
 slug: Web/API/TrustedHTML/toJSON
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - toJSON
-  - TrustedHTML
 browser-compat: api.TrustedHTML.toJSON
 ---
 
-{{DefaultAPISidebar("Trusted Types API")}}
+{{APIRef("Trusted Types API")}}{{AvailableInWorkers}}
 
-The **`toJSON()`** method of the {{domxref("TrustedHTML")}} interface returns a JSON representation of the stored data.
+The **`toJSON()`** method of the {{domxref("TrustedHTML")}} interface returns a string representing the `TrustedHTML` object. This is the same string that {{domxref("TrustedHTML.toString()")}} returns.
+
+The method is automatically called by {{jsxref("JSON.stringify()")}} when a `TrustedHTML` object is encountered during [JSON](/en-US/docs/Glossary/JSON) serialization. The serialized value can then be converted back using the {{domxref("TrustedTypePolicy.createHTML()")}} method within the reviver of {{jsxref("JSON.parse()")}}, which runs the policy's transformation on it again.
 
 ## Syntax
 
@@ -27,19 +24,38 @@ None.
 
 ### Return value
 
-A string containing a JSON representation of the stored data.
+A string.
 
 ## Examples
 
-The constant `escaped` is an object created via the Trusted Types policy escapeHTMLPolicy. The `toString()` method returns a string to safely insert into a document.
+### Calling toJSON() directly
+
+This example creates a `TrustedHTML` object. Calling `toJSON()` directly returns its stored string value.
 
 ```js
 const escapeHTMLPolicy = trustedTypes.createPolicy("myEscapePolicy", {
-  createHTML: (string) => string.replace(/>/g, "<")
+  createHTML: (string) => string.replace(/</g, "&lt;"),
 });
 
 const escaped = escapeHTMLPolicy.createHTML("<img src=x onerror=alert(1)>");
-console.log(escaped.toJSON());
+
+const json = escaped.toJSON();
+console.log(json); // Same value as escaped.toString()
+console.log(typeof json); // "string"
+```
+
+### Serializing to a JSON string
+
+The `TrustedHTML` object from the previous example is serialized using {{jsxref("JSON.stringify()")}}, which calls the `toJSON()` method automatically.
+
+```js
+console.log(JSON.stringify(escaped));
+```
+
+This would log the following JSON string, including the surrounding double quotes, which are part of the string's content:
+
+```json
+"&lt;img src=x onerror=alert(1)>"
 ```
 
 ## Specifications

@@ -1,30 +1,31 @@
 ---
-title: 'Document: pointerlockchange event'
+title: "Document: pointerlockchange event"
+short-title: pointerlockchange
 slug: Web/API/Document/pointerlockchange_event
 page-type: web-api-event
-tags:
-  - Document
-  - Event
-  - Reference
-  - Web
-  - pointerlockchange
 browser-compat: api.Document.pointerlockchange_event
 ---
 
-{{APIRef}}
+{{APIRef("Pointer Lock API")}}
 
-The `pointerlockchange` event is fired when the pointer is locked/unlocked.
+The **`pointerlockchange`** event is fired when the pointer is locked/unlocked.
 
-This event is not cancelable.
+The event handler can use {{domxref("Document.pointerLockElement")}} to determine whether the pointer is locked, and if so, to which element it is locked.
+
+This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('pointerlockchange', (event) => { });
+```js-nolint
+addEventListener("pointerlockchange", (event) => { })
+```
 
-onpointerlockchange = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onpointerlockchange = (event) => { }
 ```
 
 ## Event type
@@ -36,16 +37,24 @@ A generic {{domxref("Event")}}.
 Using `addEventListener()`:
 
 ```js
-document.addEventListener('pointerlockchange', (event) => {
-  console.log('Pointer lock changed');
+document.addEventListener("pointerlockchange", (event) => {
+  if (document.pointerLockElement)
+    console.log("The pointer is locked to: ", document.pointerLockElement);
+  else {
+    console.log("The pointer is not locked");
+  }
 });
 ```
 
-Using the `onpointerlockchange` event handler property:
+Using the `onpointerlockchange` event handler property (but note that this replaces other event listeners added using `onpointerlockchange`, if any):
 
 ```js
 document.onpointerlockchange = (event) => {
-  console.log('Pointer lock changed');
+  if (document.pointerLockElement)
+    console.log("The pointer is locked to: ", document.pointerLockElement);
+  else {
+    console.log("The pointer is not locked");
+  }
 };
 ```
 

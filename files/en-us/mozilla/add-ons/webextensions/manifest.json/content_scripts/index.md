@@ -1,14 +1,10 @@
 ---
 title: content_scripts
 slug: Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts
-tags:
-  - Add-ons
-  - Extensions
-  - WebExtensions
+page-type: webextension-manifest-key
 browser-compat: webextensions.manifest.content_scripts
+sidebar: addonsidebar
 ---
-
-{{AddonSidebar}}
 
 <table class="fullwidth-table standard-table">
   <tbody>
@@ -40,15 +36,15 @@ browser-compat: webextensions.manifest.content_scripts
   </tbody>
 </table>
 
-Instructs the browser to load [content scripts](/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts) into web pages whose URL matches a given pattern.
+Instructs the browser to load [content scripts](/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts) into web pages whose URL matches a pattern.
 
 This key is an array. Each item is an object which:
 
-- **must** contain a key named **`matches`**, which specifies the URL patterns to be matched in order for the scripts to be loaded;
-- **may** contain keys named **`js`** and **`css`**, which list scripts and/or stylesheets to be loaded into matching pages; and
-- **may** contain a number of other properties that control finer aspects of how and when content scripts are loaded.
+- **must** contain a property named **`matches`**, which specifies the URL patterns to be matched for the scripts to be loaded;
+- **may** contain properties named **`js`** and **`css`**, which list scripts and stylesheets to be loaded into matching pages; and
+- **may** contain a number of other properties that control aspects of how and when content scripts are loaded.
 
-Details of all the keys you can include are given in the table below.
+This table details all the properties you can include.
 
 <table class="fullwidth-table standard-table">
   <thead>
@@ -61,7 +57,7 @@ Details of all the keys you can include are given in the table below.
   <tbody>
     <tr>
       <td>
-        <a id="all_frames"><code>all_frames</code></a>
+        <a id="all_frames" href="#all_frames"><code>all_frames</code></a>
       </td>
       <td><code>Boolean</code></td>
       <td>
@@ -97,18 +93,15 @@ Details of all the keys you can include are given in the table below.
     </tr>
     <tr>
       <td>
-        <a id="css"><code>css</code></a>
+        <a id="css" href="#css"><code>css</code></a>
       </td>
       <td><code>Array</code></td>
       <td>
         <p>
           An array of paths, relative to <code>manifest.json</code>, referencing
-          CSS files that will be injected into matching pages.
+          CSS files to inject into matching pages. For information on the order
+          in which files are injected, see a <a href="#load_order">Load order</a>.
         </p>
-        <p>
-          Files are injected in the order given, and at the time specified by
-          <code><a href="#run_at">run_at</a></code
-          >.
         </p>
         <div class="notecard note">
           <p>
@@ -121,7 +114,27 @@ Details of all the keys you can include are given in the table below.
     </tr>
     <tr>
       <td>
-        <a id="exclude_globs"><code>exclude_globs</code></a>
+        <a id="css_origin" href="#css_origin"><code>css_origin</code></a>
+        <br />{{optional_inline}}
+      </td>
+      <td><code>String</code></td>
+      <td>
+        <p>
+          The style origin for the CSS injection:
+          <ul>
+            <li><code>"user"</code>, to add as a user stylesheet.</li>
+            <li><code>"author"</code>, to add as an author stylesheet.</li>
+          </ul>
+          Defaults to <code>"author"</code>.
+        </p>
+        <p>
+          This property is case insensitive in Firefox and Safari.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a id="exclude_globs" href="#exclude_globs"><code>exclude_globs</code></a>
       </td>
       <td><code>Array</code></td>
       <td>
@@ -131,7 +144,7 @@ Details of all the keys you can include are given in the table below.
     </tr>
     <tr>
       <td>
-        <a id="exclude_matches"><code>exclude_matches</code></a>
+        <a id="exclude_matches" href="#exclude_matches"><code>exclude_matches</code></a>
       </td>
       <td><code>Array</code></td>
       <td>
@@ -143,7 +156,7 @@ Details of all the keys you can include are given in the table below.
     </tr>
     <tr>
       <td>
-        <a id="include_globs"><code>include_globs</code></a>
+        <a id="include_globs" href="#include_globs"><code>include_globs</code></a>
       </td>
       <td><code>Array</code></td>
       <td>
@@ -153,35 +166,20 @@ Details of all the keys you can include are given in the table below.
     </tr>
     <tr>
       <td>
-        <a id="js"><code>js</code></a>
+        <a id="js" href="#js"><code>js</code></a>
       </td>
       <td><code>Array</code></td>
       <td>
         <p>
           An array of paths, relative to <code>manifest.json</code>, referencing
-          JavaScript files that will be injected into matching pages.
-        </p>
-        <p>
-          Files are injected in the order given. This means that, for example,
-          if you include jQuery here followed by another content script, like
-          this:
-        </p>
-        <pre class="brush: json">
-"js": ["jquery.js", "my-content-script.js"]</pre
-        >
-        <p>Then, <code>"my-content-script.js"</code> can use jQuery.</p>
-        <p>
-          The files are injected after any files in
-          <code><a href="#css">css</a></code
-          >, and at the time specified by
-          <code><a href="#run_at">run_at</a></code
-          >.
+          JavaScript files to inject into matching pages. For information on the
+          order in which files are injected, see a <a href="#load_order">Load order</a>.
         </p>
       </td>
     </tr>
     <tr>
       <td>
-        <code><a id="match_about_blank">match_about_blank</a></code>
+        <code><a id="match_about_blank" href="#match_about_blank">match_about_blank</a></code>
       </td>
       <td><code>Boolean</code></td>
       <td>
@@ -224,14 +222,23 @@ Details of all the keys you can include are given in the table below.
           <p>
             Note that in Firefox, content scripts won't be injected into empty
             iframes at <code>"document_start"</code>, even if you specify that
-            value in <code><a href="#run_at">run_at</a></code> .
+            value in <code><a href="#run_at">run_at</a></code>.
           </p>
         </div>
       </td>
     </tr>
     <tr>
       <td>
-        <a id="matches"><code>matches</code></a>
+        <code><a id="match_origin_as_fallback" href="#match_origin_as_fallback">match_origin_as_fallback</a></code>
+      </td>
+      <td><code>Boolean</code></td>
+      <td>
+        When <code>true</code>, code is injected into <code>about:</code>, <code>data:</code>, and <code>blob:</code> pages when their origin matches the pattern in <code>matches</code>, even if the document origin is opaque (due to the use of CSP or iframe sandbox). Match patterns in <code>matches</code> must specify a wildcard path glob. Defaults to <code>false</code>.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a id="matches" href="#matches"><code>matches</code></a>
       </td>
       <td><code>Array</code></td>
       <td>
@@ -247,7 +254,7 @@ Details of all the keys you can include are given in the table below.
     </tr>
     <tr>
       <td>
-        <a id="run_at"><code>run_at</code></a>
+        <a id="run_at" href="#run_at"><code>run_at</code></a>
       </td>
       <td><code>String</code></td>
       <td>
@@ -284,8 +291,79 @@ Details of all the keys you can include are given in the table below.
         </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <a id="world" href="#world"><code>world</code></a>
+      </td>
+      <td><code>String</code></td>
+      <td>
+        <p>
+          The JavaScript world the script executes in.
+        </p>
+        <dl>
+          <dt><code>"ISOLATED"</code></dt>
+          <dd>
+            The default <a href="/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts">content scripts</a> execution environment.
+            This environment is isolated from the page's context: while they share the same document, the global scopes and available APIs differ.
+          </dd>
+          <dt><code>"MAIN"</code></dt>
+          <dd>
+            The web page's execution environment.
+            This environment is shared with the web page without isolation.
+            Scripts in this environment don't have any access to the APIs that are only available to content scripts.
+            <div class="notecard warning" id="sect1">
+              <p>
+                <strong>Warning:</strong> Due to the lack of isolation, the web page can detect and interfere with the executed code.
+                Do not use the <code>MAIN</code> world unless it is acceptable for web pages to read, access, or modify the logic or data that flows through the executed code.
+              </p>
+            </div>
+          </dd>
+        </dl>
+        <p>The default value is <code>"ISOLATED"</code>.</p>
+      </td>
+    </tr>
   </tbody>
 </table>
+
+## Load order
+
+Registered objects in `content_scripts` are injected into matching web pages at the time specified by `run_at` (first `document_start`, then `document_end`, and finally `document_idle`):
+
+- In the order specified in the `content_scripts` array, for each object with a matching `run_at` value, then:
+  - CSS is applied in the order specified in its `css` array. By default CSS from the `"author"` origin is given priority unless `css_origin` is set to `"user"`.
+  - JavaScript code is executed in the order specified in its `js` array.
+
+For example, in this key specification:
+
+```json
+"content_scripts": [
+    {
+    "matches": ["*://*.mozilla.org/*"],
+    "js": ["jquery.js", "my-content-script.js"],
+    "run_at": "document_idle"
+  },
+  {
+    "matches": ["*://*.mozilla.org/*"],
+    "css": ["my-css.css"],
+    "js": ["another-content-script.js", "yet-another-content-script.js"],
+    "run_at": "document_idle"
+  },
+  {
+    "matches": ["*://*.mozilla.org/*"],
+    "js": ["run-first.js"],
+    "run_at": "document_start"
+  }
+]
+```
+
+The files are loaded like this when a mozilla.org domain opens:
+
+- `"run-first.js"` - because it's requested to run at `"document_start"`.
+- `"jquery.js"` - because it's in the first array requesting run at `"document_idle"`.
+- `"my-content-script.js"` - because it's the second item in the first array requesting run at `"document_idle"`.
+- `"my-css.css"` - because an object's CSS is loaded before its JavaScript.
+- `"another-content-script.js"` - because it's the first item in the `js` property.
+- `"yet-another-content-script.js"`
 
 ## Matching URL patterns
 
@@ -352,6 +430,10 @@ This injects a single content script `borderify.js` into all pages under `mozill
 This injects two content scripts into all pages under `mozilla.org` or any of its subdomains except `developer.mozilla.org`, whether served over HTTP or HTTPS.
 
 The content scripts see the same view of the DOM and are injected in the order they appear in the array, so `borderify.js` can see global variables added by `jquery.js`.
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

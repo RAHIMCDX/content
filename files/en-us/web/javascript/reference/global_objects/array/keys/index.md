@@ -1,24 +1,28 @@
 ---
 title: Array.prototype.keys()
+short-title: keys()
 slug: Web/JavaScript/Reference/Global_Objects/Array/keys
-tags:
-  - Array
-  - ECMAScript 2015
-  - Iterator
-  - JavaScript
-  - Method
-  - Prototype
-  - Reference
-  - Polyfill
+page-type: javascript-instance-method
 browser-compat: javascript.builtins.Array.keys
+sidebar: jsref
 ---
 
-{{JSRef}}
+The **`keys()`** method of {{jsxref("Array")}} instances returns a new _[array iterator](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator)_ object that contains the keys for each index in the array.
 
-The **`keys()`** method returns a new **Array
-Iterator** object that contains the keys for each index in the array.
+{{InteractiveExample("JavaScript Demo: Array.prototype.keys()")}}
 
-{{EmbedInteractiveExample("pages/js/array-keys.html")}}
+```js interactive-example
+const array = ["a", "b", "c"];
+const iterator = array.keys();
+
+for (const key of iterator) {
+  console.log(key);
+}
+
+// Expected output: 0
+// Expected output: 1
+// Expected output: 2
+```
 
 ## Syntax
 
@@ -26,9 +30,13 @@ Iterator** object that contains the keys for each index in the array.
 keys()
 ```
 
+### Parameters
+
+None.
+
 ### Return value
 
-A new {{jsxref("Array")}} iterator object.
+A new [iterable iterator object](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator).
 
 ## Description
 
@@ -76,8 +84,12 @@ for (const entry of Array.prototype.keys.call(arrayLike)) {
 
 ## See also
 
-- [Polyfill of `Array.prototype.keys` in `core-js`](https://github.com/zloirock/core-js#ecmascript-array)
-- {{jsxref("Array.prototype.values()")}}
+- [Polyfill of `Array.prototype.keys` in `core-js`](https://core-js.io/docs/features/ecmascript/array)
+- [es-shims polyfill of `Array.prototype.keys`](https://www.npmjs.com/package/array.prototype.keys)
+- [Indexed collections](/en-US/docs/Web/JavaScript/Guide/Indexed_collections) guide
+- {{jsxref("Array")}}
 - {{jsxref("Array.prototype.entries()")}}
+- {{jsxref("Array.prototype.values()")}}
+- [`Array.prototype[Symbol.iterator]()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Symbol.iterator)
+- {{jsxref("TypedArray.prototype.keys()")}}
 - [Iteration protocols](/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
-- [A polyfill](https://github.com/behnammodi/polyfill/blob/master/array.polyfill.js)

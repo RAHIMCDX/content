@@ -1,11 +1,8 @@
 ---
-title: 'SpeechRecognition: soundstart event'
+title: "SpeechRecognition: soundstart event"
+short-title: soundstart
 slug: Web/API/SpeechRecognition/soundstart_event
 page-type: web-api-event
-tags:
-  - Event
-  - Reference
-  - Web Speech API
 browser-compat: api.SpeechRecognition.soundstart_event
 ---
 
@@ -15,11 +12,15 @@ The **`soundstart`** event of the [Web Speech API](/en-US/docs/Web/API/Web_Speec
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('soundstart', (event) => { })
+```js-nolint
+addEventListener("soundstart", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 onsoundstart = (event) => { }
 ```
 
@@ -32,19 +33,21 @@ A generic {{DOMxRef("Event")}} with no added properties.
 You can use the `soundstart` event in an [`addEventListener`](/en-US/docs/Web/API/EventTarget/addEventListener) method:
 
 ```js
-const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+const recognition = new (
+  window.SpeechRecognition || window.webkitSpeechRecognition
+)();
 
-recognition.addEventListener('soundstart', () => {
-  console.log('Some sound is being received');
+recognition.addEventListener("soundstart", () => {
+  console.log("Some sound is being received");
 });
 ```
 
-Or use the `onsoundstart` event handler property:
+Or use the `onsoundstart` event handler property (but note that this replaces other event listeners added using `onsoundstart`, if any):
 
 ```js
 recognition.onsoundstart = () => {
-  console.log('Some sound is being received');
-}
+  console.log("Some sound is being received");
+};
 ```
 
 ## Specifications

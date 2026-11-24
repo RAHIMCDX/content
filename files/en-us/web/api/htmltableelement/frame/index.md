@@ -1,21 +1,14 @@
 ---
-title: HTMLTableElement.frame
+title: "HTMLTableElement: frame property"
+short-title: frame
 slug: Web/API/HTMLTableElement/frame
 page-type: web-api-instance-property
-tags:
-  - API
-  - HTML DOM
-  - HTMLTableElement
-  - NeedsBrowserCompatibility
-  - NeedsSpecTable
-  - Property
-  - Reference
-  - Tables
-  - Deprecated
+status:
+  - deprecated
 browser-compat: api.HTMLTableElement.frame
 ---
 
-{{APIRef("HTML DOM")}} {{Deprecated_Header}}
+{{APIRef("HTML DOM")}}
 
 The {{domxref("HTMLTableElement")}} interface's **`frame`**
 property is a string that indicates which of the table's exterior borders should be
@@ -48,14 +41,14 @@ One of the following:
 
 ```js
 // Set the frame of TableA to 'border'
-const t = document.getElementById('TableA');
-t.frame  = "border";
+const t = document.getElementById("TableA");
+t.frame = "border";
 t.border = "2px";
 ```
 
 ## Specifications
 
-- W3C DOM 2 HTML Specification
+{{Specifications}}
 
 ## Browser compatibility
 

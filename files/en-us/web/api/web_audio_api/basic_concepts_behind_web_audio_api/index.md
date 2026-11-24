@@ -2,25 +2,17 @@
 title: Basic concepts behind Web Audio API
 slug: Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API
 page-type: guide
-tags:
-  - Audio
-  - Beginner
-  - Guide
-  - Introduction
-  - Media
-  - Web Audio
-  - Web Audio API
-  - concepts
-  - sound
 ---
 
 {{DefaultAPISidebar("Web Audio API")}}
 
-This article explains some of the audio theory behind how the features of the Web Audio API work to help you make informed decisions while designing how your app routes audio. If you are not already a sound engineer, it will give you enough background to understand why the Web Audio API works as it does.
+This article explains some of the audio theory behind how the features of the [Web Audio API](/en-US/docs/Web/API/Web_Audio_API) work to help you make informed decisions while designing how your app routes audio. If you are not already a sound engineer, it will give you enough background to understand why the Web Audio API works as it does.
 
 ## Audio graphs
 
-The [Web Audio API](/en-US/docs/Web/API/Web_Audio_API) involves handling audio operations inside an [audio context](/en-US/docs/Web/API/AudioContext), and has been designed to allow _modular routing_. Each [audio node](/en-US/docs/Web/API/AudioNode) performs a basic audio operation and is linked with one more other audio nodes to form an [audio routing graph](/en-US/docs/Web/API/AudioNode#the_audio_routing_graph). Several sources with different channel layouts are supported, even within a single context. This modular design provides the flexibility to create complex audio functions with dynamic effects.
+An **audio graph** (or [audio routing graph](/en-US/docs/Web/API/AudioNode#the_audio_routing_graph)) is a network of connected [audio nodes](/en-US/docs/Web/API/AudioNode), contained inside an [`AudioContext`](/en-US/docs/Web/API/AudioContext), which the Web Audio API uses to process and produce sound. Each node does one specific job, and multiple nodes are connected together to build a signal path from a source to a destination, usually the speakers. This modular design provides the flexibility to create complex audio functions with dynamic effects.
+
+Several sources with different channel layouts are supported, even within a single context.
 
 Audio nodes are linked via their inputs and outputs, forming a chain that starts with one or more sources, goes through one or more nodes, then ends up at a destination (although you don't have to provide a destination if you only want to visualize some audio data). A simple, typical workflow for web audio would look something like this:
 
@@ -30,7 +22,8 @@ Audio nodes are linked via their inputs and outputs, forming a chain that starts
 4. Choose the final destination for the audio (such as the user's computer speakers).
 5. Connect the source nodes to zero or more effect nodes and then to the chosen destination.
 
-> **Note:** The [channel notation](https://en.wikipedia.org/wiki/Surround_sound#Channel_notation) is a numeric value, such as _2.0_ or _5.1_, representing the number of audio channels available on a signal. The first number is the number of full frequency range audio channels the signal includes. The number appearing after the period indicates the number of those channels reserved for low-frequency effect (LFE) outputs; these are often called **subwoofers**.
+> [!NOTE]
+> The [channel notation](https://en.wikipedia.org/wiki/Surround_sound#Channel_notation) is a numeric value, such as _2.0_ or _5.1_, representing the number of audio channels available on a signal. The first number is the number of full frequency range audio channels the signal includes. The number appearing after the period indicates the number of those channels reserved for low-frequency effect (LFE) outputs; these are often called **subwoofers**.
 
 ![A simple box diagram with an outer box labeled Audio context and three inner boxes labeled Sources, Effects, and Destination. The three inner boxes have arrows between them pointing from left to right, indicating the flow of audio information.](webaudioapi_en.svg)
 
@@ -55,13 +48,15 @@ You'll find more information on the Wikipedia page [_Sampling (signal processing
 
 An {{domxref("AudioBuffer")}} is defined with three parameters:
 
-- the number of channels (1 for mono, 2 for stereo, etc.),
+- the number of channels (1 for mono, 2 for stereo, six for 5.1, etc.),
 - its length, meaning the number of sample frames inside the buffer,
 - and the sample rate, the number of sample frames played per second.
 
-A _sample_ is a single 32-bit floating point value representing the value of the audio stream at each specific moment in time within a particular channel (left or right, if in the case of stereo). A _frame_, or _sample frame_, is the set of all values for all channels that will play at a specific moment in time: all the samples of all the channels that play at the same time (two for a stereo sound, six for 5.1, etc.).
+Some important definitions:
 
-The _sample rate_ is the quantity of those samples (or frames, since all samples of a frame play at the same time) that will play in one second, measured in Hz. The higher the sample rate, the better the sound quality.
+- A _sample_ is a single 32-bit floating point value representing the value of the audio stream at each specific moment in time within a particular channel (left or right, if in the case of stereo).
+- A _frame_, or _sample frame_, is the set of all values for all channels that will play at a specific moment in time (again, 1 for mono, there will be 2 for stereo...).
+- The _sample rate_ is the quantity of those samples (or frames, since all samples of a frame play at the same time) that will play in one second, measured in Hz. The higher the sample rate, the better the sound quality.
 
 Let's look at a _mono_ and a _stereo_ audio buffer, each one second long at a rate of 44100Hz:
 
@@ -72,20 +67,21 @@ Let's look at a _mono_ and a _stereo_ audio buffer, each one second long at a ra
 
 When a buffer plays, you will first hear the leftmost sample frame, then the one right next to it, then the next, _and so on_, until the end of the buffer. In the case of stereo, you will hear both channels simultaneously. Sample frames are handy because they are independent of the number of channels and represent time in an ideal way for precise audio manipulation.
 
-> **Note:** To get a time in seconds from a frame count, divide the number of frames by the sample rate. To get the number of frames from the number of samples, you only need to divide the latter value by the channel count.
+> [!NOTE]
+> To get a time in seconds from a frame count, divide the number of frames by the sample rate. To get the number of frames from the number of samples, you only need to divide the latter value by the channel count.
 
 Here are a couple of simple examples:
 
 ```js
-const context = new AudioContext();
-const buffer = new AudioBuffer(context, {
+const buffer = new AudioBuffer({
   numberOfChannels: 2,
   length: 22050,
-  sampleRate: 44100
+  sampleRate: 44100,
 });
 ```
 
-> **Note:** In [digital audio](https://en.wikipedia.org/wiki/Digital_audio), **44,100 [Hz](https://en.wikipedia.org/wiki/Hertz)** (alternately represented as **44.1 kHz**) is a common [sampling frequency](https://en.wikipedia.org/wiki/Sampling_frequency). Why 44.1 kHz?
+> [!NOTE]
+> In [digital audio](https://en.wikipedia.org/wiki/Digital_audio), **44,100 [Hz](https://en.wikipedia.org/wiki/Hertz)** (alternately represented as **44.1 kHz**) is a common [sampling frequency](https://en.wikipedia.org/wiki/Sampling_frequency). Why 44.1 kHz?
 >
 > Firstly, because the [hearing range](https://en.wikipedia.org/wiki/Hearing_range) of human ears is roughly 20 Hz to 20,000 Hz. Via the [Nyquist–Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), the sampling frequency must be greater than twice the maximum frequency one wishes to reproduce. Therefore, the sampling rate has to be _greater_ than 40,000 Hz.
 >
@@ -94,8 +90,7 @@ const buffer = new AudioBuffer(context, {
 If you use this call above, you will get a stereo buffer with two channels that, when played back on an {{domxref("AudioContext")}} running at 44100 Hz (very common, most normal sound cards run at this rate), will last for 0.5 seconds: 22,050 frames/44,100 Hz = 0.5 seconds.
 
 ```js
-const context = new AudioContext();
-const buffer = new AudioBuffer(context, {
+const buffer = new AudioBuffer({
   numberOfChannels: 1,
   length: 22050,
   sampleRate: 22050,
@@ -104,13 +99,14 @@ const buffer = new AudioBuffer(context, {
 
 If you use this call, you will get a mono buffer (single-channel buffer) that, when played back on an {{domxref("AudioContext")}} running at 44,100 Hz, will be automatically _resampled_ to 44,100 Hz (and therefore yield 44,100 frames), and last for 1.0 second: 44,100 frames/44,100 Hz = 1 second.
 
-> **Note:** Audio resampling is very similar to image resizing. Say you've got a 16 x 16 image but want it to fill a 32 x 32 area. You resize (or resample) it. The result has less quality (it can be blurry or edgy, depending on the resizing algorithm), but it works, with the resized image taking up less space. Resampled audio is the same: you save space, but, in practice, you cannot correctly reproduce high-frequency content or treble sound.
+> [!NOTE]
+> Audio resampling is very similar to image resizing. Say you've got a 16 x 16 image but want it to fill a 32 x 32 area. You resize (or resample) it. The result has less quality (it can be blurry or edgy, depending on the resizing algorithm), but it works, with the resized image taking up less space. Resampled audio is the same: you save space, but, in practice, you cannot correctly reproduce high-frequency content or treble sound.
 
 ### Planar versus interleaved buffers
 
 The Web Audio API uses a planar buffer format. The left and right channels are stored like this:
 
-```
+```plain
 LLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRR (for a buffer of 16 frames)
 ```
 
@@ -118,7 +114,7 @@ This structure is widespread in audio processing, making it easy to process each
 
 The alternative is to use an interleaved buffer format:
 
-```
+```plain
 LRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLR (for a buffer of 16 frames)
 ```
 
@@ -209,7 +205,7 @@ When the numbers of channels of the input and the output don't match, up-mixing,
       <td><code>4</code> <em>(Quad)</em></td>
       <td>
         <em>Up-mix from stereo to quad.</em><br />The <code>L</code> and
-        <code>R </code>input channels are used for their non-surround respective
+        <code>R</code> input channels are used for their non-surround respective
         output channels (<code>L</code> and <code>R</code>). Surround output
         channels (<code>SL</code> and <code>SR</code>) are silent.<br /><code
           >output.L = input.L<br />output.R = input.R<br />output.SL = 0<br />output.SR
@@ -222,7 +218,7 @@ When the numbers of channels of the input and the output don't match, up-mixing,
       <td><code>6</code> <em>(5.1)</em></td>
       <td>
         <em>Up-mix from stereo to 5.1.</em><br />The <code>L</code> and
-        <code>R </code>input channels are used for their non-surround respective
+        <code>R</code> input channels are used for their non-surround respective
         output channels (<code>L</code> and <code>R</code>). Surround output
         channels (<code>SL</code> and <code>SR</code>), as well as the center
         (<code>C</code>) and subwoofer (<code>LFE</code>) channels, are left
@@ -239,9 +235,8 @@ When the numbers of channels of the input and the output don't match, up-mixing,
         <em>Down-mix from quad to mono</em>.<br />All four input channels
         (<code>L</code>, <code>R</code>, <code>SL</code>, and <code>SR</code>)
         are equally combined to produce the unique output channel
-        (<code>M</code>).<br /><code
-          >output.M = 0.25 * (input.L + input.R + </code
-        ><code>input.SL + input.SR</code><code>)</code>
+        (<code>M</code>).<br />
+        <code>output.M = 0.25 * (input.L + input.R + input.SL + input.SR)</code>
       </td>
     </tr>
     <tr>
@@ -252,10 +247,9 @@ When the numbers of channels of the input and the output don't match, up-mixing,
         (<code>L</code> and <code>SL</code>) are equally combined to produce the
         unique left output channel (<code>L</code>). And similarly, both right
         input channels (<code>R</code> and <code>SR</code>) are equally combined
-        to produce the unique right output channel (<code>R</code>).<br /><code
-          >output.L = 0.5 * (input.L + input.SL</code
-        ><code>)</code><br /><code>output.R = 0.5 * (input.R + input.SR</code
-        ><code>)</code>
+        to produce the unique right output channel (<code>R</code>).<br />
+        <code>output.L = 0.5 * (input.L + input.SL)</code><br />
+        <code>output.R = 0.5 * (input.R + input.SR)</code>
       </td>
     </tr>
     <tr>
@@ -266,10 +260,13 @@ When the numbers of channels of the input and the output don't match, up-mixing,
         <code>R</code>, <code>SL</code>, and <code>SR</code> input channels are
         used for their respective output channels (<code>L</code> and
         <code>R</code>). Center (<code>C</code>) and subwoofer
-        (<code>LFE</code>) channels are left silent.<br /><code
-          >output.L = input.L<br />output.R = input.R<br />output.C = 0<br />output.LFE
-          = 0<br />output.SL = input.SL<br />output.SR = input.SR</code
-        >
+        (<code>LFE</code>) channels are left silent.<br />
+        <code>output.L = input.L</code><br />
+        <code>output.R = input.R</code><br />
+        <code>output.C = 0</code><br />
+        <code>output.LFE = 0</code><br />
+        <code>output.SL = input.SL</code><br />
+        <code>output.SR = input.SR</code>
       </td>
     </tr>
     <tr>
@@ -281,10 +278,8 @@ When the numbers of channels of the input and the output don't match, up-mixing,
         channels are all mixed together. The surround channels are slightly
         attenuated, and the regular lateral channels are power-compensated to
         make them count as a single channel by multiplying by <code>√2/2</code>.
-        The subwoofer (<code>LFE</code>) channel is lost.<br /><code
-          >output.M = 0.7071 * (input.L + input.R) + input.C + 0.5 * (input.SL +
-          input.SR)</code
-        >
+        The subwoofer (<code>LFE</code>) channel is lost.<br />
+        <code>output.M = 0.7071 * (input.L + input.R) + input.C + 0.5 * (input.SL + input.SR)</code>
       </td>
     </tr>
     <tr>
@@ -298,10 +293,9 @@ When the numbers of channels of the input and the output don't match, up-mixing,
         or <code>SR</code>) and mixed to each lateral channel. As it is mixed
         down to two channels, it is mixed at a lower power: in each case, it is
         multiplied by <code>√2/2</code>. The subwoofer (<code>LFE</code>)
-        channel is lost.<br /><code
-          >output.L = input.L + 0.7071 * (input.C + input.SL)<br />output.R =
-          input.R </code
-        ><code>+ 0.7071 * (input.C + input.SR)</code>
+        channel is lost.<br />
+        <code>output.L = input.L + 0.7071 * (input.C + input.SL)</code><br />
+        <code>output.R = input.R + 0.7071 * (input.C + input.SR)</code>
       </td>
     </tr>
     <tr>
@@ -313,11 +307,11 @@ When the numbers of channels of the input and the output don't match, up-mixing,
         <code>R</code>). As it is mixed down to two channels, it is mixed at a
         lower power: in each case, it is multiplied by <code>√2/2</code>. The
         surround channels are passed unchanged. The subwoofer (<code>LFE</code>)
-        channel is lost.<br /><code
-          >output.L = input.L + 0.7071 * input.C<br />output.R = input.R +
-          0.7071 * input.C<br />output.SL = input.SL<br />output.SR =
-          input.SR</code
-        >
+        channel is lost.<br />
+        <code>output.L = input.L + 0.7071 * input.C</code><br />
+        <code>output.R = input.R + 0.7071 * input.C</code><br />
+        <code>output.SL = input.SL</code><br />
+        <code>output.SR = input.SR</code>
       </td>
     </tr>
     <tr>
@@ -354,7 +348,7 @@ When the numbers of channels of the input and the output don't match, up-mixing,
 
 In general, we get the output over time to produce audio visualizations, usually reading its gain or frequency data. Then, using a graphical tool, we turn the obtained data into a visual representation, such as a graph. The Web Audio API has an {{domxref("AnalyserNode")}} available that doesn't alter the audio signal passing through it. Additionally, it outputs the audio data, allowing us to process it via a technology such as {{htmlelement("canvas")}}.
 
-![Without modifying the audio stream, the node allows to get the frequency and time-domain data associated with it, using an FFT.](fttaudiodata_en.svg)
+![Without modifying the audio stream, the node allows you to get the frequency and time-domain data associated with it, using an FFT.](fttaudiodata_en.svg)
 
 You can grab data using the following methods:
 
@@ -367,7 +361,8 @@ You can grab data using the following methods:
 - {{domxref("AnalyserNode.getByteTimeDomainData()")}}
   - : Copies the current waveform, or time-domain, data into a {{jsxref("Uint8Array")}} (unsigned byte array) passed into it.
 
-> **Note:** For more information, see our [Visualizations with Web Audio API](/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API) article.
+> [!NOTE]
+> For more information, see our [Visualizations with Web Audio API](/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API) article.
 
 ## Spatializations
 
@@ -381,7 +376,8 @@ Similarly, the Web Audio API describes the listener using right-hand Cartesian c
 
 ![We see the position, up, and front vectors of an AudioListener, with the up and front vectors at 90° from the other.](webaudiolistenerreduced.png)
 
-> **Note:** For more information, see our [Web audio spatialization basics](/en-US/docs/Web/API/Web_Audio_API/Web_audio_spatialization_basics) article.
+> [!NOTE]
+> For more information, see our [Web audio spatialization basics](/en-US/docs/Web/API/Web_Audio_API/Web_audio_spatialization_basics) article.
 
 ## Fan-in and Fan-out
 

@@ -1,21 +1,8 @@
 ---
-title: CanvasRenderingContext2D.getImageData()
+title: "CanvasRenderingContext2D: getImageData() method"
+short-title: getImageData()
 slug: Web/API/CanvasRenderingContext2D/getImageData
 page-type: web-api-instance-method
-tags:
-  - API
-  - Canvas
-  - Canvas API
-  - CanvasRenderingContext2D
-  - Cut
-  - Graphics
-  - Image
-  - ImageData
-  - Method
-  - Reference
-  - copy
-  - getImageData
-  - img
 browser-compat: api.CanvasRenderingContext2D.getImageData
 ---
 
@@ -30,7 +17,8 @@ This method is not affected by the canvas's transformation matrix. If the specif
 rectangle extends outside the bounds of the canvas, the pixels outside the canvas are
 transparent black in the returned `ImageData` object.
 
-> **Note:** Image data can be painted onto a canvas using the
+> [!NOTE]
+> Image data can be painted onto a canvas using the
 > {{domxref("CanvasRenderingContext2D.putImageData()", "putImageData()")}} method.
 
 You can find more information about `getImageData()` and general
@@ -59,7 +47,12 @@ getImageData(sx, sy, sw, sh, settings)
     Positive values are down, and negative are up.
 - `settings` {{optional_inline}}
   - : An object with the following properties:
-    - `colorSpace`: Specifies the color space of the image data. Can be set to `"srgb"` for the [sRGB color space](https://en.wikipedia.org/wiki/SRGB) or `"display-p3"` for the [display-p3 color space](https://en.wikipedia.org/wiki/DCI-P3).
+    - `colorSpace`
+      - : Specifies the color space of the image data. Can be set to `"srgb"` for the [sRGB color space](https://en.wikipedia.org/wiki/SRGB) or `"display-p3"` for the [display-p3 color space](https://en.wikipedia.org/wiki/DCI-P3).
+    - `pixelFormat`
+      - : Specifies the pixel format. Possible values:
+        - `"rgba-unorm8"`, for RGBA with 8 bit per component unsigned normalized format, using a {{jsxref("Uint8ClampedArray")}}.
+        - `"rgba-float16"`, for RGBA with 16 bits per component, using a {{jsxref("Float16Array")}}. Floating-point pixel values allow representing colors in arbitrarily wide gamuts and high dynamic range (HDR).
 
 ### Return value
 
@@ -68,16 +61,19 @@ canvas specified. The coordinates of the rectangle's top-left corner are
 `(sx, sy)`, while the coordinates of the bottom corner are
 `(sx + sw - 1, sy + sh - 1)`.
 
+> [!NOTE]
+> With certain privacy settings (such as fingerprinting protection), random subtle noise is introduced to the `getImageData()` result to prevent the website from inferring the user's rendering device. Therefore, `putImageData()` and `getImageData()` may not round-trip.
+
 ### Exceptions
 
 - `IndexSizeError` {{domxref("DOMException")}}
-  - : Thrown if either `sw` or `sh` are zero.
+  - : Thrown if either `sw` or `sh` is zero.
 - `SecurityError` {{domxref("DOMException")}}
   - : The canvas contains or may contain pixels which were loaded from an origin other
     than the one from which the document itself was loaded.
     To avoid a `SecurityError` {{domxref("DOMException")}} being thrown in this situation,
     configure CORS to allow the source image to be used in this way.
-    See [Allowing cross-origin use of images and canvas](/en-US/docs/Web/HTML/CORS_enabled_image).
+    See [Allowing cross-origin use of images and canvas](/en-US/docs/Web/HTML/How_to/CORS_enabled_image).
 
 ## Examples
 
@@ -127,7 +123,23 @@ context.fillRect(0, 0, 10, 10);
 
 // Get ImageData converted to sRGB
 const imageData = context.getImageData(0, 0, 1, 1, { colorSpace: "srgb" });
-console.log(imageData.colorSpace);  // "srgb"
+console.log(imageData.colorSpace); // "srgb"
+```
+
+### Getting data in different pixel formats
+
+The optional `pixelFormat` setting allows you to get image data in the desired pixel format.
+
+```js
+const context = canvas.getContext("2d");
+
+const defaultImageData = context.getImageData(0, 0, 1, 1);
+console.log(defaultImageData.pixelFormat); // "rgba-unorm8"
+
+const float16ImageData = context.getImageData(0, 0, 1, 1, {
+  pixelFormat: "rgba-float16",
+});
+console.log(float16ImageData.pixelFormat); // "rgba-float16"
 ```
 
 ## Specifications

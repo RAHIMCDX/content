@@ -1,18 +1,14 @@
 ---
-title: PerformanceResourceTiming.requestStart
+title: "PerformanceResourceTiming: requestStart property"
+short-title: requestStart
 slug: Web/API/PerformanceResourceTiming/requestStart
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - Web Performance
 browser-compat: api.PerformanceResourceTiming.requestStart
 ---
 
-{{APIRef("Performance API")}}
+{{APIRef("Performance API")}}{{AvailableInWorkers}}
 
-The **`requestStart`** read-only property returns a {{domxref("DOMHighResTimeStamp","timestamp")}} of the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.
+The **`requestStart`** read-only property returns a {{domxref("DOMHighResTimeStamp","timestamp")}} of the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retries the request, the value returned will be the start of the retry request.
 
 There is no _end_ property for `requestStart`. To measure the request time, calculate {{domxref("PerformanceResourceTiming.responseStart", "responseStart")}} - `requestStart` (see the example below).
 
@@ -23,6 +19,11 @@ The `requestStart` property can have the following values:
 - A {{domxref("DOMHighResTimeStamp")}} representing the time immediately before the browser starts requesting the resource from the server.
 - `0` if the resource was instantaneously retrieved from a cache.
 - `0` if the resource is a cross-origin request and no {{HTTPHeader("Timing-Allow-Origin")}} HTTP response header is used.
+- `0` if the resource is a canceled request.
+
+When the {{domxref("PerformanceResourceTiming.firstInterimResponseStart", "firstInterimResponseStart")}} is non-zero, that indicates it should be the same value as `requestStart` for [supporting browsers](#browser_compatibility).
+
+When there are no interim responses, `requestStart` is the same as `finalResponseHeadersStart` and `firstInterimResponseStart` is 0.
 
 ## Examples
 
@@ -34,7 +35,7 @@ The `requestStart` and {{domxref("PerformanceResourceTiming.responseStart", "res
 const request = entry.responseStart - entry.requestStart;
 ```
 
-Using a {{domxref("PerformanceObserver")}}:
+Example using a {{domxref("PerformanceObserver")}}, which notifies of new `resource` performance entries as they are recorded in the browser's performance timeline. Use the `buffered` option to access entries from before the observer creation.
 
 ```js
 const observer = new PerformanceObserver((list) => {
@@ -49,7 +50,7 @@ const observer = new PerformanceObserver((list) => {
 observer.observe({ type: "resource", buffered: true });
 ```
 
-Or using {{domxref("Performance.getEntriesByType()")}}, which only shows `resource` performance entries present in the browser's performance timeline at the time you call this method:
+Example using {{domxref("Performance.getEntriesByType()")}}, which only shows `resource` performance entries present in the browser's performance timeline at the time you call this method:
 
 ```js
 const resources = performance.getEntriesByType("resource");

@@ -2,14 +2,6 @@
 title: ConstantSourceNode
 slug: Web/API/ConstantSourceNode
 page-type: web-api-interface
-tags:
-  - API
-  - Audio
-  - ConstantSourceNode
-  - Interface
-  - Media
-  - Reference
-  - Web Audio API
 browser-compat: api.ConstantSourceNode
 ---
 
@@ -43,28 +35,30 @@ A `ConstantSourceNode` has no inputs and exactly one monaural (one-channel) outp
 
 _Inherits properties from its parent interface, {{domxref("AudioScheduledSourceNode")}}, and adds the following properties:_
 
-- {{domxref("ConstantSourceNode.offset", "offset")}}
+- {{domxref("ConstantSourceNode.offset", "offset")}} {{ReadOnlyInline}}
   - : An {{domxref("AudioParam")}} which specifies the value that this source continuously outputs. The default value is 1.0.
-
-### Events
-
-_Inherits events from its parent interface, {{domxref("AudioScheduledSourceNode")}}._
-
-> **Note:** Some browsers' implementations of these events are part of the {{domxref("AudioScheduledSourceNode")}} interface.
-
-- {{domxref("AudioScheduledSourceNode.ended_event","ended")}}
-  - : Fired whenever the {{domxref('ConstantSourceNode')}} data has stopped playing.
 
 ## Instance methods
 
 _Inherits methods from its parent interface, {{domxref("AudioScheduledSourceNode")}}._
 
-> **Note:** Some browsers' implementations of these methods are part of the {{domxref("AudioScheduledSourceNode")}} interface.
+> [!NOTE]
+> Some browsers' implementations of these methods are part of the {{domxref("AudioScheduledSourceNode")}} interface.
 
 - {{domxref("AudioScheduledSourceNode.start", "start()")}}
   - : Schedules a sound to playback at an exact time.
 - {{domxref("AudioScheduledSourceNode.stop", "stop()")}}
   - : Schedules a sound to stop playback at an exact time.
+
+## Events
+
+_Inherits events from its parent interface, {{domxref("AudioScheduledSourceNode")}}._
+
+> [!NOTE]
+> Some browsers' implementations of these events are part of the {{domxref("AudioScheduledSourceNode")}} interface.
+
+- {{domxref("AudioScheduledSourceNode.ended_event","ended")}}
+  - : Fired whenever the `ConstantSourceNode` data has stopped playing.
 
 ## Example
 

@@ -1,20 +1,14 @@
 ---
-title: HTMLAreaElement.toString()
+title: "HTMLAreaElement: toString() method"
+short-title: toString()
 slug: Web/API/HTMLAreaElement/toString
 page-type: web-api-instance-method
-tags:
-  - API
-  - HTMLAreaElement
-  - Method
-  - Stringifier
 browser-compat: api.HTMLAreaElement.toString
 ---
 
 {{ApiRef("URL API")}}
 
-The **`HTMLAreaElement.toString()`** {{Glossary("stringifier")}}
-method returns a string containing the whole URL. It is a read-only
-version of {{domxref("HTMLAreaElement.href")}}.
+The **`HTMLAreaElement.toString()`** {{Glossary("stringifier")}} method returns a string containing the whole URL, which is the same value as {{domxref("HTMLAreaElement.href")}}.
 
 ## Syntax
 
@@ -28,7 +22,7 @@ None.
 
 ### Return value
 
-None ({{jsxref("undefined")}}).
+A string containing the element's complete URL.
 
 ## Examples
 

@@ -2,20 +2,12 @@
 title: Element.ariaRowIndexText
 slug: Web/API/Element/ariaRowIndexText
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaRowIndexText
-  - AriaAttributes
-  - AriaMixin
-  - Element
 browser-compat: api.Element.ariaRowIndexText
 ---
 
-{{DefaultAPISidebar("DOM")}}
+{{APIRef("DOM")}}
 
-The **`ariaRowIndexText`** property of the {{domxref("Element")}} interface reflects the value of the [`aria-rowindextext`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindextext) attribute, which defines a human readable text alternative of aria-rowindex.
+The **`ariaRowIndexText`** property of the {{domxref("Element")}} interface reflects the value of the [`aria-rowindextext`](/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-rowindextext) attribute, which defines a human-readable text alternative of aria-rowindex.
 
 ## Value
 
@@ -76,9 +68,9 @@ In this example the `aria-rowindextext` attribute on the element with an ID of `
 ```
 
 ```js
-let el = document.getElementById('role-heading');
+let el = document.getElementById("role-heading");
 console.log(el.ariaRowIndexText); // "Heading row"
-el.ariaRowIndexText = "Updated heading row"
+el.ariaRowIndexText = "Updated heading row";
 console.log(el.ariaRowIndexText); // "Updated heading row"
 ```
 
@@ -92,4 +84,4 @@ console.log(el.ariaRowIndexText); // "Updated heading row"
 
 ## See also
 
-- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Roles/table_role)
+- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/table_role)

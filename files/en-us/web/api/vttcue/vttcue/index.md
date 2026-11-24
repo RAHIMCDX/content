@@ -1,18 +1,8 @@
 ---
-title: VTTCue()
+title: "VTTCue: VTTCue() constructor"
+short-title: VTTCue()
 slug: Web/API/VTTCue/VTTCue
 page-type: web-api-constructor
-tags:
-  - API
-  - Accessibility
-  - Constructor
-  - Reference
-  - VTTCue
-  - WebVTT
-  - WebVTT API
-  - a11y
-  - captions
-  - vtt
 browser-compat: api.VTTCue.VTTCue
 ---
 
@@ -33,7 +23,7 @@ new VTTCue(startTime, endTime, text)
   - : This is a `double` representing the initial text track cue start time.
     This is the time, given in seconds and fractions of a second, denoting the beginning
     of the range of the media data to which this cue applies. For example, if a cue is to
-    be visible from 50 seconds to a one minute, five and a half seconds in the media's
+    be visible from 50 seconds to one minute, five and a half seconds in the media's
     playback, `startTime` will be 50.0.
 - `endTime`
   - : This is a `double` representing the ending time for this text track cue.
@@ -53,7 +43,7 @@ the time span given.
 
 ```js
 // Create a cue that is shown from 2 to 3 seconds and uses the given text.
-let cue = new VTTCue(2, 3, 'Cool text to be displayed');
+let cue = new VTTCue(2, 3, "Cool text to be displayed");
 ```
 
 ## Specifications

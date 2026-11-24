@@ -1,24 +1,25 @@
 ---
 title: Function.prototype.caller
+short-title: caller
 slug: Web/JavaScript/Reference/Global_Objects/Function/caller
-tags:
-  - Function
-  - JavaScript
-  - Property
-  - Non-standard
-  - Deprecated
+page-type: javascript-instance-accessor-property
+status:
+  - deprecated
+  - non-standard
 browser-compat: javascript.builtins.Function.caller
+sidebar: jsref
 ---
 
-{{JSRef}}{{Non-standard_Header}}{{Deprecated_Header}}
+{{Non-standard_Header}}
 
-A {{jsxref("Function")}} object's **`caller`** property accessor property represents the function that invoked the specified function. For [strict](/en-US/docs/Web/JavaScript/Reference/Strict_mode), async function, and generator function callers, accessing the `caller` property throws an exception.
+> [!NOTE]
+> In [strict mode](/en-US/docs/Web/JavaScript/Reference/Strict_mode), accessing `caller` of a function throws an error — the API is removed with no replacement. This is to prevent code from being able to "walk the stack", which both poses security risks and severely limits the possibility of optimizations like inlining and tail-call optimization. For more explanation, you can read [the rationale for the deprecation of `arguments.callee`](/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee#description).
+
+The **`caller`** accessor property of {{jsxref("Function")}} instances returns the function that invoked this function. For [strict](/en-US/docs/Web/JavaScript/Reference/Strict_mode), arrow, async, and generator functions, accessing the `caller` property throws a {{jsxref("TypeError")}}.
 
 ## Description
 
-If the function `f` was invoked by the top-level code, the value of `f.caller` is {{jsxref("Operators/null", "null")}}; otherwise it's the function that called `f`. If the function that called `f` is a strict mode function, the value of `f.caller` is also `null`.
-
-In [strict mode](/en-US/docs/Web/JavaScript/Reference/Strict_mode), accessing `caller` of a function throws an error. This is to prevent a function from being able to "walk the stack", which both poses security risks and severely limits the possibility of optimizations like inlining and tail-call optimization. For more explanation, you can read [the rationale for the deprecation of `arguments.callee`](/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee#description).
+If the function `f` was invoked by the top-level code, the value of `f.caller` is {{jsxref("null")}}; otherwise it's the function that called `f`. If the function that called `f` is a strict mode function, the value of `f.caller` is also `null`.
 
 Note that the only behavior specified by the ECMAScript specification is that `Function.prototype` has an initial `caller` accessor that unconditionally throws a {{jsxref("TypeError")}} for any `get` or `set` request (known as a "poison pill accessor"), and that implementations are not allowed to change this semantic for any function except non-strict plain functions, in which case it must not have the value of a strict mode function. The actual behavior of the `caller` property, if it's anything other than throwing an error, is implementation-defined. For example, Chrome defines it as an own data property, while Firefox and Safari extend the initial poison-pill `Function.prototype.caller` accessor to specially handle `this` values that are non-strict functions.
 
@@ -27,17 +28,17 @@ Note that the only behavior specified by the ECMAScript specification is that `F
   if (Object.hasOwn(f, "caller")) {
     console.log(
       "caller is an own property with descriptor",
-      Object.getOwnPropertyDescriptor(f, "caller")
+      Object.getOwnPropertyDescriptor(f, "caller"),
     );
   } else {
     console.log(
-      "f doesn't have an own property named caller. Trying to get f.[[Prototype]].caller"
+      "f doesn't have an own property named caller. Trying to get f.[[Prototype]].caller",
     );
     console.log(
       Object.getOwnPropertyDescriptor(
         Object.getPrototypeOf(f),
-        "caller"
-      ).get.call(f)
+        "caller",
+      ).get.call(f),
     );
   }
 })();
@@ -52,7 +53,7 @@ Note that the only behavior specified by the ECMAScript specification is that `F
 
 This property replaces the obsolete `arguments.caller` property of the {{jsxref("Functions/arguments", "arguments")}} object.
 
-The special property `__caller__`, which returned the activation object of the caller thus allowing to reconstruct the stack, was removed for security reasons.
+The special property `__caller__`, which returned the activation object of the caller thus allowing you to reconstruct the stack, was removed for security reasons.
 
 ## Examples
 
@@ -64,9 +65,8 @@ The following code checks the value a function's `caller` property.
 function myFunc() {
   if (myFunc.caller === null) {
     return "The function was called from the top!";
-  } else {
-    return `This function's caller was ${myFunc.caller}`;
   }
+  return `This function's caller was ${myFunc.caller}`;
 }
 ```
 

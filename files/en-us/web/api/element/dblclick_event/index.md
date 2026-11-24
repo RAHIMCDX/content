@@ -1,25 +1,12 @@
 ---
-title: 'Element: dblclick event'
+title: "Element: dblclick event"
+short-title: dblclick
 slug: Web/API/Element/dblclick_event
 page-type: web-api-event
-tags:
-  - API
-  - DOM
-  - Double Click
-  - Double-Click
-  - Element
-  - Event
-  - Input
-  - Interface
-  - MouseEvent
-  - Reference
-  - button
-  - dblclick
-  - mouse
 browser-compat: api.Element.dblclick_event
 ---
 
-{{APIRef}}
+{{APIRef("UI Events")}}
 
 The **`dblclick`** event fires when a pointing device button (such as a mouse's primary button) is double-clicked; that is, when it's rapidly clicked twice on a single element within a very short span of time.
 
@@ -27,88 +14,27 @@ The **`dblclick`** event fires when a pointing device button (such as a mouse's 
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('dblclick', (event) => {});
+```js-nolint
+addEventListener("dblclick", (event) => { })
+```
 
-ondblclick = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+ondblclick = (event) => { }
 ```
 
 ## Event type
 
-A {{domxref("MouseEvent")}}. Inherits from {{domxref("Event")}}.
+A {{domxref("MouseEvent")}}. Inherits from {{domxref("UIEvent")}} and {{domxref("Event")}}.
 
 {{InheritanceDiagram("MouseEvent")}}
-
-## Event properties
-
-_This interface also inherits properties of its parents, {{domxref("UIEvent")}} and {{domxref("Event")}}._
-
-- {{domxref("MouseEvent.altKey")}} {{ReadOnlyInline}}
-  - : Returns `true` if the <kbd>alt</kbd> key was down when the mouse event was fired.
-- {{domxref("MouseEvent.button")}} {{ReadOnlyInline}}
-  - : The button number that was pressed (if applicable) when the mouse event was fired.
-- {{domxref("MouseEvent.buttons")}} {{ReadOnlyInline}}
-  - : The buttons being pressed (if any) when the mouse event was fired.
-- {{domxref("MouseEvent.clientX")}} {{ReadOnlyInline}}
-  - : The X coordinate of the mouse pointer in local (DOM content) coordinates.
-- {{domxref("MouseEvent.clientY")}} {{ReadOnlyInline}}
-  - : The Y coordinate of the mouse pointer in local (DOM content) coordinates.
-- {{domxref("MouseEvent.ctrlKey")}} {{ReadOnlyInline}}
-  - : Returns `true` if the <kbd>control</kbd> key was down when the mouse event was fired.
-- {{domxref("MouseEvent.layerX")}} {{Non-standard_inline}} {{ReadOnlyInline}}
-  - : Returns the horizontal coordinate of the event relative to the current layer.
-- {{domxref("MouseEvent.layerY")}} {{Non-standard_inline}} {{ReadOnlyInline}}
-  - : Returns the vertical coordinate of the event relative to the current layer.
-- {{domxref("MouseEvent.metaKey")}} {{ReadOnlyInline}}
-  - : Returns `true` if the <kbd>meta</kbd> key was down when the mouse event was fired.
-- {{domxref("MouseEvent.movementX")}} {{ReadOnlyInline}}
-  - : The X coordinate of the mouse pointer relative to the position of the last {{domxref("Element/mousemove_event", "mousemove")}} event.
-- {{domxref("MouseEvent.movementY")}} {{ReadOnlyInline}}
-  - : The Y coordinate of the mouse pointer relative to the position of the last {{domxref("Element/mousemove_event", "mousemove")}} event.
-- {{domxref("MouseEvent.offsetX")}} {{ReadOnlyInline}}
-  - : The X coordinate of the mouse pointer relative to the position of the padding edge of the target node.
-- {{domxref("MouseEvent.offsetY")}} {{ReadOnlyInline}}
-  - : The Y coordinate of the mouse pointer relative to the position of the padding edge of the target node.
-- {{domxref("MouseEvent.pageX")}} {{ReadOnlyInline}}
-  - : The X coordinate of the mouse pointer relative to the whole document.
-- {{domxref("MouseEvent.pageY")}} {{ReadOnlyInline}}
-  - : The Y coordinate of the mouse pointer relative to the whole document.
-- {{domxref("MouseEvent.relatedTarget")}} {{ReadOnlyInline}}
-  - : The secondary target for the event, if there is one.
-- {{domxref("MouseEvent.screenX")}} {{ReadOnlyInline}}
-  - : The X coordinate of the mouse pointer in global (screen) coordinates.
-- {{domxref("MouseEvent.screenY")}} {{ReadOnlyInline}}
-  - : The Y coordinate of the mouse pointer in global (screen) coordinates.
-- {{domxref("MouseEvent.shiftKey")}} {{ReadOnlyInline}}
-  - : Returns `true` if the <kbd>shift</kbd> key was down when the mouse event was fired.
-- {{domxref("MouseEvent.mozPressure")}} {{non-standard_inline()}} {{deprecated_inline}} {{ReadOnlyInline}}
-  - : The amount of pressure applied to a touch or tablet device when generating the event; this value ranges between `0.0` (minimum pressure) and `1.0` (maximum pressure).
-    Instead of using this deprecated (and non-standard) property, you should use {{domxref("PointerEvent")}} and look at its {{domxref("PointerEvent.pressure", "pressure")}} property.
-- {{domxref("MouseEvent.mozInputSource")}} {{non-standard_inline()}} {{ReadOnlyInline}}
-  - : The type of device that generated the event (one of the `MOZ_SOURCE_*` constants).
-    This lets you, for example, determine whether a mouse event was generated by an actual mouse or by a touch event (which might affect the degree of accuracy with which you interpret the coordinates associated with the event).
-- {{domxref("MouseEvent.webkitForce")}} {{non-standard_inline()}} {{ReadOnlyInline}}
-  - : The amount of pressure applied when clicking.
-- {{domxref("MouseEvent.x")}} {{ReadOnlyInline}}
-  - : Alias for {{domxref("MouseEvent.clientX")}}.
-- {{domxref("MouseEvent.y")}} {{ReadOnlyInline}}
-  - : Alias for {{domxref("MouseEvent.clientY")}}.
 
 ## Examples
 
 This example toggles the size of a card when you double click on it.
-
-### JavaScript
-
-```js
-const card = document.querySelector('aside');
-
-card.addEventListener('dblclick', (e) => {
-  card.classList.toggle('large');
-});
-```
 
 ### HTML
 
@@ -123,7 +49,7 @@ card.addEventListener('dblclick', (e) => {
 
 ```css
 aside {
-  background: #fe9;
+  background: #ffee99;
   border-radius: 1em;
   display: inline-block;
   padding: 1em;
@@ -136,6 +62,16 @@ aside {
 .large {
   transform: scale(1.3);
 }
+```
+
+### JavaScript
+
+```js
+const card = document.querySelector("aside");
+
+card.addEventListener("dblclick", (e) => {
+  card.classList.toggle("large");
+});
 ```
 
 ### Result
@@ -152,7 +88,7 @@ aside {
 
 ## See also
 
-- [Introduction to events](/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+- [Learn: Introduction to events](/en-US/docs/Learn_web_development/Core/Scripting/Events)
 - {{domxref("Element/auxclick_event", "auxclick")}}
 - {{domxref("Element/click_event", "click")}}
 - {{domxref("Element/contextmenu_event", "contextmenu")}}

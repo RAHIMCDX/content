@@ -1,10 +1,8 @@
 ---
-title: 'IDBDatabase: close event'
+title: "IDBDatabase: close event"
+short-title: close
 slug: Web/API/IDBDatabase/close_event
 page-type: web-api-event
-tags:
-  - Event
-  - Reference
 browser-compat: api.IDBDatabase.close_event
 ---
 
@@ -16,11 +14,16 @@ Note that it is not fired if the database connection is closed normally using [`
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('close', (event) => { });
-onclose = (event) => { };
+```js-nolint
+addEventListener("close", (event) => { })
+```
+
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onclose = (event) => { }
 ```
 
 ## Event type
@@ -33,61 +36,65 @@ This example opens a database and listens for the `close` event:
 
 ```js
 // Open the database
-const dBOpenRequest = window.indexedDB.open('toDoList', 4);
+const dBOpenRequest = window.indexedDB.open("toDoList", 4);
 
 dBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
 
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 };
 
 dBOpenRequest.onsuccess = (event) => {
-
   const db = dBOpenRequest.result;
-  db.addEventListener('close', () => {
-    console.log('Database connection closed');
+  db.addEventListener("close", () => {
+    console.log("Database connection closed");
   });
-
 };
 ```
 
-The same example, using the `onclose` property instead of `addEventListener()`:
+The same example, using the `onclose` property instead of `addEventListener()` (but note that this replaces other event listeners added using `onclose`, if any):
 
 ```js
 // Open the database
-const dBOpenRequest = window.indexedDB.open('toDoList', 4);
+const dBOpenRequest = window.indexedDB.open("toDoList", 4);
 
 dBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
 
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 };
 
 dBOpenRequest.onsuccess = (event) => {
-
   const db = dBOpenRequest.result;
   db.onclose = () => {
-    console.log('Database connection closed');
+    console.log("Database connection closed");
   };
-
 };
 ```
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

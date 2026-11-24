@@ -1,14 +1,8 @@
 ---
-title: 'HTMLMediaElement: stalled event'
+title: "HTMLMediaElement: stalled event"
+short-title: stalled
 slug: Web/API/HTMLMediaElement/stalled_event
 page-type: web-api-event
-tags:
-  - API
-  - Audio
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Video
 browser-compat: api.HTMLMediaElement.stalled_event
 ---
 
@@ -20,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('stalled', (event) => {});
+```js-nolint
+addEventListener("stalled", (event) => { })
+```
 
-onstalled = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onstalled = (event) => { }
 ```
 
 ## Event type
@@ -39,20 +37,20 @@ These examples add an event listener for the HTMLMediaElement's `stalled` event,
 Using `addEventListener()`:
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
-video.addEventListener('stalled', (event) => {
-  console.log('Failed to fetch data, but trying.');
+video.addEventListener("stalled", (event) => {
+  console.log("Failed to fetch data, but trying.");
 });
 ```
 
-Using the `onstalled` event handler property:
+Using the `onstalled` event handler property (but note that this replaces other event listeners added using `onstalled`, if any):
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 video.onstalled = (event) => {
-  console.log('Failed to fetch data, but trying.');
+  console.log("Failed to fetch data, but trying.");
 };
 ```
 
@@ -83,7 +81,6 @@ video.onstalled = (event) => {
 - The HTMLMediaElement {{domxref("HTMLMediaElement.volumechange_event", 'volumechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.suspend_event", 'suspend')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.emptied_event", 'emptied')}} event
-- The HTMLMediaElement {{domxref("HTMLMediaElement.stalled_event", 'stalled')}} event
 
 ## See also
 

@@ -1,31 +1,29 @@
 ---
-title: 'HTMLMediaElement: suspend event'
+title: "HTMLMediaElement: suspend event"
+short-title: suspend
 slug: Web/API/HTMLMediaElement/suspend_event
 page-type: web-api-event
-tags:
-  - API
-  - Audio
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Video
 browser-compat: api.HTMLMediaElement.suspend_event
 ---
 
 {{APIRef("HTMLMediaElement")}}
 
-The `suspend` event is fired when media data loading has been suspended.
+The `suspend` event is fired when the user agent is intentionally not fetching media data, in which case {{domxref("HTMLMediaElement.networkState")}} is set to `HTMLMediaElement.NETWORK_IDLE`. This can happen if there's no more data to load, or if loading is unnecessary; for example, the browser may decide to only buffer 5 minutes of a video in advance, in which case loading is suspended until the user watches more of the video.
 
 This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('suspend', (event) => {});
+```js-nolint
+addEventListener("suspend", (event) => { })
+```
 
-onsuspend = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onsuspend = (event) => { }
 ```
 
 ## Event type
@@ -39,20 +37,20 @@ These examples add an event listener for the HTMLMediaElement's `suspend` event,
 Using `addEventListener()`:
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
-video.addEventListener('suspend', (event) => {
-  console.log('Data loading has been suspended.');
+video.addEventListener("suspend", (event) => {
+  console.log("Data loading has been suspended.");
 });
 ```
 
-Using the `onsuspend` event handler property:
+Using the `onsuspend` event handler property (but note that this replaces other event listeners added using `onsuspend`, if any):
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 video.onsuspend = (event) => {
-  console.log('Data loading has been suspended.');
+  console.log("Data loading has been suspended.");
 };
 ```
 
@@ -81,7 +79,6 @@ video.onsuspend = (event) => {
 - The HTMLMediaElement {{domxref("HTMLMediaElement.pause_event", 'pause')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.ratechange_event", 'ratechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.volumechange_event", 'volumechange')}} event
-- The HTMLMediaElement {{domxref("HTMLMediaElement.suspend_event", 'suspend')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.emptied_event", 'emptied')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.stalled_event", 'stalled')}} event
 

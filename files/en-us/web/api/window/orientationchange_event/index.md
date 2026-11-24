@@ -1,34 +1,33 @@
 ---
-title: 'Window: orientationchange event'
+title: "Window: orientationchange event"
+short-title: orientationchange
 slug: Web/API/Window/orientationchange_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
-  - Sensors
-  - Window
-  - orientationchange
-  - Deprecated
+status:
+  - deprecated
 browser-compat: api.Window.orientationchange_event
 ---
 
-{{APIRef}}{{Deprecated_Header}}
+{{APIRef}}
 
 The `orientationchange` event is fired when the orientation of the device has changed.
 
 This event is not cancelable and does not bubble.
 
-This event is deprecated. Listen for the {{domxref("ScreenOrientation/onchange", "ScreenOrientation.onchange")}} event instead.
+This event is deprecated. Listen for the {{domxref("ScreenOrientation.change_event", "change")}} event of the {{domxref("ScreenOrientation")}} interface instead.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('orientationchange', (event) => { });
+```js-nolint
+addEventListener("orientationchange", (event) => { })
+```
 
-onorientationchange = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onorientationchange = (event) => { }
 ```
 
 ## Event type
@@ -41,15 +40,19 @@ You can use the `orientationchange` event in an {{domxref("EventTarget/addEventL
 
 ```js
 window.addEventListener("orientationchange", (event) => {
-  console.log(`the orientation of the device is now ${event.target.screen.orientation.angle}`);
+  console.log(
+    `the orientation of the device is now ${event.target.screen.orientation.angle}`,
+  );
 });
 ```
 
-Or use the `onorientationchange` event handler property:
+Or use the `onorientationchange` event handler property (but note that this replaces other event listeners added using `onorientationchange`, if any):
 
 ```js
 window.onorientationchange = (event) => {
-  console.log(`the orientation of the device is now ${event.target.screen.orientation.angle}`);
+  console.log(
+    `the orientation of the device is now ${event.target.screen.orientation.angle}`,
+  );
 };
 ```
 

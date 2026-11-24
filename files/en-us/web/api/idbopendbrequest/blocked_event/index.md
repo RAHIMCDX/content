@@ -1,12 +1,8 @@
 ---
-title: 'IDBOpenDBRequest: blocked event'
+title: "IDBOpenDBRequest: blocked event"
+short-title: blocked
 slug: Web/API/IDBOpenDBRequest/blocked_event
 page-type: web-api-event
-tags:
-  - Event
-  - IDBOpenDBRequest
-  - Reference
-  - blocked
 browser-compat: api.IDBOpenDBRequest.blocked_event
 ---
 
@@ -18,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('blocked', (event) => { });
+```js-nolint
+addEventListener("blocked", (event) => { })
+```
 
-onblocked = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onblocked = (event) => { }
 ```
 
 ## Event type
@@ -32,88 +32,85 @@ An {{domxref("IDBVersionChangeEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("IDBVersionChangeEvent")}}
 
-## Event properties
-
-_Also inherits properties from its parent, {{domxref("Event")}} interface._
-
-- {{ domxref("IDBVersionChangeEvent.oldVersion") }} {{ReadOnlyInline}}
-  - : Returns the old version of the database.
-- {{ domxref("IDBVersionChangeEvent.newVersion") }} {{ReadOnlyInline}}
-  - : Returns the new version of the database.
-
 ## Examples
 
 Using `addEventListener()`:
 
 ```js
 // Open the database
-const DBOpenRequest = window.indexedDB.open('toDoList', 4);
+const DBOpenRequest = window.indexedDB.open("toDoList", 4);
 
 DBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
 
   db.onerror = () => {
-    console.log('Error creating database');
+    console.log("Error creating database");
   };
 
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 };
 
 DBOpenRequest.onsuccess = (event) => {
   // Let's try to open the same database with a higher revision version
-  const req2 = indexedDB.open('toDoList', 5);
+  const req2 = indexedDB.open("toDoList", 5);
 
   // In this case the onblocked handler will be executed
-  req2.addEventListener('blocked', () => {
-    console.log('Request was blocked');
+  req2.addEventListener("blocked", () => {
+    console.log("Request was blocked");
   });
-
 };
 ```
 
-Using the `onblocked` property:
+Using the `onblocked` property (but note that this replaces other event listeners added using `onblocked`, if any):
 
 ```js
 // Open the database
-const DBOpenRequest = window.indexedDB.open('toDoList', 4);
+const DBOpenRequest = window.indexedDB.open("toDoList", 4);
 
 DBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
 
   db.onerror = () => {
-    console.log('Error creating database');
+    console.log("Error creating database");
   };
 
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 };
 
 DBOpenRequest.onsuccess = (event) => {
   // Let's try to open the same database with a higher revision version
-  const req2 = indexedDB.open('toDoList', 5);
+  const req2 = indexedDB.open("toDoList", 5);
 
   // In this case the onblocked handler will be executed
   req2.onblocked = () => {
-    console.log('Request was blocked');
+    console.log("Request was blocked");
   };
-
 };
 ```
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

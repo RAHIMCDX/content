@@ -1,23 +1,16 @@
 ---
-title: USBDevice.productName
+title: "USBDevice: productName property"
+short-title: productName
 slug: Web/API/USBDevice/productName
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - USB
-  - USBDevice
-  - WebUSB
-  - WebUSB API
-  - productName
-  - Experimental
+status:
+  - experimental
 browser-compat: api.USBDevice.productName
 ---
 
-{{SeeCompatTable}}{{APIRef("WebUSB API")}}
+{{APIRef("WebUSB API")}}{{SeeCompatTable}}{{SecureContext_Header}}{{AvailableInWorkers}}
 
-The **`productName`** read only property of the
+The **`productName`** read-only property of the
 {{domxref("USBDevice")}} interface the manufacturer-defined name that identifies a USB
 device.
 

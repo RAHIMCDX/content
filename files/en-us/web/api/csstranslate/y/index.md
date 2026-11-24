@@ -1,24 +1,14 @@
 ---
-title: CSSTranslate.y
+title: "CSSTranslate: y property"
+short-title: y
 slug: Web/API/CSSTranslate/y
 page-type: web-api-instance-property
-tags:
-  - API
-  - CSS Typed Object Model API
-  - CSSTransformComponent
-  - CSSTransformValue
-  - CSSTranslate
-  - Experimental
-  - Houdini
-  - Property
 browser-compat: api.CSSTranslate.y
 ---
 
-{{APIRef("CSS Typed OM")}}{{SeeCompatTable}}
+{{APIRef("CSS Typed Object Model API")}} {{AvailableInWorkers}}
 
-The **`y`** property of the
-{{domxref("CSSTranslate")}} interface gets and sets the ordinate or y-axis of the
-translating vector.
+The **`y`** property of the {{domxref("CSSTranslate")}} interface gets and sets the ordinate or y-axis of the translating vector.
 
 ## Value
 

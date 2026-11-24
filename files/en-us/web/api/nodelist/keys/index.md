@@ -1,22 +1,15 @@
 ---
-title: NodeList.keys()
+title: "NodeList: keys() method"
+short-title: keys()
 slug: Web/API/NodeList/keys
 page-type: web-api-instance-method
-tags:
-  - DOM
-  - Iterator
-  - Method
-  - NodeList
-  - Reference
-  - Web
-  - Polyfill
 browser-compat: api.NodeList.keys
 ---
 
 {{APIRef("DOM")}}
 
 The **`NodeList.keys()`** method returns an
-{{jsxref("Iteration_protocols",'iterator')}} allowing to go through all keys contained
+{{jsxref("Iteration_protocols",'iterator')}} allowing you to go through all keys contained
 in this object. The keys are `unsigned integer`.
 
 ## Syntax
@@ -24,6 +17,10 @@ in this object. The keys are `unsigned integer`.
 ```js-nolint
 keys()
 ```
+
+### Parameters
+
+None.
 
 ### Return value
 
@@ -45,17 +42,21 @@ let list = node.childNodes;
 
 // Using for...of
 for (const key of list.keys()) {
-   console.log(key);
+  console.log(key);
 }
 ```
 
 The result is:
 
-```
+```plain
 0
 1
 2
 ```
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 
@@ -63,6 +64,6 @@ The result is:
 
 ## See also
 
-- [Polyfill of `NodeList.prototype.keys` in `core-js`](https://github.com/zloirock/core-js#iterable-dom-collections)
+- [Polyfill of `NodeList.prototype.keys` in `core-js`](https://core-js.io/docs/features/web-standards/iterable-dom-collections)
 - {{domxref("Node")}}
 - {{domxref("NodeList")}}

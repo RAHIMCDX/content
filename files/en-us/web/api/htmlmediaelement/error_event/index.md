@@ -1,18 +1,12 @@
 ---
-title: 'HTMLMediaElement: error event'
+title: "HTMLMediaElement: error event"
+short-title: error
 slug: Web/API/HTMLMediaElement/error_event
 page-type: web-api-event
-tags:
-  - API
-  - Error
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Web
 browser-compat: api.HTMLMediaElement.error_event
 ---
 
-{{APIRef}}
+{{APIRef("HTML DOM")}}
 
 The **`error`** event is fired when the resource could not be loaded due to an error (for example, a network connectivity problem).
 
@@ -20,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('error', (event) => {});
+```js-nolint
+addEventListener("error", (event) => { })
+```
 
-onerror = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onerror = (event) => { }
 ```
 
 ## Event type
@@ -35,14 +33,14 @@ A generic {{domxref("Event")}}.
 ## Examples
 
 ```js
-const video = document.querySelector('video');
-const videoSrc = 'https://path/to/video.webm';
+const video = document.querySelector("video");
+const videoSrc = "https://path/to/video.webm";
 
-video.addEventListener('error', () => {
+video.addEventListener("error", () => {
   console.error(`Error loading: ${videoSrc}`);
 });
 
-video.setAttribute('src', videoSrc);
+video.setAttribute("src", videoSrc);
 ```
 
 ## Specifications

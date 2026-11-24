@@ -1,8 +1,8 @@
 ---
 title: Media
 slug: Glossary/Media
-tags:
-  - Disambiguation
+page-type: glossary-disambiguation
+sidebar: glossarysidebar
 ---
 
 The term **media** is an overloaded one when talking about the web; it takes on different meanings depending on the context.

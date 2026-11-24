@@ -1,27 +1,14 @@
 ---
-title: AudioTrack.kind
+title: "AudioTrack: kind property"
+short-title: kind
 slug: Web/API/AudioTrack/kind
 page-type: web-api-instance-property
-tags:
-  - API
-  - Audio
-  - Audio Track
-  - AudioTrack
-  - HTML DOM
-  - Media
-  - Property
-  - Read-only
-  - Reference
-  - id
-  - track
 browser-compat: api.AudioTrack.kind
 ---
 
 {{APIRef("HTML DOM")}}
 
-The **`kind`** property contains a
-string indicating the category of audio contained in the
-**{{domxref("AudioTrack")}}**.
+The **`kind`** read-only property of the {{domxref("AudioTrack")}} interface contains a string indicating the category of audio contained in the **{{domxref("AudioTrack")}}**.
 
 The `kind` can be used
 to determine the scenarios in which specific tracks should be enabled or disabled. See

@@ -1,17 +1,8 @@
 ---
-title: Animation.play()
+title: "Animation: play() method"
+short-title: play()
 slug: Web/API/Animation/play
 page-type: web-api-instance-method
-tags:
-  - API
-  - Animation
-  - Interface
-  - Method
-  - Reference
-  - Web Animations
-  - play
-  - waapi
-  - web animations api
 browser-compat: api.Animation.play
 ---
 
@@ -47,13 +38,13 @@ const nommingCake = document
       fill: "forwards",
       easing: "steps(4, end)",
       duration: aliceChange.effect.timing.duration / 2,
-    }
+    },
   );
 
 // Pause the cake's animation so it doesn't play immediately.
 nommingCake.pause();
 
-// This function will play when ever a user clicks or taps
+// This function will play whenever a user clicks or taps
 const growAlice = () => {
   // Play Alice's animation.
   aliceChange.play();
@@ -63,8 +54,8 @@ const growAlice = () => {
 };
 
 // When a user holds their mouse down or taps, call growAlice to make all the animations play.
-cake.addEventListener("mousedown", growAlice, false);
-cake.addEventListener("touchstart", growAlice, false);
+cake.addEventListener("mousedown", growAlice);
+cake.addEventListener("touchstart", growAlice);
 ```
 
 ## Specifications

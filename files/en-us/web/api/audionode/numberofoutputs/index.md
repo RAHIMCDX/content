@@ -1,23 +1,14 @@
 ---
-title: AudioNode.numberOfOutputs
+title: "AudioNode: numberOfOutputs property"
+short-title: numberOfOutputs
 slug: Web/API/AudioNode/numberOfOutputs
 page-type: web-api-instance-property
-tags:
-  - API
-  - AudioNode
-  - Property
-  - Reference
-  - Web Audio API
-  - numberOfOutputs
 browser-compat: api.AudioNode.numberOfOutputs
 ---
 
 {{APIRef("Web Audio API")}}
 
-The `numberOfOutputs` property of
-the {{ domxref("AudioNode") }} interface returns the number of outputs coming out of
-the node. Destination nodes — like {{domxref("AudioDestinationNode") }} — have
-a value of 0 for this attribute.
+The **`numberOfOutputs`** read-only property of the {{domxref("AudioNode")}} interface returns the number of outputs coming out of the node. Destination nodes — like {{domxref("AudioDestinationNode") }} — have a value of 0 for this attribute.
 
 ## Value
 

@@ -1,17 +1,12 @@
 ---
-title: WEBGL_debug_shaders.getTranslatedShaderSource()
+title: "WEBGL_debug_shaders: getTranslatedShaderSource() method"
+short-title: getTranslatedShaderSource()
 slug: Web/API/WEBGL_debug_shaders/getTranslatedShaderSource
 page-type: webgl-extension-method
-tags:
-  - API
-  - Method
-  - Reference
-  - WebGL
-  - WebGL extension
 browser-compat: api.WEBGL_debug_shaders.getTranslatedShaderSource
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WEBGL_debug_shaders.getTranslatedShaderSource()`**
 method is part of the [WebGL API](/en-US/docs/Web/API/WebGL_API) and allows
@@ -40,14 +35,19 @@ returned, if:
 ## Examples
 
 ```js
-const canvas = document.getElementById('canvas');
-const gl = canvas.getContext('webgl');
+const canvas = document.getElementById("canvas");
+const gl = canvas.getContext("webgl");
 
 const shader = gl.createShader(gl.FRAGMENT_SHADER);
-gl.shaderSource(shader, 'void main() { gl_FragColor = vec4(gl_FragCoord.x, 0.0, 0.0, 1.0); }');
+gl.shaderSource(
+  shader,
+  "void main() { gl_FragColor = vec4(gl_FragCoord.x, 0.0, 0.0, 1.0); }",
+);
 gl.compileShader(shader);
 
-const src = gl.getExtension('WEBGL_debug_shaders').getTranslatedShaderSource(shader);
+const src = gl
+  .getExtension("WEBGL_debug_shaders")
+  .getTranslatedShaderSource(shader);
 console.log(src);
 // "void main(){
 // (gl_FragColor = vec4(gl_FragCoord.x, 0.0, 0.0, 1.0));

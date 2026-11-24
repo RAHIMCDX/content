@@ -1,13 +1,8 @@
 ---
-title: 'HTMLMediaElement: emptied event'
+title: "HTMLMediaElement: emptied event"
+short-title: emptied
 slug: Web/API/HTMLMediaElement/emptied_event
 page-type: web-api-event
-tags:
-  - Audio
-  - Event
-  - HTMLMediaElement
-  - Reference
-  - Video
 browser-compat: api.HTMLMediaElement.emptied_event
 ---
 
@@ -19,12 +14,16 @@ This event is not cancelable and does not bubble.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('emptied', (event) => {});
+```js-nolint
+addEventListener("emptied", (event) => { })
+```
 
-onemptied = (event) => { };
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onemptied = (event) => { }
 ```
 
 ## Event type
@@ -38,20 +37,20 @@ These examples add an event listener for the HTMLMediaElement's `emptied` event,
 Using `addEventListener()`:
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
-video.addEventListener('emptied', (event) => {
-  console.log('Uh oh. The media is empty. Did you call load()?');
+video.addEventListener("emptied", (event) => {
+  console.log("Uh oh. The media is empty. Did you call load()?");
 });
 ```
 
-Using the `onemptied` event handler property:
+Using the `onemptied` event handler property (but note that this replaces other event listeners added using `onemptied`, if any):
 
 ```js
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 video.onemptied = (event) => {
-  console.log('Uh oh. The media is empty. Did you call load()?');
+  console.log("Uh oh. The media is empty. Did you call load()?");
 };
 ```
 
@@ -81,7 +80,6 @@ video.onemptied = (event) => {
 - The HTMLMediaElement {{domxref("HTMLMediaElement.ratechange_event", 'ratechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.volumechange_event", 'volumechange')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.suspend_event", 'suspend')}} event
-- The HTMLMediaElement {{domxref("HTMLMediaElement.emptied_event", 'emptied')}} event
 - The HTMLMediaElement {{domxref("HTMLMediaElement.stalled_event", 'stalled')}} event
 
 ## See also

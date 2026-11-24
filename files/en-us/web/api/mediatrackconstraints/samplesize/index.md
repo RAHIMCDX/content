@@ -1,19 +1,9 @@
 ---
-title: MediaTrackConstraints.sampleSize
+title: "MediaTrackConstraints: sampleSize property"
+short-title: sampleSize
 slug: Web/API/MediaTrackConstraints/sampleSize
 page-type: web-api-instance-property
-tags:
-  - API
-  - Constraints
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackConstraints
-  - Property
-  - Reference
-  - WebRTC
-  - sampleSize
-browser-compat: api.MediaTrackConstraints.sampleSize
+browser-compat: api.MediaStreamTrack.applyConstraints.sampleSize_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -21,10 +11,10 @@ browser-compat: api.MediaTrackConstraints.sampleSize
 The {{domxref("MediaTrackConstraints")}} dictionary's
 **`sampleSize`** property is a [`ConstrainULong`](/en-US/docs/Web/API/MediaTrackConstraints#constrainulong)
 describing the requested or mandatory constraints placed upon the value of the
-{{domxref("MediaTrackSettings.sampleSize", "sampleSize")}} constrainable property.
+[`sampleSize`](/en-US/docs/Web/API/MediaStreamTrack/getSettings#samplesize) constrainable property.
 
 If needed, you can determine whether or not this constraint is supported by checking
-the value of {{domxref("MediaTrackSupportedConstraints.sampleSize")}} as returned by a
+the value of [`sampleSize`](/en-US/docs/Web/API/MediaDevices/getSupportedConstraints#samplesize) as returned by a
 call to {{domxref("MediaDevices.getSupportedConstraints()")}}. However, typically this
 is unnecessary since browsers will ignore any constraints they're unfamiliar with.
 
@@ -38,13 +28,13 @@ an exact match to the required sample size (if `exact` is specified or both
 `min` and `max` are provided and have the same value) or to a
 best-possible value.
 
-> **Note:** Since this property can only represent linear sample sizes, this constraint can only
+> [!NOTE]
+> Since this property can only represent linear sample sizes, this constraint can only
 > be met by devices that can produce audio with linear samples.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example:
-  Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 
@@ -60,5 +50,4 @@ See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constrain
 - [Capabilities, constraints, and settings](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints)
 - {{domxref("MediaTrackConstraints")}}
 - {{domxref("MediaDevices.getSupportedConstraints()")}}
-- {{domxref("MediaTrackSupportedConstraints")}}
 - {{domxref("MediaStreamTrack")}}

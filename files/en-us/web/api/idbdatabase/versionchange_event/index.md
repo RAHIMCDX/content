@@ -1,12 +1,8 @@
 ---
-title: 'IDBDatabase: versionchange event'
+title: "IDBDatabase: versionchange event"
+short-title: versionchange
 slug: Web/API/IDBDatabase/versionchange_event
 page-type: web-api-event
-tags:
-  - Event
-  - IDBDatabase
-  - Reference
-  - versionchange
 browser-compat: api.IDBDatabase.versionchange_event
 ---
 
@@ -17,11 +13,16 @@ another window/tab on the same computer).
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('versionchange', (event) => { });
-onversionchange = (event) => { };
+```js-nolint
+addEventListener("versionchange", (event) => { })
+```
+
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
+onversionchange = (event) => { }
 ```
 
 ## Event type
@@ -34,56 +35,63 @@ This example opens a database and, on success, adds a listener to `versionchange
 
 ```js
 // Open the database
-const dBOpenRequest = window.indexedDB.open('Nonexistent', 4);
+const dBOpenRequest = window.indexedDB.open("Nonexistent", 4);
 
 dBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
-
-  // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
-};
-
-dBOpenRequest.addEventListener('success', (event) => {
-  const db = event.target.result;
-  db.addEventListener('versionchange', (event) => {
-    console.log('The version of this database has changed');
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
   });
 
+  // define what data items the objectStore will contain
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
+};
+
+dBOpenRequest.addEventListener("success", (event) => {
+  const db = event.target.result;
+  db.addEventListener("versionchange", (event) => {
+    console.log("The version of this database has changed");
+  });
 });
 ```
 
-The same example, using the `onversionchange` event handler property:
+The same example, using the `onversionchange` event handler property (but note that this replaces other event listeners added using `onversionchange` and `onsuccess`, if any):
 
 ```js
 // Open the database
-const dBOpenRequest = window.indexedDB.open('Nonexistent', 4);
+const dBOpenRequest = window.indexedDB.open("Nonexistent", 4);
 
 dBOpenRequest.onupgradeneeded = (event) => {
   const db = event.target.result;
   // Create an objectStore for this database
-  const objectStore = db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
+  const objectStore = db.createObjectStore("toDoList", {
+    keyPath: "taskTitle",
+  });
 
   // define what data items the objectStore will contain
-  objectStore.createIndex('hours', 'hours', { unique: false });
-  objectStore.createIndex('minutes', 'minutes', { unique: false });
-  objectStore.createIndex('day', 'day', { unique: false });
-  objectStore.createIndex('month', 'month', { unique: false });
-  objectStore.createIndex('year', 'year', { unique: false });
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
 };
 
 dBOpenRequest.onsuccess = (event) => {
   const db = event.target.result;
   db.onversionchange = (event) => {
-    console.log('The version of this database has changed');
+    console.log("The version of this database has changed");
   };
 };
 ```
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

@@ -1,30 +1,28 @@
 ---
-title: 'XRSession: inputsourceschange event'
+title: "XRSession: inputsourceschange event"
+short-title: inputsourceschange
 slug: Web/API/XRSession/inputsourceschange_event
 page-type: web-api-event
-tags:
-  - API
-  - Event
-  - Reference
-  - WebXR
-  - XR
-  - XRInputSources
-  - XRSession
-  - Experimental
+status:
+  - experimental
 browser-compat: api.XRSession.inputsourceschange_event
 ---
 
-{{APIRef("WebXR Device API")}}{{SeeCompatTable}}
+{{APIRef("WebXR Device API")}}{{SeeCompatTable}}{{SecureContext_Header}}
 
 The **`inputsourceschange`** event is sent to an {{domxref("XRSession")}} when the set of available WebXR input devices changes.
 
 ## Syntax
 
-Use the event name in methods like {{domxref("EventTarget.addEventListener", "addEventListener()")}}, or set an event handler property.
+Use the event name in {{domxref("EventTarget/addEventListener", "addEventListener()")}}:
 
-```js
-addEventListener('inputsourceschange', (event) => { })
+```js-nolint
+addEventListener("inputsourceschange", (event) => { })
+```
 
+Alternatively, assign to the [event handler property](/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties) of the interface:
+
+```js-nolint
 oninputsourceschange = (event) => { }
 ```
 
@@ -33,17 +31,6 @@ oninputsourceschange = (event) => { }
 An {{domxref("XRInputSourcesChangeEvent")}}. Inherits from {{domxref("Event")}}.
 
 {{InheritanceDiagram("XRInputSourcesChangeEvent")}}
-
-## Event properties
-
-_In addition to the properties listed below, properties from the parent interface, {{domxref("Event")}}, are available._
-
-- {{domxref("XRInputSourcesChangeEvent.added", "added")}} {{ReadOnlyInline}}
-  - : An array of zero or more {{domxref("XRInputSource")}} objects, each representing an input device which has been recently connected or enabled.
-- {{domxref("XRInputSourcesChangeEvent.removed", "removed")}} {{ReadOnlyInline}}
-  - : An array of zero or more {{domxref("XRInputSource")}} objects representing the input devices recently disconnected or disabled.
-- {{domxref("XRInputSourcesChangeEvent.session", "session")}} {{ReadOnlyInline}}
-  - : The {{domxref("XRSession")}} to which this input source change event is being directed.
 
 ## Description
 
@@ -71,7 +58,7 @@ function onInputSourcesChange(event) {
 }
 ```
 
-You can also add a handler for `inputsourceschange` events by setting the `oninputsourceschange` event handler:
+You can also add a handler for `inputsourceschange` events by setting the `oninputsourceschange` event handler (but note that this replaces other event listeners added using `oninputsourceschange`, if any):
 
 ```js
 xrSession.oninputsourceschange = onInputSourcesChange;

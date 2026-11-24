@@ -1,22 +1,14 @@
 ---
-title: Gamepad.id
+title: "Gamepad: id property"
+short-title: id
 slug: Web/API/Gamepad/id
 page-type: web-api-instance-property
-tags:
-  - API
-  - Gamepad API
-  - Games
-  - NeedsBetterSpecLink
-  - NeedsMarkupWork
-  - Property
-  - Reference
 browser-compat: api.Gamepad.id
 ---
 
 {{APIRef("Gamepad API")}}
 
-The **`Gamepad.id`** property of the {{domxref("Gamepad") }}
-interface returns a string containing some information about the controller.
+The **`id`** read-only property of the {{domxref("Gamepad")}} interface returns a string containing some information about the controller.
 
 The exact syntax is not strictly specified, but in Firefox it will contain three pieces
 of information separated by dashes (`-`):

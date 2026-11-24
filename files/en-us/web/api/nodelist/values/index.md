@@ -1,22 +1,15 @@
 ---
-title: NodeList.values()
+title: "NodeList: values() method"
+short-title: values()
 slug: Web/API/NodeList/values
 page-type: web-api-instance-method
-tags:
-  - DOM
-  - Iterator
-  - Method
-  - NodeList
-  - Reference
-  - Web
-  - Polyfill
 browser-compat: api.NodeList.values
 ---
 
 {{APIRef("DOM")}}
 
 The **`NodeList.values()`** method returns an
-{{jsxref("Iteration_protocols",'iterator')}} allowing to go through all values contained
+{{jsxref("Iteration_protocols",'iterator')}} allowing you to go through all values contained
 in this object. The values are {{domxref("Node")}} objects.
 
 ## Syntax
@@ -24,6 +17,10 @@ in this object. The values are {{domxref("Node")}} objects.
 ```js-nolint
 values()
 ```
+
+### Parameters
+
+None.
 
 ### Return value
 
@@ -57,12 +54,16 @@ The result is:
 <span>
 ```
 
+## Specifications
+
+{{Specifications}}
+
 ## Browser compatibility
 
 {{Compat}}
 
 ## See also
 
-- [Polyfill of `NodeList.prototype.values` in `core-js`](https://github.com/zloirock/core-js#iterable-dom-collections)
+- [Polyfill of `NodeList.prototype.values` in `core-js`](https://core-js.io/docs/features/web-standards/iterable-dom-collections)
 - {{domxref("Node")}}
 - {{domxref("NodeList")}}
